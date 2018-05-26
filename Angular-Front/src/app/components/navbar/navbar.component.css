@@ -1,0 +1,43 @@
+.my-navbar{
+  background: #3b0063;
+  font-family: 'Raleway', sans-serif;
+}
+
+.navbar-default .navbar-brand {
+  color: #ffffff;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.my-navbar .navbar-nav li a:hover{
+  -moz-transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+  background-color: white;
+  color: #3b0063;
+}
+
+.navbar-default .navbar-nav:hover{
+  color: #ffffff;
+}
+
+
+img {
+  /* vertical-align: middle; */
+  width: 80%;
+  /* height: 10%; */
+}
+
+.navbar-default{
+  height: 80px;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: #e7e7e7;
+  margin-top: 1%;
+}
+
