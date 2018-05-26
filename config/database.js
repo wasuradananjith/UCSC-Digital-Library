@@ -1,3 +1,4 @@
 module.exports = {
-    "database":"mongodb://localhost:27017/ucsclibrarydb"
+    "database":"mongodb://localhost:27017/ucsclibrarydb",
+    "secret":"myapplicationsecretkey"
 };
