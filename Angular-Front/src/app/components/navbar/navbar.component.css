@@ -41,3 +41,8 @@ img {
   margin-top: 1%;
 }
 
+.navbar{
+  margin-bottom: 0;
+  border-color: unset;
+  border-radius: unset;
+}

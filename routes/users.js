@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const RegisterRequest = require('../models/registerRequest');
+
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const passport = require('passport');
@@ -10,7 +12,7 @@ router.get("",(req,res)=>{
 });
 
 router.post("/register",(req,res)=>{
-    const newUser = new User({
+    const newUser = new RegisterRequest({
         email:req.body.email,
         name:req.body.name,
         password:req.body.password,
@@ -21,7 +23,7 @@ router.post("/register",(req,res)=>{
     });
 
 
-    User.saveUser(newUser,(err,user)=> {
+    RegisterRequest.saveRegisterRequest(newUser,(err,user)=> {
         if(err){
             res.json({state:false,msg:"data not inserted"});
         }
