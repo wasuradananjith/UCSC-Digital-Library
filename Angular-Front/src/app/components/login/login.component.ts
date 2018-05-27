@@ -10,10 +10,13 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   registerForm: FormGroup;
+  loginForm: FormGroup;
   lastLogIn:String;
   type:String;
   isDeleted:String ;
   isLostPassword:String;
+  loginEmail:String;
+  loginPassword:String;
 
   constructor(private authService:AuthService,private flashMessage:FlashMessagesService,private fb: FormBuilder) {
     this.createForm();
@@ -23,11 +26,17 @@ export class LoginComponent implements OnInit {
   }
 
   createForm() {
+
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(3)]],
       cpassword: ['', [Validators.required, Validators.minLength(3)]]
+    });
+
+    this.loginForm = this.fb.group({
+      login_email: ['', [Validators.required, Validators.email]],
+      login_password: ['', [Validators.required]]
     });
   }
 
