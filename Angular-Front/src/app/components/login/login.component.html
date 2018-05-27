@@ -6,51 +6,85 @@
 
       <div class="col-sm-10 col-sm-push-1 col-md-6 col-md-push-3 col-lg-6 col-lg-push-3">
         <div class="card-group animated flipInX">
+
           <div class="card">
             <div class="card-block">
               <div class="center">
                 <h4 class="m-b-0"><span class="icon-text">Login</span></h4>
                 <p class="text-muted">Access your account</p>
               </div>
-              <form id="login-form">
+              <form [formGroup]="loginForm" (submit)="login()" novalidate>
+
                 <div class="form-group">
-                  <input id="login_username" class="form-control" type="text" placeholder="Email" required>
+                  <input class="form-control" formControlName="login_email" type="email"  placeholder="Email" required>
                 </div>
+
                 <div class="form-group">
-                  <input id="login_password" class="form-control" type="password" placeholder="Password" required>
+                  <input class="form-control" formControlName="login_password" type="password"  placeholder="Password">
                   <a href="#" class="pull-xs-right">
                     <small>Forgot?</small>
                   </a>
                   <div class="clearfix"></div>
                 </div>
-                <div class="center">
-                  <button type="submit" class="btn  btn-azure">Login</button>
-                </div>
+
+                <button class="btn btn-azure">Login</button>
+
               </form>
+
             </div>
           </div>
 
           <div class="card">
-
             <div class="card-block center">
               <h4 class="m-b-0">
                 <span class="icon-text">Sign Up</span>
               </h4>
               <p class="text-muted">Create a new account</p>
-              <form id="register-form" (submit)="registerData()">
+              <form [formGroup]="registerForm" (submit)="registerData()" novalidate>
+
                 <div class="form-group">
-                  <input name="name" type="text" class="form-control" placeholder="Full Name" [(ngModel)]="name">
+                  <input class="form-control" formControlName="name" type="text"  placeholder="Full Name">
+                  <div *ngIf="registerForm.controls['name'].invalid && (registerForm.controls['name'].touched)" class="invalid-feedback">
+                    <div *ngIf="registerForm.controls['name'].errors.required">
+                      Name is required.
+                    </div>
+                  </div>
                 </div>
+
                 <div class="form-group">
-                  <input name="email" type="email" class="form-control" placeholder="Email" [(ngModel)]="email" >
+                  <input class="form-control" formControlName="email" type="email"  placeholder="Email">
+                  <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].touched)" class="invalid-feedback">
+                    <div *ngIf="registerForm.controls['email'].errors.required">
+                      Email is required.
+                    </div>
+                    <div *ngIf="registerForm.controls['email'].errors.email">
+                      Invalid email address.
+                    </div>
+                  </div>
                 </div>
+
                 <div class="form-group">
-                  <input name="password" type="password" class="form-control" placeholder="Password" [(ngModel)]="password" >
+                  <input class="form-control" formControlName="password" type="password"  placeholder="Password">
+                  <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].touched)" class="invalid-feedback">
+                    <div *ngIf="registerForm.controls['password'].errors.required">
+                      Password is required.
+                    </div>
+                    <div *ngIf="registerForm.controls['password'].errors.minlength">Password must be at least 3 characters</div>
+                  </div>
                 </div>
+
                 <div class="form-group">
-                  <input name="cpassword" type="password" class="form-control" placeholder="Confirm Password" [(ngModel)]="cpassword">
+                  <input class="form-control" formControlName="cpassword" type="password"  placeholder="Confirm Password">
+                  <div *ngIf="registerForm.controls['cpassword'].invalid && (registerForm.controls['cpassword'].touched)" class="invalid-feedback">
+                    <div *ngIf="registerForm.controls['cpassword'].value != registerForm.controls['password'].value">
+                      Passwords mismatched.
+                    </div>
+                    <div *ngIf="registerForm.controls['cpassword'].errors.required">
+                      Please re-enter your password.
+                    </div>
+                  </div>
                 </div>
-                <button type="submit" class="btn btn-azure">Register</button>
+                <button class="btn btn-azure">Register</button>
               </form>
             </div>
           </div>

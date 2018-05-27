@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const RegisterRequest = require('../models/registerRequest');
+const Student = require('../models/student');
 
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
@@ -12,7 +12,7 @@ router.get("",(req,res)=>{
 });
 
 router.post("/register",(req,res)=>{
-    const newUser = new RegisterRequest({
+    const newUser = new User({
         email:req.body.email,
         name:req.body.name,
         password:req.body.password,
@@ -23,14 +23,39 @@ router.post("/register",(req,res)=>{
     });
 
 
-    RegisterRequest.saveRegisterRequest(newUser,(err,user)=> {
-        if(err){
-            res.json({state:false,msg:"data not inserted"});
+    User.findByEmail(newUser,(err,user)=>{
+        // if not a user already, then register
+        if(!user){
+            Student.findByEmail(newUser, (err,student)=>{
+                // not a registered student, so cannot have library access
+                if (!student){
+                    res.json({state:false,msg:"Sorry, you are not a registered student in UCSC"});
+                }
+                // registered student in the university, so can have library access
+                if (student){
+                    User.saveUser(newUser,(err,user)=> {
+                        if(err){
+                            res.json({state:false,msg:"Registration unsuccessful"});
+                        }
+                        if(user){
+                            res.json({state:true,msg:"You have successfully registered"});
+                        }
+                    });
+                }
+                // if error
+                if (err){
+                    res.json({state:false,msg:"Registration unsuccessful"});
+                }
+            });
         }
-        if(user){
-            res.json({state:true,msg:"data  inserted"});
+        // if an existing user
+        if (user){
+            res.json({state:false,msg:"You are already registered"});
         }
-
+        // if error
+        if (err){
+            res.json({state:false,msg:"Registration unsuccessful"});
+        }
     });
 });
 
@@ -69,7 +94,7 @@ router.post("/login",(req,res)=>{
                 )
             }
             else{
-                res.json({state:false,msg:"password does not match"});
+                res.json({state:false,msg:"Password does not match"});
             }
         });
     });

@@ -18,15 +18,17 @@ module.exports.saveUser = (newUser,callback)=>{
     bcrypt.genSalt(10, (err, salt)=> {
         bcrypt.hash(newUser.password, salt, (err, hash)=> {
             newUser.password = hash;
-            if (err) throw err;
+            if (err) {
+                callback(null,false);
+            }
             newUser.save(callback);
         });
     });
 };
 
 // checks whether the email exists in database
-module.exports.findByEmail = (email,callback)=> {
-    const query = {email:email}; // checks whether the email field of database matches with the passed email
+module.exports.findByEmail = (user,callback)=> {
+    const query = {email:user.email}; // checks whether the email field of database matches with the passed email
     User.findOne(query,callback);
 };
 
