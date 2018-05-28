@@ -9,9 +9,12 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  user:any;
   constructor(private router:Router) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem("user"));
+    console.log(this.user.name);
   }
 
 }

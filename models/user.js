@@ -27,8 +27,8 @@ module.exports.saveUser = (newUser,callback)=>{
 };
 
 // checks whether the email exists in database
-module.exports.findByEmail = (user,callback)=> {
-    const query = {email:user.email}; // checks whether the email field of database matches with the passed email
+module.exports.findByEmail = (email,callback)=> {
+    const query = {email:email}; // checks whether the email field of database matches with the passed email
     User.findOne(query,callback);
 };
 

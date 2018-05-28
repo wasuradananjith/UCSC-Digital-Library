@@ -11,9 +11,13 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { AuthService } from './service/auth.service';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { StudentHomeComponent } from './components/student-home/student-home.component';
 
 const applicationRoutes:Routes=[
-  {path:'login',component:LoginComponent}
+  {path:'login',component:LoginComponent},
+  {path:'admin-home',component:AdminHomeComponent},
+  {path:'student-home',component:StudentHomeComponent}
 ];
 
 @NgModule({
@@ -21,7 +25,9 @@ const applicationRoutes:Routes=[
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminHomeComponent,
+    StudentHomeComponent
   ],
   imports: [
     BrowserModule,

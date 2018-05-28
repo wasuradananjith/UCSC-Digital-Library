@@ -13,7 +13,7 @@ const studentSchema = new schema({
 const Student = module.exports = mongoose.model("Student",studentSchema);
 
 // checks whether the email exists in database
-module.exports.findByEmail = (student,callback)=> {
-    const query = {email:student.email}; // checks whether the email field of database matches with the passed email
+module.exports.findByEmail = (email,callback)=> {
+    const query = {email:email}; // checks whether the email field of database matches with the passed email
     Student.findOne(query,callback);
 };

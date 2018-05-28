@@ -40,9 +40,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // add register request data
+  // register a new student
   registerData(){
-
 
     // get current time stamp
     let today = new Date();
@@ -83,7 +82,7 @@ export class LoginComponent implements OnInit {
         isLostPassword:"0",
       };
 
-      return this.authService.sendRegisterRequest(user).subscribe(res=>{
+      return this.authService.registerUser(user).subscribe(res=>{
         if (res.state){
           this.flashMessage.show(res.msg, { cssClass: 'alert-success', timeout: 5000 });
           this.registerForm.reset();
@@ -94,6 +93,26 @@ export class LoginComponent implements OnInit {
 
       });
     }
+  }
+
+  // login user
+  loginUser(){
+
+    const user = {
+      email:this.loginForm.controls['login_email'].value,
+      password:this.loginForm.controls['login_password'].value
+    };
+
+    this.authService.loginUser(user).subscribe(res=>{
+      if (res.state){
+        this.authService.storeData(res.token,res.user);
+        this.flashMessage.show(res.msg, { cssClass: 'alert-success', timeout: 5000 });
+        this.registerForm.reset();
+      }
+      else{
+        this.flashMessage.show(res.msg, { cssClass: 'alert-danger', timeout: 5000 });
+      }
+    });
   }
 
 

@@ -23,10 +23,10 @@ router.post("/register",(req,res)=>{
     });
 
 
-    User.findByEmail(newUser,(err,user)=>{
+    User.findByEmail(newUser.email,(err,user)=>{
         // if not a user already, then register
         if(!user){
-            Student.findByEmail(newUser, (err,student)=>{
+            Student.findByEmail(newUser.email, (err,student)=>{
                 // not a registered student, so cannot have library access
                 if (!student){
                     res.json({state:false,msg:"Sorry, you are not a registered student in UCSC"});
@@ -69,7 +69,7 @@ router.post("/login",(req,res)=>{
         if(err) throw err;
 
         if (!user){
-            res.json({state:false,msg:"No user found"});
+            res.json({state:false,msg:"Sorry, No user found"});
             return false;
 
         }
@@ -80,7 +80,7 @@ router.post("/login",(req,res)=>{
 
             if (match){
                 // create a token when a successful login happens
-                const token = jwt.sign(user.toJSON(), config.secret,{expiresIn:86400}); // expires in oneday
+                const token = jwt.sign(user, config.secret,{expiresIn:86400}); // expires in oneday
                 res.json(
                     {
                         state:true,
@@ -88,8 +88,10 @@ router.post("/login",(req,res)=>{
                         user:{
                             id:user._id,
                             name:user.name,
-                            email:user.email
-                        }
+                            email:user.email,
+                            type:user.type
+                        },
+                        msg:"Login Successful!"
                     }
                 )
             }
@@ -100,10 +102,9 @@ router.post("/login",(req,res)=>{
     });
 });
 
-router.post('/profile', passport.authenticate('jwt', { session: false}), (req, res)=> {
+router.get('/admin-home', passport.authenticate('jwt', { session: false}), (req, res)=> {
         res.json({user:req.user});
     }
 );
-
 
 module.exports = router;
