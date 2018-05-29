@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   loginEmail:String;
   loginPassword:String;
 
-  constructor(private authService:AuthService,private flashMessage:FlashMessagesService,private fb: FormBuilder) {
+  constructor(private authService:AuthService,private flashMessage:FlashMessagesService,private fb: FormBuilder,private router:Router) {
     this.createForm();
   }
 
@@ -107,7 +108,11 @@ export class LoginComponent implements OnInit {
       if (res.state){
         this.authService.storeData(res.token,res.user);
         this.flashMessage.show(res.msg, { cssClass: 'alert-success', timeout: 5000 });
-        this.registerForm.reset();
+        if (res.user.type=="Admin"){
+          this.router.navigate(['admin-home']);
+        }else if (res.user.type=="Student"){
+          this.router.navigate(['student-home']);
+        }
       }
       else{
         this.flashMessage.show(res.msg, { cssClass: 'alert-danger', timeout: 5000 });

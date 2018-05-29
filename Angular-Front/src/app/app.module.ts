@@ -11,14 +11,24 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { AuthService } from './service/auth.service';
+import { AuthGuard } from './service/auth.guard';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
-import { StudentHomeComponent } from './components/student-home/student-home.component';
+import { StudentHomeComponent } from './components/student-home/student-home.component'
+import { JwtModule } from '@auth0/angular-jwt';
+import { HomeComponent } from './components/home/home.component';
+import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
+import { AdminTopbarComponent } from './components/admin-topbar/admin-topbar.component';
 
 const applicationRoutes:Routes=[
+  {path:'',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'admin-home',component:AdminHomeComponent},
   {path:'student-home',component:StudentHomeComponent}
 ];
+
+export function tokenGetter() {
+  return localStorage.getItem('tokenid');
+}
 
 @NgModule({
   declarations: [
@@ -27,16 +37,26 @@ const applicationRoutes:Routes=[
     LoginComponent,
     RegisterComponent,
     AdminHomeComponent,
-    StudentHomeComponent
+    StudentHomeComponent,
+    HomeComponent,
+    AdminSidebarComponent,
+    AdminTopbarComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpModule,
     FlashMessagesModule,
-    RouterModule.forRoot(applicationRoutes)
+    RouterModule.forRoot(applicationRoutes),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:4200'],
+        blacklistedRoutes: ['localhost:4200/auth/']
+      }
+    })
   ],
-  providers: [AuthService,FlashMessagesService],
+  providers: [AuthService,AuthGuard,FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

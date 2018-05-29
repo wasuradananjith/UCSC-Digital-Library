@@ -107,4 +107,9 @@ router.get('/admin-home', passport.authenticate('jwt', { session: false}), (req,
     }
 );
 
+router.get('/student-home', passport.authenticate('jwt', { session: false}), (req, res)=> {
+        res.json({user:req.user});
+    }
+);
+
 module.exports = router;

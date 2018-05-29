@@ -41,12 +41,16 @@
       </form>-->
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Home</a></li>
-        <li><a [routerLink]="['/login']">Register</a></li>
-        <li><a [routerLink]="['/login']">Login</a></li>
-        <li *ngIf="user">
-          <a [routerLink]="['/login']">{{user.name}}</a>
+        <li *ngIf="authService.isLoggedIn()">
+          <a [routerLink]="['/login']">Register</a></li>
+        <li *ngIf="authService.isLoggedIn()">
+          <a [routerLink]="['/login']">Login</a></li>
+        <li *ngIf="!authService.isLoggedIn()">
+          <a [routerLink]="['/login']">{{getCurrentUserName()}}</a>
         </li>
-        <li><a [routerLink]="['/login']">Logout</a></li>
+        <li *ngIf="!authService.isLoggedIn()">
+          <a href="#" (click)="logoutUser()">Logout</a>
+        </li>
         <!--<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">

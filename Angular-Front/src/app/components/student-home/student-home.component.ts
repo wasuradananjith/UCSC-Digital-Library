@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-student-home',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentHomeComponent implements OnInit {
 
-  constructor() { }
+  user:any;
+  constructor(private authService:AuthService){}
 
   ngOnInit() {
+    this.authService.getStudentHome().subscribe(res=>{
+      this.user = res.user;
+      console.log(this.user);
+    });
   }
 
 }
