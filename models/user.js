@@ -49,3 +49,7 @@ module.exports.passwordCheck = (plainpassword,hash,callback)=> {
 module.exports.findUserById = (id,callback)=>{
     User.findOne(id,callback);
 };
+
+module.exports.getAllUserEmails = ()=>{
+
+};

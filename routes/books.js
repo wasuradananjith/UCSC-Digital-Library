@@ -2,9 +2,16 @@ const express = require('express');
 const router = express.Router();
 const Book = require('../models/book');
 const Copy = require('../models/copy');
-const Email = require('../models/email');
-
+const nodemailer = require('nodemailer');
 const config = require('../config/database');
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'aweerateamscorp2@gmail.com',
+        pass: 'aweera123'
+    }
+});
 
 router.get("",(req,res)=>{
     res.send("Hello Books");
@@ -59,7 +66,7 @@ router.post("/add",(req,res)=>{
                         text: 'That was easy!'
                     };
 
-                    Email.transporter.sendMail(mailOptions, function(error, info){
+                    transporter.sendMail(mailOptions, function(error, info){
                         if (error) {
                             console.log(error);
                         } else {
@@ -71,7 +78,7 @@ router.post("/add",(req,res)=>{
         }
         // if an existing book
         if (book){
-            res.json({state:false,msg:"Book is already exists in the database"});
+            res.json({state:false,msg:"Book already exists in the database"});
         }
         // if error
         if (err){
