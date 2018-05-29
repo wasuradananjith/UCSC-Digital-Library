@@ -7,11 +7,11 @@
 }
 .sidebar ul li {
   border-bottom: 1px solid #e7e7e7;
-  color: #3b0063;
+  color: #1f003e;
 }
 
 .sidebar ul li a{
-  color: #3b0063;
+  color: #1f003e;
 }
 
 .sidebar ul li a.active {
@@ -50,10 +50,11 @@
 }
 
 .sidebar{
-  background-color: #e1bee7;
+  background-color: #d8c4eb;
   font-family: 'Raleway', sans-serif;
 }
 
 .admin-home-title{
   padding-left: 12%;
 }
+

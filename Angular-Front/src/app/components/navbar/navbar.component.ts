@@ -16,8 +16,7 @@ export class NavbarComponent implements OnInit {
   constructor(private router:Router,private authService:AuthService,private flashMessage:FlashMessagesService) { }
 
   ngOnInit() {
-    if (localStorage.getItem("user")!=null){
-    }
+
   }
 
   // call a function to logout a user

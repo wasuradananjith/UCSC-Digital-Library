@@ -1,12 +1,12 @@
 
 html, body{
   height: 100%;
-  font-family:myfont,verdana,arial,sans-serif;
+  font-family: 'Raleway', sans-serif;
   color:#555555;
 }
 
-h1,h2,h3,h4{
-  font-family:myfont,sans-serif;
+h1,h2,h3,h4,input,p,button{
+  font-family: 'Raleway', sans-serif;
 }
 
 .btn-azure, .btn-azure:focus {

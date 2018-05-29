@@ -432,3 +432,11 @@ table.dataTable thead .sorting:after {
     border-left-width: 0;
   }
 }
+
+h1{
+  color: #1f003e;
+}
+
+#page-wrapper{
+  font-family: 'Raleway', sans-serif;
+}
