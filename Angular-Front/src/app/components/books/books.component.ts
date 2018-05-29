@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService} from "../../service/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-books',
@@ -7,12 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BooksComponent implements OnInit {
   user:any;
-  constructor() { }
+  constructor(private authService:AuthService,private router:Router) {}
 
   ngOnInit() {
-    if (localStorage.getItem("user")!=null){
-      this.user = JSON.parse(localStorage.getItem("user"));
+    if (!this.authService.isLoggedIn()){
+      this.router.navigate(['']);
     }
+    else{
+      this.authService.getAdminHome().subscribe(res=>{
+        this.user = res.user;
+        console.log(this.user)
+
+        if(this.user.type=="Student"){
+          this.router.navigate(['student-home']);
+        }
+
+      });
+    }
+
   }
 
 }
