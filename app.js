@@ -17,6 +17,7 @@ require('./config/passport')(passport);
 
 const config = require('./config/database');
 const user = require('./routes/users');
+const book = require('./routes/books');
 
 const connection = mongoose.connect(config.database);
 if(connection){
@@ -30,6 +31,7 @@ else{
 app.use(express.static(path.join(__dirname,"public"))); // front-end is in public folder
 
 app.use('/user',user);
+app.use('/book',book);
 
 app.get("/",(req,res)=>{
     res.send("UCSC Library");

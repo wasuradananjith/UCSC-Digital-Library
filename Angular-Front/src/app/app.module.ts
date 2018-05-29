@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule,Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule} from "@angular/http";
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { FlashMessagesModule,FlashMessagesService } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
@@ -51,6 +52,7 @@ export function tokenGetter() {
     HttpModule,
     FlashMessagesModule,
     RouterModule.forRoot(applicationRoutes),
+    ModalModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

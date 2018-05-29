@@ -50,8 +50,9 @@
 }
 
 .sidebar{
-  background-color: #d8c4eb;
+  background-color: rgba(73, 63, 87, 0.22);
   font-family: 'Raleway', sans-serif;
+  font-size: medium;
 }
 
 .admin-home-title{

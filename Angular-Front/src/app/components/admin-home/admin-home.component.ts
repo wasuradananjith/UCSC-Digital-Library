@@ -24,8 +24,6 @@ export class AdminHomeComponent implements OnInit {
           this.router.navigate(['student-home']);
         }
       });
-
+    }
   }
-
-
 }

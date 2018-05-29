@@ -6,7 +6,11 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">Books <button type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add New</button> </h1>
+        <h1 class="page-header">Books
+          <button type="button" class="btn btn-primary pull-right" (click)="openModal(AddNewBook)">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add New
+          </button>
+        </h1>
 
       </div>
       <!-- /.col-lg-12 -->
@@ -21,8 +25,6 @@
       </span>
         </div><!-- /input-group -->
       </div><!-- /.col-lg-6 -->
-
-
 
       <div class="col-lg-12">
         <nav aria-label="Page navigation example">
@@ -46,6 +48,62 @@
         </nav>
       </div>
     </div>
+  </div>
 </div>
 
+<!--Model to add a new book-->
+<ng-template #AddNewBook>
+  <div class="my-modal">
+    <div class="modal-header">
+      <h3 class="modal-title pull-left">Add New Book</h3>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <flash-messages></flash-messages>
+      <form [formGroup]="addNewBookForm" novalidate>
 
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">ISBN</label>
+            <div class="col-md-8">
+              <input class="form-control" formControlName="isbn" type="text"  placeholder="ISBN" [(ngModel)]="book.isbn">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Title</label>
+            <div class="col-md-8">
+              <input class="form-control" formControlName="title" type="text"  placeholder="Title" [(ngModel)]="book.title">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Author</label>
+            <div class="col-md-8">
+              <input class="form-control" formControlName="author" type="text"  placeholder="Author" [(ngModel)]="book.author">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Number of Copies</label>
+            <div class="col-md-8">
+              <input class="form-control" formControlName="no_of_copies" type="number"  placeholder="Number of Copies" [(ngModel)]="book.no_of_copies">
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" (click)="addBookData()" class="btn btn-azure center">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>

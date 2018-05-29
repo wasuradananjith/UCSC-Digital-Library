@@ -7,18 +7,17 @@ html, body{
 
 h1,h2,h3,h4,input,p,button{
   font-family: 'Raleway', sans-serif;
+  color: #1f003e;
 }
 
 .btn-azure, .btn-azure:focus {
-  background-color: #ba68c8 !important;
-  border-color: #9c27b0;
+  background-color: #8e4e9c !important;
   color: #fff;
 }
 
 .btn-azure:hover,
 .open .btn-azure.dropdown-toggle {
-  background-color: #e1bee7 !important;
-  border-color: #ba68c8;
+  background-color: #a393a9 !important;
   color: #fff
 }
 
