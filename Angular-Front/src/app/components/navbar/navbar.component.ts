@@ -32,4 +32,10 @@ export class NavbarComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("user"));
     return this.user.name;
   }
+
+  // get current user's name
+  getCurrentUserType(){
+    this.user = JSON.parse(localStorage.getItem("user"));
+    return this.user.type;
+  }
 }

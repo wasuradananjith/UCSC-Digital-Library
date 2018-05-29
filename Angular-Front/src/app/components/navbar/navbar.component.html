@@ -45,8 +45,11 @@
           <a [routerLink]="['/login']">Register</a></li>
         <li *ngIf="authService.isLoggedIn()">
           <a [routerLink]="['/login']">Login</a></li>
-        <li *ngIf="!authService.isLoggedIn()">
-          <a [routerLink]="['/login']">{{getCurrentUserName()}}</a>
+        <li *ngIf="!authService.isLoggedIn() && getCurrentUserType()=='Admin'">
+          <a [routerLink]="['/admin-home']">{{getCurrentUserName()}}</a>
+        </li>
+        <li *ngIf="!authService.isLoggedIn() && getCurrentUserType()=='Student'">
+          <a [routerLink]="['/student-home']">{{getCurrentUserName()}}</a>
         </li>
         <li *ngIf="!authService.isLoggedIn()">
           <a href="#" (click)="logoutUser()">Logout</a>
