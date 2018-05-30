@@ -20,13 +20,16 @@ import { HomeComponent } from './components/home/home.component';
 import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 import { AdminTopbarComponent } from './components/admin-topbar/admin-topbar.component';
 import { BooksComponent } from './components/books/books.component';
+import { StudentSidebarComponent } from './components/student-sidebar/student-sidebar.component';
+import { StudentBooksComponent } from './components/student-books/student-books.component';
 
 const applicationRoutes:Routes=[
   {path:'',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'admin-home',component:AdminHomeComponent},
   {path:'student-home',component:StudentHomeComponent},
-  {path:'admin-home/books',component:BooksComponent}
+  {path:'admin-home/books',component:BooksComponent},
+  {path:'student-home/books',component:StudentBooksComponent}
 ];
 
 export function tokenGetter() {
@@ -44,7 +47,9 @@ export function tokenGetter() {
     HomeComponent,
     AdminSidebarComponent,
     AdminTopbarComponent,
-    BooksComponent
+    BooksComponent,
+    StudentSidebarComponent,
+    StudentBooksComponent
   ],
   imports: [
     BrowserModule,

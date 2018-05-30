@@ -52,7 +52,7 @@
           <a [routerLink]="['/student-home']">{{getCurrentUserName()}}</a>
         </li>
         <li *ngIf="authService.isLoggedIn()">
-          <a href="#" (click)="logoutUser()">Logout</a>
+          <a href="#" (click)="logoutUser(MessageModal)">Logout</a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -68,3 +68,24 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+<ng-template #MessageModal>
+  <div class="my-modal">
+    <div class="modal-header">
+      <h2 class="modal-title pull-left">Alert</h2>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="myAlertType=='Success'">
+        <strong><h4 style="color: darkgreen">{{myMessage}}</h4></strong>
+      </div>
+      <div *ngIf="myAlertType=='Error'">
+        <strong><h4 style="color: #a90000">{{myMessage}}</h4></strong>
+      </div>
+
+    </div>
+  </div>
+</ng-template>

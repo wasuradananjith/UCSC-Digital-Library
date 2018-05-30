@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
-
-
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,16 +13,22 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class NavbarComponent implements OnInit {
 
   user:any;
-  constructor(private router:Router,private authService:AuthService,private flashMessage:FlashMessagesService) { }
+  modalRef: BsModalRef;
+  myMessage:String;
+  myAlertType:String;
+  constructor(private router:Router,private authService:AuthService,private flashMessage:FlashMessagesService,private modalService: BsModalService) { }
 
   ngOnInit() {
 
   }
 
   // call a function to logout a user
-  logoutUser(){
+  logoutUser(template:TemplateRef<any>){
     this.authService.logout();
-    this.flashMessage.show('You are successfully logged out', { cssClass: 'alert-success', timeout: 3000 });
+    this.myMessage='You are successfully logged out';
+    this.myAlertType="Success";
+    this.modalRef = this.modalService.show(template);
+    //this.flashMessage.show('You are successfully logged out', { cssClass: 'alert-success', timeout: 3000 });
     this.router.navigate(['']);
     return false;
   }

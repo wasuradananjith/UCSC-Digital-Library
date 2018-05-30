@@ -432,3 +432,59 @@ table.dataTable thead .sorting:after {
     border-left-width: 0;
   }
 }
+
+h1{
+  color: #1f003e;
+}
+
+#page-wrapper{
+  font-family: 'Raleway', sans-serif;
+}
+
+.my-modal{
+  font-family: 'Raleway', sans-serif;
+}
+
+label{
+  padding-top: 1%;
+}
+
+.modal-body{
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+.my-modal h3{
+  color: #1f003e;
+  margin-left: 34%;
+}
+
+.btn-azure, .btn-azure:focus {
+  background-color: #8e4e9c !important;
+  color: #fff;
+}
+
+.btn-azure:hover,
+.open .btn-azure.dropdown-toggle {
+  background-color: #a393a9 !important;
+  color: #fff
+}
+
+.btn-azure{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.invalid-feedback{
+  color: #d20000;
+  text-align: left;
+  font-size: smaller;
+  margin-left: 1%;
+}
+
+.my-modal label,input{
+  color: #1f003e;
+}
+
+.container{
+  width: 1000px;
+}

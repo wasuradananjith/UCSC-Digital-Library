@@ -13,7 +13,7 @@
                 <h4 class="m-b-0"><span class="icon-text">Login</span></h4>
                 <p class="text-muted">Access your account</p>
               </div>
-              <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+              <form [formGroup]="loginForm" (submit)="loginUser(LoginMsgModal)" novalidate>
 
                 <div class="form-group">
                   <input class="form-control" formControlName="login_email" type="email"  placeholder="Email" required>
@@ -40,7 +40,7 @@
                 <span class="icon-text">Sign Up</span>
               </h4>
               <p class="text-muted">Create a new account</p>
-              <form [formGroup]="registerForm" (submit)="registerData()" novalidate>
+              <form [formGroup]="registerForm" (submit)="registerData(LoginMsgModal)" novalidate>
 
                 <div class="form-group">
                   <input class="form-control" formControlName="name" type="text"  placeholder="Full Name">
@@ -92,3 +92,27 @@
       </div>
     </div>
   </div>
+
+  <!--Model to add a new book-->
+  <ng-template #LoginMsgModal>
+    <div class="my-modal">
+      <div class="modal-header">
+        <h2 class="modal-title pull-left">Alert</h2>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="loginAlertType=='Success'">
+          <strong><h4 style="color: darkgreen">{{loginMessage}}</h4></strong>
+        </div>
+        <div *ngIf="loginAlertType=='Error'">
+          <strong><h4 style="color: #a90000">{{loginMessage}}</h4></strong>
+        </div>
+
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+

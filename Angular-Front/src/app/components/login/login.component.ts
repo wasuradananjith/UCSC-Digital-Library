@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import { AuthService } from '../../service/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import {Router} from "@angular/router";
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +12,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  modalRef: BsModalRef;
   registerForm: FormGroup;
   loginForm: FormGroup;
   lastLogIn:String;
@@ -18,8 +21,10 @@ export class LoginComponent implements OnInit {
   isLostPassword:String;
   loginEmail:String;
   loginPassword:String;
-
-  constructor(private authService:AuthService,private flashMessage:FlashMessagesService,private fb: FormBuilder,private router:Router) {
+  loginMessage:String;
+  loginAlertType:String;
+  constructor(private authService:AuthService,private flashMessage:FlashMessagesService,
+              private fb: FormBuilder,private router:Router,private modalService: BsModalService) {
     this.createForm();
   }
 
@@ -42,7 +47,7 @@ export class LoginComponent implements OnInit {
   }
 
   // register a new student
-  registerData(){
+  registerData(template:TemplateRef<any>){
 
     // get current time stamp
     let today = new Date();
@@ -52,24 +57,39 @@ export class LoginComponent implements OnInit {
 
     // check whether all the fields are filled
     if (this.registerForm.controls['name'].value == ""){
-      this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 3000 });
+      this.loginMessage='Please fill all the fields';
+      this.loginAlertType="Error";
+      this.modalRef = this.modalService.show(template);
+      //this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 3000 });
       return;
     }
     if (this.registerForm.controls['email'].value == ""){
-      this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 3000 });
+      this.loginMessage='Please fill all the fields';
+      this.loginAlertType="Error";
+      this.modalRef = this.modalService.show(template);
+      //this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 3000 });
       return;
     }
     if (this.registerForm.controls['password'].value == ""){
-      this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 3000 });
+      this.loginMessage='Please fill all the fields';
+      this.loginAlertType="Error";
+      this.modalRef = this.modalService.show(template);
+      //this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 3000 });
       return;
     }
     if (this.registerForm.controls['cpassword'].value == ""){
-      this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 3000 });
+      this.loginMessage='Please fill all the fields';
+      this.loginAlertType="Error";
+      this.modalRef = this.modalService.show(template);
+      //this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 3000 });
       return;
     }
 
     if(this.registerForm.controls['cpassword'].value!== this.registerForm.controls['password'].value){
-      this.flashMessage.show('Password does not match', { cssClass: 'alert-danger', timeout: 3000 });
+      this.loginMessage='Password does not match';
+      this.loginAlertType="Error";
+      this.modalRef = this.modalService.show(template);
+      //this.flashMessage.show('Password does not match', { cssClass: 'alert-danger', timeout: 3000 });
       return;
     }
     else{
@@ -85,11 +105,17 @@ export class LoginComponent implements OnInit {
 
       return this.authService.registerUser(user).subscribe(res=>{
         if (res.state){
-          this.flashMessage.show(res.msg, { cssClass: 'alert-success', timeout: 5000 });
+          this.loginMessage=res.msg;
+          this.loginAlertType="Success";
+          this.modalRef = this.modalService.show(template);
+          //this.flashMessage.show(res.msg, { cssClass: 'alert-success', timeout: 5000 });
           this.registerForm.reset();
         }
         else{
-          this.flashMessage.show(res.msg, { cssClass: 'alert-danger', timeout: 5000 });
+          this.loginMessage=res.msg;
+          this.loginAlertType="Error";
+          this.modalRef = this.modalService.show(template);
+          //this.flashMessage.show(res.msg, { cssClass: 'alert-danger', timeout: 5000 });
         }
 
       });
@@ -97,7 +123,7 @@ export class LoginComponent implements OnInit {
   }
 
   // login user
-  loginUser(){
+  loginUser(template:TemplateRef<any>){
 
     const user = {
       email:this.loginForm.controls['login_email'].value,
@@ -107,7 +133,10 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(user).subscribe(res=>{
       if (res.state){
         this.authService.storeData(res.token,res.user);
-        this.flashMessage.show(res.msg, { cssClass: 'alert-success', timeout: 5000 });
+        this.loginMessage="Welcome, "+res.user.name+"!";
+        this.loginAlertType="Success";
+        this.modalRef = this.modalService.show(template);
+        //this.flashMessage.show(res.msg, { cssClass: 'alert-success', timeout: 5000 });
         if (res.user.type=="Admin"){
           this.router.navigate(['admin-home']);
         }else if (res.user.type=="Student"){
@@ -115,7 +144,10 @@ export class LoginComponent implements OnInit {
         }
       }
       else{
-        this.flashMessage.show(res.msg, { cssClass: 'alert-danger', timeout: 5000 });
+        this.loginMessage=res.msg;
+        this.loginAlertType="Error";
+        this.modalRef = this.modalService.show(template);
+        //this.flashMessage.show(res.msg, { cssClass: 'alert-danger', timeout: 5000 });
       }
     });
   }
