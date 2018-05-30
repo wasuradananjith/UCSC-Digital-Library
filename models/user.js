@@ -14,6 +14,7 @@ const userSchema = new schema({
 
 const User = module.exports = mongoose.model("User",userSchema);
 
+// save a new user
 module.exports.saveUser = (newUser,callback)=>{
     bcrypt.genSalt(10, (err, salt)=> {
         bcrypt.hash(newUser.password, salt, (err, hash)=> {
@@ -25,6 +26,13 @@ module.exports.saveUser = (newUser,callback)=>{
         });
     });
 };
+
+// get all the email addresses of registered student users
+module.exports.getAllStudentUserDetails = (callback)=>{
+    const query = {type:"Student"}; // checks whether the email field of database matches with the passed email
+    User.find(query,callback);
+};
+
 
 // checks whether the email exists in database
 module.exports.findByEmail = (email,callback)=> {
@@ -48,8 +56,4 @@ module.exports.passwordCheck = (plainpassword,hash,callback)=> {
 
 module.exports.findUserById = (id,callback)=>{
     User.findOne(id,callback);
-};
-
-module.exports.getAllUserEmails = ()=>{
-
 };

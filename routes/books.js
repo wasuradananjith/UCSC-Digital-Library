@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Book = require('../models/book');
+const User = require('../models/user');
 const Copy = require('../models/copy');
 const nodemailer = require('nodemailer');
 const config = require('../config/database');
@@ -50,6 +51,7 @@ router.post("/add",(req,res)=>{
     Book.findByISBN(newBook.isbn,(err,book)=>{
         // if book is not in database
         if(!book){
+
             // Add book to the database
             Book.saveBook(newBook,(err,book)=> {
                 if(err){
@@ -58,19 +60,39 @@ router.post("/add",(req,res)=>{
                 if(book){
                     res.json({state:true,msg:"Book Successfully Added!"});
 
-                    // send an email
-                    const mailOptions = {
-                        from: 'ucscdigitallibrary@ucsc.cmb.ac.lk',
-                        to: 'wasuradananjith@gmail.com',
-                        subject: 'Sending Email using Node.js',
-                        text: 'That was easy!'
-                    };
+                    // get all student details and send emails
+                    User.getAllStudentUserDetails((err,students)=> {
+                        if(err){
+                            res.json({state:false,msg:"Failed to retrieve student details"});
+                        }
+                        if(students){
+                            for (let student in students) {
+                                // send emails to all the student users
+                                const mailOptions = {
+                                    from: 'ucscdigitallibrary@ucsc.cmb.ac.lk',
+                                    to: students[student].email,
+                                    subject: 'New Book is Added',
+                                    html: '<h1>Hi, '+students[student].name+'</h1>' +
+                                    '<p style="text-align: left;">A new book has been added just now. Details are given below.</p>\n' +
+                                    '<ul style="text-align: left;">\n' +
+                                    '<li><strong>ISBN :</strong>'+req.body.isbn+'</li>\n' +
+                                    '<li><strong>Title :</strong>'+req.body.title+'</li>\n' +
+                                    '<li><strong>Author :</strong>'+req.body.author+'</li>\n' +
+                                    '</ul>\n' +
+                                    '<p style="text-align: left;">'+req.body.no_of_copies+' copies is/are available. Hurry now, reserve your one too.</p>\n' +
+                                    '<p style="text-align: left;">&nbsp;</p>\n' +
+                                    '<p style="text-align: left;">Regards,</p>\n' +
+                                    '<p style="text-align: left;">UCSC Digital Library</p>'
+                                };
 
-                    transporter.sendMail(mailOptions, function(error, info){
-                        if (error) {
-                            console.log(error);
-                        } else {
-                            console.log('Email sent: ' + info.response);
+                                transporter.sendMail(mailOptions, function(error, info){
+                                    if (error) {
+                                        console.log(error);
+                                    } else {
+                                        console.log('Email sent: ' + info.response);
+                                    }
+                                });
+                            }
                         }
                     });
                 }
