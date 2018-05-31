@@ -14,7 +14,13 @@ export class BookService {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this.http.post("http://localhost:3000/book/add",book,{headers:headers}).pipe(map(res=>res.json()));
+  }
 
+  // get all the book details
+  fetchAllBookDetails(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/get-all",{headers:headers}).pipe(map(res=>res.json()));
   }
 }
 

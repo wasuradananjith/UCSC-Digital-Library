@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../service/auth.service";
+import { BookService } from "../../service/book.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -8,8 +9,10 @@ import { Router } from "@angular/router";
   styleUrls: ['./student-books.component.css']
 })
 export class StudentBooksComponent implements OnInit {
+  imageURL:String;
   user:any;
-  constructor(private authService:AuthService,private router:Router) { }
+  books:any;
+  constructor(private authService:AuthService,private bookService:BookService,private router:Router) { }
 
   ngOnInit() {
     if (!this.authService.isLoggedIn()){
@@ -24,7 +27,16 @@ export class StudentBooksComponent implements OnInit {
         }
 
       });
+      this.imageURL="https://www.freeiconspng.com/uploads/no-image-icon-6.png";
+      this.loadAllBooks();
     }
+  }
+
+  // load all the books
+  loadAllBooks(){
+    this.bookService.fetchAllBookDetails().subscribe(res=>{
+      this.books = res.msg;
+    });
   }
 
 }

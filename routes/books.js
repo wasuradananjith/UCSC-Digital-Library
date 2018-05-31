@@ -18,6 +18,7 @@ router.get("",(req,res)=>{
     res.send("Hello Books");
 });
 
+// route to add a new book
 router.post("/add",(req,res)=>{
 
     let today = new Date();
@@ -29,6 +30,7 @@ router.post("/add",(req,res)=>{
         isbn:req.body.isbn,
         title:req.body.title,
         author:req.body.author,
+        subject:req.body.subject,
         no_of_copies:req.body.no_of_copies,
         no_of_available_copies:req.body.no_of_copies,
         no_of_borrowed_copies:0,
@@ -78,6 +80,7 @@ router.post("/add",(req,res)=>{
                                     '<li><strong>ISBN :</strong>'+req.body.isbn+'</li>\n' +
                                     '<li><strong>Title :</strong>'+req.body.title+'</li>\n' +
                                     '<li><strong>Author :</strong>'+req.body.author+'</li>\n' +
+                                    '<li><strong>Subject :</strong>'+req.body.subject+'</li>\n' +
                                     '</ul>\n' +
                                     '<p style="text-align: left;">'+req.body.no_of_copies+' copies is/are available. Hurry now, reserve your one too.</p>\n' +
                                     '<p style="text-align: left;">&nbsp;</p>\n' +
@@ -105,6 +108,17 @@ router.post("/add",(req,res)=>{
         // if error
         if (err){
             res.json({state:false,msg:"Failed to Add the Book"});
+        }
+    });
+});
+
+router.post("/get-all",(req,res)=>{
+    Book.getAllBooks((error,books)=>{
+       if (books){
+           res.json({state:true,msg:books});
+       }
+        if (error || !books){
+            res.json({state:false,msg:[]});
         }
     });
 });

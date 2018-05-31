@@ -5,6 +5,7 @@ const bookSchema = new schema({
     isbn:{type:String,required:true},
     title:{type:String,required:true},
     author:{type:String,required:true},
+    subject:{type:String,required:true},
     no_of_copies:{type:Number},
     no_of_available_copies:{type:Number},
     no_of_borrowed_copies:{type:Number},
@@ -24,4 +25,9 @@ module.exports.saveBook = (newBook,callback)=>{
 module.exports.findByISBN = (isbn,callback)=> {
     const query = {isbn:isbn};
     Book.findOne(query,callback);
+};
+
+// fetch all the books
+module.exports.getAllBooks = (callback)=> {
+    Book.find({},callback);
 };
