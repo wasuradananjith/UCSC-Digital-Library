@@ -54,16 +54,16 @@ module.exports.reserveBookCopy = (copies,callback)=> {
     let selectedCopy="";
     let bookCopies=copies;
 
-    bookCopies.forEach(function(val,index) {
-        if (val.availability=="Available"){
-            val.availability="Reserved";
-            val.last_borrowed_date = dateTime;
-            return;
+    for (i = 0; i < copies.length; i++) {
+        if (copies[i].availability=="Available"){
+            copies[i].availability="Reserved";
+            copies[i].last_borrowed_date = dateTime;
+            break;
         }
-    });
+    }
 
     console.log(bookCopies);
 
-   // Book.findOneAndUpdate({isbn:bookCopy.isbn},{no_of_reserved_copies:"1"},callback)
+     Book.findOneAndUpdate({isbn:isbn},{no_of_available_copies:-1,no_of_reserved_copies:1,copies:bookCopies},callback)
     //Book.findOneAndUpdate({isbn:bookCopy.isbn}, {copies :{"<array>.$":bookCopy._id}}, callback);
 };
