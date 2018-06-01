@@ -9,17 +9,34 @@
       <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
+
     <div class="row">
 
-      <div class="well well-sm">
-        <strong>Display</strong>
-        <div class="btn-group">
-          <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-          </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-          class="glyphicon glyphicon-th"></span>Grid</a>
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="input-group">
+          <div class="input-group-btn search-panel">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              <span id="search_concept">Filter by</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#contains">Contains</a></li>
+              <li><a href="#its_equal">It's equal</a></li>
+              <li><a href="#greather_than">Greather than ></a></li>
+              <li><a href="#less_than">Less than < </a></li>
+              <li class="divider"></li>
+              <li><a href="#all">Anything</a></li>
+            </ul>
+          </div>
+          <input type="hidden" name="search_param" value="all" id="search_param">
+          <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by ISBN/ Title/ Author / Category...">
         </div>
       </div>
 
+
+    </div>
+
+    <br>
+    <div class="row">
       <div *ngFor="let book of books; let i = index" class="list-group">
         <a class="list-group-item">
           <div class="media col-md-3">
@@ -56,3 +73,19 @@
     </div>
   </div>
 </div>
+
+<!--Model for Alert-->
+<ng-template #reserveBookModal>
+  <div class="my-modal">
+    <div class="modal-header">
+      <h2 class="modal-title pull-left">Alert</h2>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <h4>Are you sure you want to reserve?</h4>
+    </div>
+  </div>
+</ng-template>
+

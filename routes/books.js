@@ -112,11 +112,26 @@ router.post("/add",(req,res)=>{
     });
 });
 
+// route to get all the book details
 router.post("/get-all",(req,res)=>{
     Book.getAllBooks((error,books)=>{
        if (books){
            res.json({state:true,msg:books});
        }
+        if (error || !books){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
+// route to filter/search book details
+router.post("/search",(req,res)=>{
+    const searchText = req.body.enteredText;
+    Book.getFilteredBooks(searchText,(error,books)=>{
+        if (books){
+            console.log(books);
+            res.json({state:true,msg:books});
+        }
         if (error || !books){
             res.json({state:false,msg:[]});
         }

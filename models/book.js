@@ -31,3 +31,14 @@ module.exports.findByISBN = (isbn,callback)=> {
 module.exports.getAllBooks = (callback)=> {
     Book.find({},callback);
 };
+
+// fetch all the books
+module.exports.getFilteredBooks = (searchText,callback)=> {
+    let text = "/"+searchText+"/i";
+    console.log(text);
+    Book.find({$or:[{title: new RegExp(searchText, "i")},
+            {isbn: new RegExp(searchText, "i")},
+            {author: new RegExp(searchText, "i")},
+            {subject: new RegExp(searchText, "i")}]}, callback);
+    //Book.find({ title: /searchText/i },callback);
+};
