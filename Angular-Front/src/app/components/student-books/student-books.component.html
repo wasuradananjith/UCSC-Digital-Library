@@ -12,7 +12,7 @@
 
     <div class="row">
 
-      <div class="col-xs-8 col-xs-offset-2">
+      <!--<div class="col-xs-8 col-xs-offset-2">
         <div class="input-group">
           <div class="input-group-btn search-panel">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -30,13 +30,24 @@
           <input type="hidden" name="search_param" value="all" id="search_param">
           <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by ISBN/ Title/ Author / Category...">
         </div>
-      </div>
+      </div>-->
+
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by ISBN/ Title/ Author / Category...">
+          <span class="input-group-btn">
+        <button class="btn btn-azure" style="width: 50px" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+      </span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
 
 
     </div>
 
-    <br>
     <div class="row">
+      <div class="row center">
+        <p>{{message}}</p>
+      </div>
       <div *ngFor="let book of books; let i = index" class="list-group">
         <a class="list-group-item">
           <div class="media col-md-3">
@@ -59,7 +70,7 @@
           <div class="col-md-3 text-center">
             <h2>{{books[i].no_of_available_copies}}<small> Available </small></h2>
             <div *ngIf="books[i].no_of_available_copies>0">
-              <button type="button" class="btn btn-success btn-lg btn-block">Reserve Now!</button>
+              <button type="button" class="btn btn-success btn-lg btn-block" (click)="onReserve(books[i])">Reserve Now!</button>
             </div>
             <div *ngIf="books[i].no_of_available_copies<=0">
               <button type="button" class="btn btn-success btn-lg btn-block" disabled>Reserve Now!</button>

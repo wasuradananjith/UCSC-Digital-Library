@@ -29,5 +29,12 @@ export class BookService {
     headers.append('Content-Type','application/json');
     return this.http.post("http://localhost:3000/book/search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
+
+  // search book details
+  reserveCopy(copy){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/reserve",copy,{headers:headers}).pipe(map(res=>res.json()));
+  }
 }
 

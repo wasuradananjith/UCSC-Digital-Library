@@ -12,6 +12,7 @@ import * as $ from 'jquery';
 })
 export class StudentBooksComponent implements OnInit {
   imageURL:any;
+  message:String;
   searchText = {
     enteredText:""
   };
@@ -50,7 +51,20 @@ export class StudentBooksComponent implements OnInit {
   // when something is typed on the search bar
   onKey(event: any) {
     this.bookService.filterBookDetails(this.searchText).subscribe(res=>{
+      if(res.msg==""){
+        this.message="No search results found";
+      }
+      else{
+        this.message="";
+      }
       this.books = res.msg;
+    });
+  }
+
+  // when the reserve button is pressed
+  onReserve(book){
+    this.bookService.reserveCopy(book.copies).subscribe(res=>{
+
     });
   }
 

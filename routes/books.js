@@ -138,4 +138,16 @@ router.post("/search",(req,res)=>{
     });
 });
 
+// route to reserve a book copy
+router.post("/reserve",(req,res)=>{
+    Book.reserveBookCopy(req.body,(error,copy)=>{
+        if (copy){
+            res.json({state:true,msg:copy});
+        }
+        if (error || !copy){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
 module.exports = router;

@@ -40,5 +40,30 @@ module.exports.getFilteredBooks = (searchText,callback)=> {
             {isbn: new RegExp(searchText, "i")},
             {author: new RegExp(searchText, "i")},
             {subject: new RegExp(searchText, "i")}]}, callback);
-    //Book.find({ title: /searchText/i },callback);
+};
+
+// reserve a book copy
+module.exports.reserveBookCopy = (copies,callback)=> {
+    // get today date
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date+' ' + time;
+
+    let isbn = copies[0].isbn;
+    let selectedCopy="";
+    let bookCopies=copies;
+
+    bookCopies.forEach(function(val,index) {
+        if (val.availability=="Available"){
+            val.availability="Reserved";
+            val.last_borrowed_date = dateTime;
+            return;
+        }
+    });
+
+    console.log(bookCopies);
+
+   // Book.findOneAndUpdate({isbn:bookCopy.isbn},{no_of_reserved_copies:"1"},callback)
+    //Book.findOneAndUpdate({isbn:bookCopy.isbn}, {copies :{"<array>.$":bookCopy._id}}, callback);
 };
