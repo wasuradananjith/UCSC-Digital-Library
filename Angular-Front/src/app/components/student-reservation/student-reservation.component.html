@@ -36,7 +36,10 @@
 
     <div class="row">
       <div class="row center">
-        <p>{{message}}</p>
+        <div *ngIf="books==''">
+          <p>No reservations</p>
+        </div>
+
       </div>
       <div *ngFor="let book of books; let i = index" class="list-group">
         <a class="list-group-item">

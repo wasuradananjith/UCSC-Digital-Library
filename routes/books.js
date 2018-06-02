@@ -219,37 +219,37 @@ router.post("/reservations-student",(req,res)=>{
 // route to cancel a reservation
 router.post("/reserve-cancel",(req,res)=>{
     const currentBook = req.body;
-    Reservation.deleteReservation(currentBook,(error,reservations)=>{
-        if (reservations){
-            Book.findBook(currentBook,(error,reservedBook)=>{
-                if(reservedBook){
-                    for (i = 0; i < reservedBook.copies.length; i++) {
-                        if(reservedBook.copies[i]._id==currentBook.copy._id){
-                            reservedBook.copies[i].availability="Available";
-                            break;
+        Reservation.deleteReservation(currentBook,(error,reservations)=>{
+            if (reservations){
+                Book.findBook(currentBook,(error,reservedBook)=>{
+                    if(reservedBook){
+                        let reservedBookCopy = reservedBook;
+                        for (i = 0; i < reservedBookCopy.copies.length; i++) {
+                            if(reservedBookCopy.copies[i]._id==currentBook.copy._id){
+                                reservedBookCopy.copies[i].availability="Available";
+                                break;
+                            }
                         }
+                        //console.log(reservedBook);
+                        Book.changeBookCopyStatus(reservedBookCopy,(error,cancellation)=>{
+                            if(cancellation){
+                                res.json({state:true,msg:"Reservation is cancelled successfully"});
+                            }
+                            if(error || !cancellation){
+                                res.json({state:false,msg:"Fail to cancel the reservation"});
+                            }
+                        });
                     }
-                    reservedBook.no_of_available_copies++;
-                    reservedBook.no_of_reserved_copies--;
-                    //console.log(reservedBook);
-                    Book.changeBookCopyStatus(reservedBook,(error,cancellation)=>{
-                        if(cancellation){
-                            res.json({state:true,msg:"Reservation is cancelled successfully"});
-                        }
-                        if(error || !cancellation){
-                            res.json({state:false,msg:"Fail to cancel the reservation"});
-                        }
-                    });
-                    res.json({state:true,msg:"Reservation is cancelled successfully"});
-                }
-                if (error || !currentBook){
-                    res.json({state:false,msg:"Fail to cancel the reservation"});
-                }
-            });
-        }
-        if (error || !reservations){
-            res.json({state:false,msg:"Fail to cancel the reservation"});
-        }
-    });
+                    if (error || !reservedBook){
+                        res.json({state:false,msg:"Fail to cancel the reservation"});
+                    }
+                });
+            }
+            if (error || !reservations){
+                res.json({state:false,msg:"Fail to cancel the reservation"});
+            }
+        });
+
+
 });
 module.exports = router;
