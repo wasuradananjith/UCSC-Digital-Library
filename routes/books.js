@@ -143,7 +143,6 @@ router.post("/search",(req,res)=>{
 router.post("/reserve",(req,res)=>{
 
     let copies = req.body.copies;
-    let email = req.body.email;
 
     // get today date
     let today = new Date();
@@ -164,7 +163,11 @@ router.post("/reserve",(req,res)=>{
     }
 
     const newReservation =  new Reservation({
-        email:email,
+        email:req.body.email,
+        isbn:req.body.isbn,
+        title:req.body.title,
+        author:req.body.isbn,
+        subject:req.body.subject,
         copy:selectedCopy
     });
 
@@ -200,6 +203,7 @@ router.post("/reservation-count",(req,res)=>{
     });
 });
 
+// route to  get the reservations for a particular student
 router.post("/reservations-student",(req,res)=>{
     const email = req.body.email;
     Reservation.getStudentReservations(email,(error,reservations)=>{
@@ -208,6 +212,43 @@ router.post("/reservations-student",(req,res)=>{
         }
         if (error || !reservations){
             res.json({state:false,msg:[]});
+        }
+    });
+});
+
+// route to cancel a reservation
+router.post("/reserve-cancel",(req,res)=>{
+    const currentBook = req.body;
+    Reservation.deleteReservation(currentBook,(error,reservations)=>{
+        if (reservations){
+            Book.findBook(currentBook,(error,reservedBook)=>{
+                if(reservedBook){
+                    for (i = 0; i < reservedBook.copies.length; i++) {
+                        if(reservedBook.copies[i]._id==currentBook.copy._id){
+                            reservedBook.copies[i].availability="Available";
+                            break;
+                        }
+                    }
+                    reservedBook.no_of_available_copies++;
+                    reservedBook.no_of_reserved_copies--;
+                    //console.log(reservedBook);
+                    Book.changeBookCopyStatus(reservedBook,(error,cancellation)=>{
+                        if(cancellation){
+                            res.json({state:true,msg:"Reservation is cancelled successfully"});
+                        }
+                        if(error || !cancellation){
+                            res.json({state:false,msg:"Fail to cancel the reservation"});
+                        }
+                    });
+                    res.json({state:true,msg:"Reservation is cancelled successfully"});
+                }
+                if (error || !currentBook){
+                    res.json({state:false,msg:"Fail to cancel the reservation"});
+                }
+            });
+        }
+        if (error || !reservations){
+            res.json({state:false,msg:"Fail to cancel the reservation"});
         }
     });
 });

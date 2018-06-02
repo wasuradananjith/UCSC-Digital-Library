@@ -13,7 +13,7 @@ export class StudentSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.bookService.getReservationCount().subscribe(res=>{
-      this.reservationCount = res.msg;
+      this.reservationCount = " "+res.msg+" New";
     });
   }
 

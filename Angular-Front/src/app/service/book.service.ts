@@ -31,11 +31,15 @@ export class BookService {
   }
 
   // search book details
-  reserveCopy(copies){
+  reserveCopy(book){
     let student = JSON.parse(localStorage.getItem("user"));
     let reservation = {
       email: student.email,
-      copies:copies
+      isbn:book.isbn,
+      title:book.title,
+      author:book.author,
+      subject:book.subject,
+      copies:book.copies
     };
 
     let headers = new Headers();
@@ -57,6 +61,13 @@ export class BookService {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this.http.post("http://localhost:3000/book/reservations-student",student,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // cancel a reservation
+  cancelReservation(book){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/reserve-cancel",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 }
 

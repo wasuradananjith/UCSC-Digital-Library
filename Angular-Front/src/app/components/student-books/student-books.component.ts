@@ -63,7 +63,7 @@ export class StudentBooksComponent implements OnInit {
 
   // when the reserve button is pressed
   onReserve(template:TemplateRef<any>,book){
-    this.bookService.reserveCopy(book.copies).subscribe(res=>{
+    this.bookService.reserveCopy(book).subscribe(res=>{
         if(res.state){
           this.alertType="Success";
           this.message=res.msg;

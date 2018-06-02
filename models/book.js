@@ -49,3 +49,15 @@ module.exports.reserveBookCopy = (reservation,callback)=> {
          copies:book.copies},callback);*/
     Book.findOneAndUpdate({isbn:reservation[0].isbn},{$inc:{no_of_available_copies:-1,no_of_reserved_copies:1},$set:{copies:reservation}},callback);
 };
+
+
+// update cancelled reservation
+module.exports.findBook = (book,callback)=> {
+    Book.findOne({isbn:book.isbn},callback);
+};
+
+
+// update cancelled reservation
+module.exports.changeBookCopyStatus = (book)=> {
+   Book.findOneAndUpdate({isbn:book.isbn},book);
+};

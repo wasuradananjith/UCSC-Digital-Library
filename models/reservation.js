@@ -3,6 +3,10 @@ const schema = mongoose.Schema;
 
 const reservationSchema = new schema({
     email:{type:String},
+    isbn:{type:String},
+    title:{type:String},
+    author:{type:String},
+    subject:{type:String},
     copy:{type:Object}
 });
 
@@ -21,4 +25,9 @@ module.exports.getCount = (email,callback)=>{
 // get reservations of a particular user
 module.exports.getStudentReservations = (email,callback)=>{
     Reservation.find({email:email},callback);
+};
+
+// delete a reservation
+module.exports.deleteReservation = (book,callback)=>{
+    Reservation.findOneAndDelete(book,callback);
 };
