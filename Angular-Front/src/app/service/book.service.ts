@@ -69,5 +69,12 @@ export class BookService {
     headers.append('Content-Type','application/json');
     return this.http.post("http://localhost:3000/book/reserve-cancel",book,{headers:headers}).pipe(map(res=>res.json()));
   }
+
+  // get the reservation total count
+  getTotalReservations(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/reservation-total",{headers:headers}).pipe(map(res=>res.json()));
+  }
 }
 

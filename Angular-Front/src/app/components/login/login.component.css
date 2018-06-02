@@ -1,12 +1,12 @@
 
 html, body{
   height: 100%;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color:#555555;
 }
 
 h1,h2,h3,h4,input,p,button{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #1f003e;
 }
 
@@ -172,10 +172,15 @@ a>small{
 }
 
 .modal-body{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
 }
 .my-modal h2{
+  font-family: 'Roboto', sans-serif;
   color: #1f003e;
   margin-left: 43%;
+}
+
+.my-modal p{
+  font-family: 'Roboto', sans-serif;
 }

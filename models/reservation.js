@@ -22,6 +22,11 @@ module.exports.getCount = (email,callback)=>{
     Reservation.count({email:email},callback);
 };
 
+// get total reservation count
+module.exports.getTotalCount = (callback)=>{
+    Reservation.count({},callback);
+};
+
 // get reservations of a particular user
 module.exports.getStudentReservations = (email,callback)=>{
     Reservation.find({email:email},callback);

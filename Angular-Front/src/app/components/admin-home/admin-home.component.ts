@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../service/auth.service'
+import { AuthService } from '../../service/auth.service';
+import { BookService } from '../../service/book.service';
 import { Router } from "@angular/router";
 
 @Component({
@@ -9,7 +10,8 @@ import { Router } from "@angular/router";
 })
 export class AdminHomeComponent implements OnInit {
   user:any;
-  constructor(private authService:AuthService,private router:Router) { }
+  reservationCount:any;
+  constructor(private bookService:BookService,private authService:AuthService,private router:Router) { }
 
   ngOnInit() {
     if (!this.authService.isLoggedIn()){
@@ -25,5 +27,10 @@ export class AdminHomeComponent implements OnInit {
         }
       });
     }
+
+    this.bookService.getTotalReservations().subscribe(res=>{
+      console.log(res);
+      this.reservationCount = res.msg;
+    });
   }
 }

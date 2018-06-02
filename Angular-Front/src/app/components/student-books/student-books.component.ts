@@ -16,6 +16,7 @@ export class StudentBooksComponent implements OnInit {
   modalRef:BsModalRef;
   message:String;
   alertType:String;
+  reservationCount:any;
   searchText = {
     enteredText:""
   };
@@ -38,6 +39,11 @@ export class StudentBooksComponent implements OnInit {
       });
       this.loadAllBooks();
     }
+
+    this.bookService.getReservationCount().subscribe(res=>{
+      this.reservationCount = res.msg;
+      console.log(this.reservationCount);
+    });
   }
 
   // load all the books
@@ -63,7 +69,9 @@ export class StudentBooksComponent implements OnInit {
 
   // when the reserve button is pressed
   onReserve(template:TemplateRef<any>,book){
-    this.bookService.reserveCopy(book).subscribe(res=>{
+    // you can only reserve upto 5 books
+    if (this.reservationCount!=[] && this.reservationCount<5){
+      this.bookService.reserveCopy(book).subscribe(res=>{
         if(res.state){
           this.alertType="Success";
           this.message=res.msg;
@@ -72,12 +80,19 @@ export class StudentBooksComponent implements OnInit {
           this.alertType="Error";
           this.message=res.msg;
         }
-      this.modalRef = this.modalService.show(template);
+        this.modalRef = this.modalService.show(template);
         this.modalService.onHide.subscribe((reason :String)=>{
           window.location.reload();
         });
-      //this.router.navigate(['student-home']);
-    });
+        //this.router.navigate(['student-home']);
+      });
+    }
+    else{
+      this.alertType="Error";
+      this.message="You cannot reserve more than 5 books";
+      this.modalRef = this.modalService.show(template);
+    }
+
   }
 
 

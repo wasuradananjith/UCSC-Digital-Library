@@ -190,7 +190,7 @@ router.post("/reserve",(req,res)=>{
 });
 
 
-// route to filter/search book details
+// route to get reservation count for a particular user
 router.post("/reservation-count",(req,res)=>{
     const email = req.body.email;
     Reservation.getCount(email,(error,count)=>{
@@ -202,6 +202,19 @@ router.post("/reservation-count",(req,res)=>{
         }
     });
 });
+
+// route to get total reservations count
+router.post("/reservation-total",(req,res)=>{
+    Reservation.getTotalCount((error,count)=>{
+        if (count){
+            res.json({state:true,msg:count});
+        }
+        if (error || !count){
+            res.json({state:false,msg:"0"});
+        }
+    });
+});
+
 
 // route to  get the reservations for a particular student
 router.post("/reservations-student",(req,res)=>{
