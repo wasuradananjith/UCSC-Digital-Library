@@ -70,7 +70,7 @@
           <div class="col-md-3 text-center">
             <h2>{{books[i].no_of_available_copies}}<small> Available </small></h2>
             <div *ngIf="books[i].no_of_available_copies>0">
-              <button type="button" class="btn btn-success btn-lg btn-block" (click)="onReserve(books[i])">Reserve Now!</button>
+              <button type="button" class="btn btn-success btn-lg btn-block" (click)="onReserve(reserveBookModal,books[i])">Reserve Now!</button>
             </div>
             <div *ngIf="books[i].no_of_available_copies<=0">
               <button type="button" class="btn btn-success btn-lg btn-block" disabled>Reserve Now!</button>
@@ -95,7 +95,12 @@
       </button>
     </div>
     <div class="modal-body">
-        <h4>Are you sure you want to reserve?</h4>
+      <div *ngIf="alertType=='Success'">
+        <strong><h4 style="color: darkgreen">{{message}}</h4></strong>
+      </div>
+      <div *ngIf="alertType=='Error'">
+        <strong><h4 style="color: #a90000">{{message}}</h4></strong>
+      </div>
     </div>
   </div>
 </ng-template>

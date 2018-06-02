@@ -31,10 +31,10 @@ export class BookService {
   }
 
   // search book details
-  reserveCopy(copy){
+  reserveCopy(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post("http://localhost:3000/book/reserve",copy,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post("http://localhost:3000/book/reserve",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 }
 

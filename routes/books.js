@@ -140,12 +140,12 @@ router.post("/search",(req,res)=>{
 
 // route to reserve a book copy
 router.post("/reserve",(req,res)=>{
-    Book.reserveBookCopy(req.body,(error,copy)=>{
-        if (copy){
-            res.json({state:true,msg:copy});
+    Book.reserveBookCopy(req.body,(error,book)=>{
+        if (book){
+            res.json({state:true,msg:"Your reservation is successful!"});
         }
-        if (error || !copy){
-            res.json({state:false,msg:[]});
+        if (error || !book){
+            res.json({state:false,msg:"Failed to reserve the book"});
         }
     });
 });

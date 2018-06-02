@@ -522,3 +522,12 @@ img{
 h4{
   font-weight: bold;
 }
+
+.modal-body{
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+.my-modal h2{
+  color: #1f003e;
+  margin-left: 43%;
+}

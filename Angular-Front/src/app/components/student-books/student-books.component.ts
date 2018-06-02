@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import { AuthService } from "../../service/auth.service";
 import { BookService } from "../../service/book.service";
 import { Router } from "@angular/router";
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import * as $ from 'jquery';
 
@@ -11,14 +13,15 @@ import * as $ from 'jquery';
   styleUrls: ['./student-books.component.css']
 })
 export class StudentBooksComponent implements OnInit {
-  imageURL:any;
+  modalRef:BsModalRef;
   message:String;
+  alertType:String;
   searchText = {
     enteredText:""
   };
   user:any;
   books:any;
-  constructor(private authService:AuthService,private bookService:BookService,private router:Router) { }
+  constructor(private authService:AuthService,private bookService:BookService,private router:Router,private modalService: BsModalService) { }
 
   ngOnInit() {
     if (!this.authService.isLoggedIn()){
@@ -33,7 +36,6 @@ export class StudentBooksComponent implements OnInit {
         }
 
       });
-      this.imageURL="https://www.freeiconspng.com/uploads/no-image-icon-6.png";
       this.loadAllBooks();
 
 
@@ -62,10 +64,24 @@ export class StudentBooksComponent implements OnInit {
   }
 
   // when the reserve button is pressed
-  onReserve(book){
-    this.bookService.reserveCopy(book.copies).subscribe(res=>{
-
+  onReserve(template:TemplateRef<any>,book){
+    this.bookService.reserveCopy(book).subscribe(res=>{
+        if(res.state){
+          this.alertType="Success";
+          this.message=res.msg;
+        }
+        else{
+          this.alertType="Error";
+          this.message=res.msg;
+        }
+      this.modalRef = this.modalService.show(template);
+        this.modalService.onHide.subscribe((reason :String)=>{
+          window.location.reload();
+        });
+      //this.router.navigate(['student-home']);
     });
   }
+
+
 
 }
