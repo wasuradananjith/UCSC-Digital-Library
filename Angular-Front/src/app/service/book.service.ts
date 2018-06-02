@@ -31,10 +31,32 @@ export class BookService {
   }
 
   // search book details
-  reserveCopy(book){
+  reserveCopy(copies){
+    let student = JSON.parse(localStorage.getItem("user"));
+    let reservation = {
+      email: student.email,
+      copies:copies
+    };
+
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post("http://localhost:3000/book/reserve",book,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post("http://localhost:3000/book/reserve",reservation,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // get the reservation count for a particular user
+  getReservationCount(){
+    let student = JSON.parse(localStorage.getItem("user"));
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/reservation-count",student,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // get the reservations for a particular user
+  fetchAllReservations(){
+    let student = JSON.parse(localStorage.getItem("user"));
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/reservations-student",student,{headers:headers}).pipe(map(res=>res.json()));
   }
 }
 

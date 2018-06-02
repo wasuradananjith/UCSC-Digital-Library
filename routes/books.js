@@ -3,6 +3,7 @@ const router = express.Router();
 const Book = require('../models/book');
 const User = require('../models/user');
 const Copy = require('../models/copy');
+const Reservation = require('../models/reservation');
 const nodemailer = require('nodemailer');
 const config = require('../config/database');
 
@@ -140,9 +141,44 @@ router.post("/search",(req,res)=>{
 
 // route to reserve a book copy
 router.post("/reserve",(req,res)=>{
-    Book.reserveBookCopy(req.body,(error,book)=>{
+
+    let copies = req.body.copies;
+    let email = req.body.email;
+
+    // get today date
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date+' ' + time;
+
+    let isbn = copies[0].isbn; // to be inserted into the reservations collection
+    let selectedCopy=null; // to be inserted into the reservations collection
+
+    for (i = 0; i < copies.length; i++) {
+        if (copies[i].availability=="Available"){
+            copies[i].availability="Reserved";
+            copies[i].last_borrowed_date = dateTime;
+            selectedCopy= copies[i];
+            break;
+        }
+    }
+
+    const newReservation =  new Reservation({
+        email:email,
+        copy:selectedCopy
+    });
+
+    Book.reserveBookCopy(copies,(error,book)=>{
         if (book){
-            res.json({state:true,msg:"Your reservation is successful!"});
+            console.log("Book Copy Status Updated");
+            Reservation.saveReservation(newReservation,(error,reservation)=>{
+                if(reservation){
+                    res.json({state:true,msg:"Your reservation is successful!"});
+                }
+                if (error || !reservation){
+                    res.json({state:false,msg:"Failed to reserve the book"});
+                }
+            });
         }
         if (error || !book){
             res.json({state:false,msg:"Failed to reserve the book"});
@@ -150,4 +186,29 @@ router.post("/reserve",(req,res)=>{
     });
 });
 
+
+// route to filter/search book details
+router.post("/reservation-count",(req,res)=>{
+    const email = req.body.email;
+    Reservation.getCount(email,(error,count)=>{
+        if (count){
+            res.json({state:true,msg:count});
+        }
+        if (error || !count){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
+router.post("/reservations-student",(req,res)=>{
+    const email = req.body.email;
+    Reservation.getStudentReservations(email,(error,reservations)=>{
+        if (reservations){
+            res.json({state:true,msg:reservations});
+        }
+        if (error || !reservations){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
 module.exports = router;

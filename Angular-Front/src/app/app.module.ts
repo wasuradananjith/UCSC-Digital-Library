@@ -22,6 +22,7 @@ import { AdminTopbarComponent } from './components/admin-topbar/admin-topbar.com
 import { BooksComponent } from './components/books/books.component';
 import { StudentSidebarComponent } from './components/student-sidebar/student-sidebar.component';
 import { StudentBooksComponent } from './components/student-books/student-books.component';
+import { StudentReservationComponent } from './components/student-reservation/student-reservation.component';
 
 const applicationRoutes:Routes=[
   {path:'',component:HomeComponent},
@@ -29,7 +30,8 @@ const applicationRoutes:Routes=[
   {path:'admin-home',component:AdminHomeComponent},
   {path:'student-home',component:StudentHomeComponent},
   {path:'admin-home/books',component:BooksComponent},
-  {path:'student-home/books',component:StudentBooksComponent}
+  {path:'student-home/books',component:StudentBooksComponent},
+  {path:'student-home/reservations',component:StudentReservationComponent}
 ];
 
 export function tokenGetter() {
@@ -49,7 +51,8 @@ export function tokenGetter() {
     AdminTopbarComponent,
     BooksComponent,
     StudentSidebarComponent,
-    StudentBooksComponent
+    StudentBooksComponent,
+    StudentReservationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookService } from '../../service/book.service';
 
 @Component({
   selector: 'app-student-sidebar',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-sidebar.component.css']
 })
 export class StudentSidebarComponent implements OnInit {
-
-  constructor() { }
+  reservationCount="";
+  user:any;
+  constructor(private bookService:BookService) {}
 
   ngOnInit() {
+    this.bookService.getReservationCount().subscribe(res=>{
+      this.reservationCount = res.msg;
+    });
   }
 
 }

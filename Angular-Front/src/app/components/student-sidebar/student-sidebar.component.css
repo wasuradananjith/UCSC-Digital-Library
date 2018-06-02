@@ -6,7 +6,7 @@
   padding: 15px;
 }
 .sidebar ul li {
-  border-bottom: 1px solid #e7e7e7;
+  font-size: medium;
   color: white;
 }
 
@@ -18,9 +18,10 @@
   color: #1f003e;
 }
 
-.sidebar ul li a.active {
-  background-color: #eeeeee;
+.sidebar ul li a.focus {
+  background-color: #1f003e;
 }
+
 .sidebar .arrow {
   float: right;
 }
@@ -55,10 +56,18 @@
 
 .sidebar{
   background-color: rgba(76, 73, 87, 0.98);
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .admin-home-title{
   padding-left: 8%;
 }
 
+.badge-secondary{
+  background-color: #898989;
+}
+
+.badge-secondary span :hover{
+  background-color: rgba(76, 73, 87, 0.98);
+  color: white;
+}

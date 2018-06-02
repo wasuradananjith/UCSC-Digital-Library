@@ -1,0 +1,107 @@
+<div *ngIf="user">
+  <app-student-sidebar></app-student-sidebar>
+
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Reservations</h1>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+
+      <!--<div class="col-xs-8 col-xs-offset-2">
+        <div class="input-group">
+          <div class="input-group-btn search-panel">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              <span id="search_concept">Filter by</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#contains">Contains</a></li>
+              <li><a href="#its_equal">It's equal</a></li>
+              <li><a href="#greather_than">Greather than ></a></li>
+              <li><a href="#less_than">Less than < </a></li>
+              <li class="divider"></li>
+              <li><a href="#all">Anything</a></li>
+            </ul>
+          </div>
+          <input type="hidden" name="search_param" value="all" id="search_param">
+          <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by ISBN/ Title/ Author / Category...">
+        </div>
+      </div>-->
+
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by ISBN/ Title/ Author / Category...">
+          <span class="input-group-btn">
+        <button class="btn btn-azure" style="width: 50px" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+      </span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+
+
+    </div>
+
+    <div class="row">
+      <div class="row center">
+        <p>{{message}}</p>
+      </div>
+      <div *ngFor="let book of books; let i = index" class="list-group">
+        <a class="list-group-item">
+          <div class="media col-md-3">
+            <figure class="pull-left center my-image">
+              <img class="img-responsive" src="http://covers.openlibrary.org/b/isbn/{{books[i].isbn}}.jpg" alt="No cover" />
+            </figure>
+          </div>
+          <div class="col-md-6">
+            <h4 class="list-group-item-heading">{{books[i].title}}</h4>
+            <p class="list-group-item-text">
+              <br>
+            <li><strong>ISBN</strong> - {{books[i].isbn}}</li>
+            <li><strong>Author</strong> - {{books[i].author}}</li>
+            <li><strong>Category</strong> - {{books[i].subject}}</li>
+            <br>
+            <li><strong>Borrowed Copies</strong> - {{books[i].no_of_borrowed_copies}}</li>
+            <li><strong>Reserved Copies</strong> - {{books[i].no_of_reserved_copies}}</li>
+            </p>
+          </div>
+          <div class="col-md-3 text-center">
+            <h2>{{books[i].no_of_available_copies}}<small> Available </small></h2>
+            <div *ngIf="books[i].no_of_available_copies>0">
+              <button type="button" class="btn btn-success btn-lg btn-block" (click)="onReserve(reserveBookModal,books[i])">Reserve Now!</button>
+            </div>
+            <div *ngIf="books[i].no_of_available_copies<=0">
+              <button type="button" class="btn btn-success btn-lg btn-block" disabled>Reserve Now!</button>
+            </div>
+
+          </div>
+        </a>
+      </div>
+      <div >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Model for Alert-->
+<ng-template #reserveBookModal>
+  <div class="my-modal">
+    <div class="modal-header">
+      <h2 class="modal-title pull-left">Alert</h2>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="alertType=='Success'">
+        <strong><h4 style="color: darkgreen">{{message}}</h4></strong>
+      </div>
+      <div *ngIf="alertType=='Error'">
+        <strong><h4 style="color: #a90000">{{message}}</h4></strong>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

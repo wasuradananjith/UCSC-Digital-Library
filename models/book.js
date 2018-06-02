@@ -43,27 +43,9 @@ module.exports.getFilteredBooks = (searchText,callback)=> {
 };
 
 // reserve a book copy
-module.exports.reserveBookCopy = (book,callback)=> {
-    // get today date
-    let today = new Date();
-    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    let dateTime = date+' ' + time;
+module.exports.reserveBookCopy = (reservation,callback)=> {
 
-    let isbn = book.copies[0].isbn;
-
-    for (i = 0; i < book.copies.length; i++) {
-        if (book.copies[i].availability=="Available"){
-            book.copies[i].availability="Reserved";
-            book.copies[i].last_borrowed_date = dateTime;
-            break;
-        }
-    }
-
-    console.log(book);
-
-     //Book.findOneAndUpdate({isbn:isbn},{no_of_available_copies:book.no_of_available_copies-1,no_of_reserved_copies:book.no_of_reserved_copies+1,
-         //copies:book.copies},callback)
-    Book.findOneAndUpdate({isbn:isbn},{$inc:{no_of_available_copies:-1,no_of_reserved_copies:1},$set:{copies:book.copies}},callback);
-    //Book.findOneAndUpdate({isbn:bookCopy.isbn}, {copies :{"<array>.$":bookCopy._id}}, callback);
+     /*Book.findOneAndUpdate({isbn:isbn},{no_of_available_copies:book.no_of_available_copies-1,no_of_reserved_copies:book.no_of_reserved_copies+1,
+         copies:book.copies},callback);*/
+    Book.findOneAndUpdate({isbn:reservation[0].isbn},{$inc:{no_of_available_copies:-1,no_of_reserved_copies:1},$set:{copies:reservation}},callback);
 };
