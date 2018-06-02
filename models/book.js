@@ -62,7 +62,8 @@ module.exports.reserveBookCopy = (book,callback)=> {
 
     console.log(book);
 
-     Book.findOneAndUpdate({isbn:isbn},{no_of_available_copies:book.no_of_available_copies-1,no_of_reserved_copies:book.no_of_reserved_copies+1,
-         copies:book.copies},callback)
+     //Book.findOneAndUpdate({isbn:isbn},{no_of_available_copies:book.no_of_available_copies-1,no_of_reserved_copies:book.no_of_reserved_copies+1,
+         //copies:book.copies},callback)
+    Book.findOneAndUpdate({isbn:isbn},{$inc:{no_of_available_copies:-1,no_of_reserved_copies:1},$set:{copies:book.copies}},callback);
     //Book.findOneAndUpdate({isbn:bookCopy.isbn}, {copies :{"<array>.$":bookCopy._id}}, callback);
 };
