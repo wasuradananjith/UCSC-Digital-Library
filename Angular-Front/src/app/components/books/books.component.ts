@@ -49,7 +49,7 @@ export class BooksComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  // register a new student
+  // add a new book
   addBookData(){
     console.log(this.book);
     // check whether all the fields are filled

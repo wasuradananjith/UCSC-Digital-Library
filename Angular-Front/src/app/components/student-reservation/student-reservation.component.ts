@@ -47,20 +47,21 @@ export class StudentReservationComponent implements OnInit {
   }
 
   // when the cancel button is pressed
-  onCancel(template:TemplateRef<any>,book){
-    this.bookService.cancelReservation(book).subscribe(res=>{
-      if(res.state){
-        this.alertType="Success";
-        this.message=res.msg;
+  onCancel(template:TemplateRef<any>,book) {
+    this.bookService.cancelReservation(book).subscribe(res => {
+      if (res.state) {
+        this.alertType = "Success";
+        this.message = res.msg;
       }
-      else{
-        this.alertType="Error";
-        this.message=res.msg;
+      else {
+        this.alertType = "Error";
+        this.message = res.msg;
       }
       this.modalRef = this.modalService.show(template);
-      this.modalService.onHide.subscribe((reason :String)=>{
+      this.modalService.onHide.subscribe((reason: String) => {
         window.location.reload();
       });
       //this.router.navigate(['student-home']);
     });
+  }
 }

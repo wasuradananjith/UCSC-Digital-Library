@@ -4,7 +4,11 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">Books</h1>
+        <h1 class="page-header">Books
+          <button type="button" class="btn btn-primary pull-right" (click)="openSuggestionModal(AddNewSuggestion)">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span> Suggest New Book
+          </button>
+        </h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -105,3 +109,60 @@
   </div>
 </ng-template>
 
+<!--Model to add a new suggestion-->
+<ng-template #AddNewSuggestion>
+  <div class="my-modal">
+    <div class="modal-header">
+      <h3 class="modal-title pull-left" style="margin-left: 32%;">Suggest a New Book</h3>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <flash-messages></flash-messages>
+      <strong><p>We are looking forward to get your suggestions in order to <br>make our library precious to all <br>- Thank you! -</p></strong>
+      <form novalidate>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">ISBN</label>
+            <div class="col-md-8">
+              <input class="form-control" name="isbn" type="text"  placeholder="ISBN" [(ngModel)]="book.isbn">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Title</label>
+            <div class="col-md-8">
+              <input class="form-control" name="title" type="text"  placeholder="Title" [(ngModel)]="book.title">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Author</label>
+            <div class="col-md-8">
+              <input class="form-control" name="author" type="text"  placeholder="Author" [(ngModel)]="book.author">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Subject/Category</label>
+            <div class="col-md-8">
+              <input class="form-control" name="subject" type="text"  placeholder="Subject/Category" [(ngModel)]="book.subject">
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" (click)="addSuggestionData()" class="btn btn-azure center">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>

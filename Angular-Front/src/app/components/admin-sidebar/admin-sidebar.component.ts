@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BookService} from "../../service/book.service";
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-sidebar.component.css']
 })
 export class AdminSidebarComponent implements OnInit {
-
-  constructor() { }
+  reservationCount:any;
+  bookSuggestionCount:any;
+  constructor(private bookService:BookService) { }
 
   ngOnInit() {
+    this.bookService.getTotalReservations().subscribe(res=>{
+      console.log(res);
+      this.reservationCount = res.msg;
+    });
+
+    this.bookService.getTotalSuggestions().subscribe(res=>{
+      console.log(res);
+      this.bookSuggestionCount = res.msg;
+    });
   }
 
 }

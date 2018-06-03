@@ -71,3 +71,7 @@
   background-color: rgba(76, 73, 87, 0.98);
   color: white;
 }
+
+.fa, .fas{
+  padding-right: 2%;
+}

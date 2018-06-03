@@ -14,22 +14,28 @@
         &lt;!&ndash; /input-group &ndash;&gt;
       </li>-->
       <li>
-        <a [routerLink]="['/admin-home']"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+        <a [routerLink]="['/admin-home']"><i class="fas fa-columns"></i> Dashboard</a>
       </li>
       <li>
-        <a [routerLink]="['/admin-home/books']"><i class="fa fa-dashboard fa-fw"></i> Books</a>
+        <a [routerLink]="['/admin-home/books']"><i class="fa fa-book"></i> Books</a>
       </li>
       <li>
-        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-          <li>
-            <a href="flot.html">Flot Charts</a>
-          </li>
-          <li>
-            <a href="morris.html">Morris.js Charts</a>
-          </li>
-        </ul>
-        <!-- /.nav-second-level -->
+        <a [routerLink]="['/admin-home/reservations']"><i class="fa fa-tasks"></i> Reservations
+          <span class="badge badge-secondary">
+            <div *ngIf="reservationCount>0">
+              {{reservationCount}} NEW
+            </div>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/admin-home/suggestions']"><i class="fa fa-comments"></i> Suggestions
+          <span class="badge badge-secondary">
+            <div *ngIf="bookSuggestionCount>0">
+              {{bookSuggestionCount}} NEW
+            </div>
+          </span>
+        </a>
       </li>
       <li>
         <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>

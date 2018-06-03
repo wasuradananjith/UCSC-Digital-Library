@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 export class AdminHomeComponent implements OnInit {
   user:any;
   reservationCount:any;
+  bookSuggestionCount:any;
   constructor(private bookService:BookService,private authService:AuthService,private router:Router) { }
 
   ngOnInit() {
@@ -31,6 +32,11 @@ export class AdminHomeComponent implements OnInit {
     this.bookService.getTotalReservations().subscribe(res=>{
       console.log(res);
       this.reservationCount = res.msg;
+    });
+
+    this.bookService.getTotalSuggestions().subscribe(res=>{
+      console.log(res);
+      this.bookSuggestionCount = res.msg;
     });
   }
 }

@@ -76,5 +76,20 @@ export class BookService {
     headers.append('Content-Type','application/json');
     return this.http.post("http://localhost:3000/book/reservation-total",{headers:headers}).pipe(map(res=>res.json()));
   }
+
+  // send the reques to backend to add a new book
+  addNewBookSuggestion(book){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/suggestion-add",book,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // get total suggestion count
+  getTotalSuggestions(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/suggestion-total",{headers:headers}).pipe(map(res=>res.json()));
+  }
+
 }
 

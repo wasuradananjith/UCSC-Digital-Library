@@ -4,6 +4,7 @@ import { BookService } from "../../service/book.service";
 import { Router } from "@angular/router";
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 import * as $ from 'jquery';
 
@@ -22,7 +23,8 @@ export class StudentBooksComponent implements OnInit {
   };
   user:any;
   books:any;
-  constructor(private authService:AuthService,private bookService:BookService,private router:Router,private modalService: BsModalService) { }
+  book:any;
+  constructor(private flashMessage:FlashMessagesService,private authService:AuthService,private bookService:BookService,private router:Router,private modalService: BsModalService) { }
 
   ngOnInit() {
     if (!this.authService.isLoggedIn()){
@@ -95,6 +97,46 @@ export class StudentBooksComponent implements OnInit {
 
   }
 
+// function to open a specific modal
+  openSuggestionModal(template: TemplateRef<any>) {
+    this.book={ isbn:'', title:'', author:'', subject:''};
+    this.modalRef = this.modalService.show(template);
+  }
 
+  // add a new suggestion
+  addSuggestionData(){
+    console.log(this.book);
+    // check whether all the fields are filled
+    if (this.book.isbn==""){
+      this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 1500 });
+      return;
+    }
+    if (this.book.title==""){
+      this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 1500 });
+      return;
+    }
+    if (this.book.author==""){
+      this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 1500 });
+      return;
+    }
+    if (this.book.subject==""){
+      this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 1500 });
+      return;
+    }
+    else{
+      this.book.email=JSON.parse(localStorage.getItem("user")).email;
+      return this.bookService.addNewBookSuggestion(this.book).subscribe(res=>{
+        if (res.state){
+          this.flashMessage.show(res.msg, { cssClass: 'alert-success', timeout: 2000 });
+          this.book={ isbn:'', title:'', author:'', subject:'', no_of_copies:''};
+        }
+        else{
+          this.flashMessage.show(res.msg, { cssClass: 'alert-danger', timeout: 2000 });
+        }
+
+      });
+    }
+
+  }
 
 }

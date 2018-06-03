@@ -3,6 +3,7 @@ const router = express.Router();
 const Book = require('../models/book');
 const User = require('../models/user');
 const Copy = require('../models/copy');
+const Suggestion = require('../models/booksuggestion');
 const Reservation = require('../models/reservation');
 const nodemailer = require('nodemailer');
 const config = require('../config/database');
@@ -215,6 +216,18 @@ router.post("/reservation-total",(req,res)=>{
     });
 });
 
+// route to get total suggestions count
+router.post("/suggestion-total",(req,res)=>{
+    Suggestion.getTotalCount((error,count)=>{
+        if (count){
+            res.json({state:true,msg:count});
+        }
+        if (error || !count){
+            res.json({state:false,msg:"0"});
+        }
+    });
+});
+
 
 // route to  get the reservations for a particular student
 router.post("/reservations-student",(req,res)=>{
@@ -265,4 +278,48 @@ router.post("/reserve-cancel",(req,res)=>{
 
 
 });
+
+
+// route to add a new book
+router.post("/suggestion-add",(req,res)=>{
+
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date+' '+time;
+
+    const newSuggestion = new Suggestion({
+        isbn:req.body.isbn,
+        title:req.body.title,
+        author:req.body.author,
+        subject:req.body.subject,
+        date_added:dateTime,
+        student_email:req.body.email
+    });
+
+    Book.findByISBN(newSuggestion.isbn,(err,book)=>{
+        // if book is not in database
+        if(!book){
+
+            // Add book to the database
+            Suggestion.saveSuggestion(newSuggestion,(err,book)=> {
+                if(err){
+                    res.json({state:false,msg:"Failed to Add the Book"});
+                }
+                if(book){
+                    res.json({state:true,msg:"Thank you! Your Suggestion is Successfully Recorded"});
+                }
+            });
+        }
+        // if an existing book
+        if (book){
+            res.json({state:false,msg:"Book already exists in the database"});
+        }
+        // if error
+        if (err){
+            res.json({state:false,msg:"Failed to Add your Suggestion"});
+        }
+    });
+});
+
 module.exports = router;
