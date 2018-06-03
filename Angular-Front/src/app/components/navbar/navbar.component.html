@@ -44,7 +44,7 @@
         <li *ngIf="!authService.isLoggedIn()">
           <a [routerLink]="['/login']">Register</a></li>
         <li *ngIf="!authService.isLoggedIn()">
-          <a [routerLink]="['/login']">Login</a></li>
+          <a [routerLink]="['/login']"><i class="fas fa-sign-in-alt"></i> Login</a></li>
         <li *ngIf="authService.isLoggedIn() && getCurrentUserType()=='Admin'">
           <a [routerLink]="['/admin-home']">{{getCurrentUserName()}}</a>
         </li>
@@ -52,7 +52,7 @@
           <a [routerLink]="['/student-home']">{{getCurrentUserName()}}</a>
         </li>
         <li *ngIf="authService.isLoggedIn()">
-          <a href="#" (click)="logoutUser(MessageModal)">Logout</a>
+          <a href="#" (click)="logoutUser(MessageModal)"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
