@@ -3,6 +3,7 @@ const schema = mongoose.Schema;
 
 const reservationSchema = new schema({
     email:{type:String},
+    student:{type:Object},
     isbn:{type:String},
     title:{type:String},
     author:{type:String},
@@ -34,5 +35,5 @@ module.exports.getStudentReservations = (email,callback)=>{
 
 // delete a reservation
 module.exports.deleteReservation = (book,callback)=>{
-    Reservation.findOneAndDelete(book,callback);
+    Reservation.findOneAndDelete({_id:book._id},callback);
 };

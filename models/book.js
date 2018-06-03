@@ -29,7 +29,7 @@ module.exports.findByISBN = (isbn,callback)=> {
 
 // fetch all the books
 module.exports.getAllBooks = (callback)=> {
-    Book.find({},callback);
+    Book.find({},callback).sort({ title: 1 });
 };
 
 // fetch all the books
@@ -39,7 +39,7 @@ module.exports.getFilteredBooks = (searchText,callback)=> {
     Book.find({$or:[{title: new RegExp(searchText, "i")},
             {isbn: new RegExp(searchText, "i")},
             {author: new RegExp(searchText, "i")},
-            {subject: new RegExp(searchText, "i")}]}, callback);
+            {subject: new RegExp(searchText, "i")}]}, callback).sort({ title: 1 });
 };
 
 // reserve a book copy
@@ -51,7 +51,7 @@ module.exports.reserveBookCopy = (reservation,callback)=> {
 };
 
 
-// update cancelled reservation
+// find a book
 module.exports.findBook = (book,callback)=> {
     Book.findOne({isbn:book.isbn},callback);
 };

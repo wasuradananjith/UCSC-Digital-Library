@@ -6,12 +6,13 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
+
 @Component({
-  selector: 'app-books',
-  templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  selector: 'app-admin-books',
+  templateUrl: './admin-books.component.html',
+  styleUrls: ['./admin-books.component.css']
 })
-export class BooksComponent implements OnInit {
+export class AdminBooksComponent implements OnInit {
   modalRef: BsModalRef;
   user:any;
   book={
@@ -87,7 +88,4 @@ export class BooksComponent implements OnInit {
     }
 
   }
-
-
-
 }

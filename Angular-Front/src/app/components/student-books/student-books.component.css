@@ -543,10 +543,6 @@ label{
   font-family: 'Roboto', sans-serif;
   text-align: center;
 }
-.my-modal h3{
-  color: #1f003e;
-  margin-left: 34%;
-}
 
 .btn-azure, .btn-azure:focus {
   background-color: #8e4e9c !important;
@@ -573,4 +569,9 @@ label{
 
 .my-modal label,input{
   color: #1f003e;
+}
+
+.my-modal h2{
+  color: #1f003e;
+  margin-left: 43%;
 }

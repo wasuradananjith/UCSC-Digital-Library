@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Book = require('../models/book');
 const User = require('../models/user');
+const Student = require('../models/student');
 const Copy = require('../models/copy');
 const Suggestion = require('../models/booksuggestion');
 const Reservation = require('../models/reservation');
@@ -163,31 +164,41 @@ router.post("/reserve",(req,res)=>{
         }
     }
 
-    const newReservation =  new Reservation({
-        email:req.body.email,
-        isbn:req.body.isbn,
-        title:req.body.title,
-        author:req.body.isbn,
-        subject:req.body.subject,
-        copy:selectedCopy
-    });
+    Student.findByEmail(req.body.email,(error,student)=>{
+        if (student){
+            const newReservation =  new Reservation({
+                email:req.body.email,
+                student:student,
+                isbn:req.body.isbn,
+                title:req.body.title,
+                author:req.body.isbn,
+                subject:req.body.subject,
+                copy:selectedCopy
+            });
 
-    Book.reserveBookCopy(copies,(error,book)=>{
-        if (book){
-            console.log("Book Copy Status Updated");
-            Reservation.saveReservation(newReservation,(error,reservation)=>{
-                if(reservation){
-                    res.json({state:true,msg:"Your reservation is successful!"});
+            Book.reserveBookCopy(copies,(error,book)=>{
+                if (book){
+                    console.log("Book Copy Status Updated");
+                    Reservation.saveReservation(newReservation,(error,reservation)=>{
+                        if(reservation){
+                            res.json({state:true,msg:"Your reservation is successful!"});
+                        }
+                        if (error || !reservation){
+                            res.json({state:false,msg:"Failed to reserve the book"});
+                        }
+                    });
                 }
-                if (error || !reservation){
+                if (error || !book){
                     res.json({state:false,msg:"Failed to reserve the book"});
                 }
             });
         }
-        if (error || !book){
+        if(error || !student){
             res.json({state:false,msg:"Failed to reserve the book"});
         }
     });
+
+
 });
 
 
@@ -272,6 +283,7 @@ router.post("/reserve-cancel",(req,res)=>{
                 });
             }
             if (error || !reservations){
+                console.log("Hello");
                 res.json({state:false,msg:"Fail to cancel the reservation"});
             }
         });

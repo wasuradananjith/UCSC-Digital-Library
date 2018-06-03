@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule,Routes } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule} from "@angular/http";
-import { ModalModule,BsDropdownModule } from 'ngx-bootstrap';
+import { ModalModule,BsDropdownModule,CarouselModule  } from 'ngx-bootstrap';
 import { FlashMessagesModule,FlashMessagesService } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
@@ -19,19 +19,21 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { HomeComponent } from './components/home/home.component';
 import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 import { AdminTopbarComponent } from './components/admin-topbar/admin-topbar.component';
-import { BooksComponent } from './components/books/books.component';
 import { StudentSidebarComponent } from './components/student-sidebar/student-sidebar.component';
 import { StudentBooksComponent } from './components/student-books/student-books.component';
 import { StudentReservationComponent } from './components/student-reservation/student-reservation.component';
+import { AdminReservationComponent } from './components/admin-reservation/admin-reservation.component';
+import { AdminBooksComponent } from './components/admin-books/admin-books.component';
 
 const applicationRoutes:Routes=[
   {path:'',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'admin-home',component:AdminHomeComponent},
   {path:'student-home',component:StudentHomeComponent},
-  {path:'admin-home/books',component:BooksComponent},
+  {path:'admin-home/books',component:AdminBooksComponent},
   {path:'student-home/books',component:StudentBooksComponent},
-  {path:'student-home/reservations',component:StudentReservationComponent}
+  {path:'student-home/reservations',component:StudentReservationComponent},
+  {path:'admin-home/reservations',component:AdminReservationComponent}
 ];
 
 export function tokenGetter() {
@@ -49,10 +51,11 @@ export function tokenGetter() {
     HomeComponent,
     AdminSidebarComponent,
     AdminTopbarComponent,
-    BooksComponent,
     StudentSidebarComponent,
     StudentBooksComponent,
-    StudentReservationComponent
+    StudentReservationComponent,
+    AdminReservationComponent,
+    AdminBooksComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,7 @@ export function tokenGetter() {
     HttpModule,
     FlashMessagesModule,
     BsDropdownModule.forRoot(),
+    CarouselModule.forRoot(),
     RouterModule.forRoot(applicationRoutes),
     ModalModule.forRoot(),
     JwtModule.forRoot({
