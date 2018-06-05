@@ -31,6 +31,13 @@ export class BookService {
   }
 
   // search book details
+  filterReservationDetails(searchText){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/reservation-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // search book details
   reserveCopy(book){
     let student = JSON.parse(localStorage.getItem("user"));
     let reservation = {
@@ -96,6 +103,13 @@ export class BookService {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this.http.post("http://localhost:3000/book/reservations-admin",{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // cancel a reservation
+  borrowReservation(book){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/reserve-cancel",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 }
 

@@ -34,12 +34,12 @@ module.exports.getAllBooks = (callback)=> {
 // fetch all the books
 module.exports.getFilteredBooks = (searchText,callback)=> {
     let text = "/"+searchText+"/i";
-    console.log(text);
     Book.find({$or:[{title: new RegExp(searchText, "i")},
             {isbn: new RegExp(searchText, "i")},
             {author: new RegExp(searchText, "i")},
             {subject: new RegExp(searchText, "i")}]}, callback).sort({ title: 1 });
 };
+
 
 // reserve a book copy
 module.exports.reserveBookCopy = (reservation,callback)=> {

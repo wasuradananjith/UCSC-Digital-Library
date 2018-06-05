@@ -42,3 +42,20 @@ module.exports.getAdminReservations = (callback)=>{
 module.exports.deleteReservation = (book,callback)=>{
     Reservation.findOneAndDelete({_id:book._id},callback);
 };
+
+// fetch all the reservations
+module.exports.getFilteredReservations = (searchText,callback)=> {
+    let text = "/"+searchText+"/i";
+    Reservation.find({$or:[{title: new RegExp(searchText, "i")},
+            {isbn: new RegExp(searchText, "i")},
+            {author: new RegExp(searchText, "i")},
+            {subject: new RegExp(searchText, "i")},
+            {email: new RegExp(searchText, "i")},
+            {"student.reg_no": new RegExp(searchText, "i")},
+            {"student.index_no": new RegExp(searchText, "i")},
+            {"student.name": new RegExp(searchText, "i")},
+            {"student.phone": new RegExp(searchText, "i")},
+            {"student.address": new RegExp(searchText, "i")},
+            {"student.nic": new RegExp(searchText, "i")}
+        ]}, callback).sort({ title: 1 });
+};

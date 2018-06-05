@@ -25,9 +25,32 @@ router.get("",(req,res)=>{
 router.post("/add",(req,res)=>{
 
     let today = new Date();
-    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    let dateTime = date+' '+time;
+    let fullYear = today.getFullYear();
+    let fullMonth = today.getMonth()+1;
+    let fullDate = today.getDate();
+    if (fullMonth<10){
+        fullMonth='0'+fullMonth;
+    }
+    if(fullDate<10){
+        fullDate='0'+fullDate;
+    }
+    let date = fullYear+'-'+fullMonth+'-'+fullDate;
+
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    let seconds = today.getSeconds();
+
+    if (hours<10){
+        hours='0'+hours;
+    }
+    if (minutes<10){
+        minutes='0'+minutes;
+    }
+    if (seconds<10){
+        seconds='0'+seconds;
+    }
+    let time = hours + ":" + minutes + ":" + seconds;
+    let dateTime = date+' ' + time;
 
     const newBook = new Book({
         isbn:req.body.isbn,
@@ -132,7 +155,6 @@ router.post("/search",(req,res)=>{
     const searchText = req.body.enteredText;
     Book.getFilteredBooks(searchText,(error,books)=>{
         if (books){
-            console.log(books);
             res.json({state:true,msg:books});
         }
         if (error || !books){
@@ -148,8 +170,31 @@ router.post("/reserve",(req,res)=>{
 
     // get today date
     let today = new Date();
-    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let fullYear = today.getFullYear();
+    let fullMonth = today.getMonth()+1;
+    let fullDate = today.getDate();
+    if (fullMonth<10){
+        fullMonth='0'+fullMonth;
+    }
+    if(fullDate<10){
+        fullDate='0'+fullDate;
+    }
+    let date = fullYear+'-'+fullMonth+'-'+fullDate;
+
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    let seconds = today.getSeconds();
+
+    if (hours<10){
+        hours='0'+hours;
+    }
+    if (minutes<10){
+        minutes='0'+minutes;
+    }
+    if (seconds<10){
+        seconds='0'+seconds;
+    }
+    let time = hours + ":" + minutes + ":" + seconds;
     let dateTime = date+' ' + time;
 
     let isbn = copies[0].isbn; // to be inserted into the reservations collection
@@ -171,14 +216,13 @@ router.post("/reserve",(req,res)=>{
                 student:student,
                 isbn:req.body.isbn,
                 title:req.body.title,
-                author:req.body.isbn,
+                author:req.body.author,
                 subject:req.body.subject,
                 copy:selectedCopy
             });
 
             Book.reserveBookCopy(copies,(error,book)=>{
                 if (book){
-                    console.log("Book Copy Status Updated");
                     Reservation.saveReservation(newReservation,(error,reservation)=>{
                         if(reservation){
                             res.json({state:true,msg:"Your reservation is successful!"});
@@ -296,9 +340,32 @@ router.post("/reserve-cancel",(req,res)=>{
 router.post("/suggestion-add",(req,res)=>{
 
     let today = new Date();
-    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    let dateTime = date+' '+time;
+    let fullYear = today.getFullYear();
+    let fullMonth = today.getMonth()+1;
+    let fullDate = today.getDate();
+    if (fullMonth<10){
+        fullMonth='0'+fullMonth;
+    }
+    if(fullDate<10){
+        fullDate='0'+fullDate;
+    }
+    let date = fullYear+'-'+fullMonth+'-'+fullDate;
+
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    let seconds = today.getSeconds();
+
+    if (hours<10){
+        hours='0'+hours;
+    }
+    if (minutes<10){
+        minutes='0'+minutes;
+    }
+    if (seconds<10){
+        seconds='0'+seconds;
+    }
+    let time = hours + ":" + minutes + ":" + seconds;
+    let dateTime = date+' ' + time;
 
     const newSuggestion = new Suggestion({
         isbn:req.body.isbn,
@@ -341,6 +408,19 @@ router.post("/reservations-admin",(req,res)=>{
             res.json({state:true,msg:reservations});
         }
         if (error || !reservations){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
+// route to filter/search reservation details
+router.post("/reservation-search",(req,res)=>{
+    const searchText = req.body.enteredText;
+    Reservation.getFilteredReservations(searchText,(error,books)=>{
+        if (books){
+            res.json({state:true,msg:books});
+        }
+        if (error || !books){
             res.json({state:false,msg:[]});
         }
     });

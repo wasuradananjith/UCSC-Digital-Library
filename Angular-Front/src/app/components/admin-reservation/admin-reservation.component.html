@@ -77,7 +77,7 @@
               <li><strong>Student Name</strong> - {{books[i].student.name}}</li>
               <li><strong>Reg No</strong> - {{books[i].student.reg_no}}</li>
               <li><strong>Index No</strong> - {{books[i].student.index_no}}</li>
-              <li><strong>Email</strong> - {{books[i].student.email}}</li>
+              <li><strong>Email</strong> - <small>{{books[i].student.email}}</small></li>
               <li><strong>Date Reserved</strong> - {{books[i].copy.last_borrowed_date}}</li>
             </div>
           </div>
@@ -85,6 +85,8 @@
            <h2>
              <small></small>
             </h2>
+            <button type="button" class="btn btn-success btn-block" (click)="onBorrow(reserveBookModal,books[i])">Confirm Borrow</button>
+            <br>
             <button type="button" class="btn btn-danger btn-block" (click)="onCancel(reserveBookModal,books[i])">Cancel Reservation</button>
           </div>
         </a>
