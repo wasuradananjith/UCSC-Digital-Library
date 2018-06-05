@@ -334,4 +334,17 @@ router.post("/suggestion-add",(req,res)=>{
     });
 });
 
+// route to  get the reservations for a particular student
+router.post("/reservations-admin",(req,res)=>{
+    Reservation.getAdminReservations((error,reservations)=>{
+        if (reservations){
+            res.json({state:true,msg:reservations});
+        }
+        if (error || !reservations){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
+
 module.exports = router;

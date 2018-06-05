@@ -11,7 +11,6 @@ const bookSchema = new schema({
     no_of_borrowed_copies:{type:Number},
     no_of_reserved_copies:{type:Number},
     copies:{
-
     }
 });
 

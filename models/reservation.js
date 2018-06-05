@@ -33,6 +33,11 @@ module.exports.getStudentReservations = (email,callback)=>{
     Reservation.find({email:email},callback);
 };
 
+// get reservations of a particular user
+module.exports.getAdminReservations = (callback)=>{
+    Reservation.find({},callback);
+};
+
 // delete a reservation
 module.exports.deleteReservation = (book,callback)=>{
     Reservation.findOneAndDelete({_id:book._id},callback);

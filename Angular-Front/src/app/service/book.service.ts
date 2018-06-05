@@ -91,5 +91,11 @@ export class BookService {
     return this.http.post("http://localhost:3000/book/suggestion-total",{headers:headers}).pipe(map(res=>res.json()));
   }
 
+  // load all reservations for admin
+  fetchAllReservationsAdmin(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/reservations-admin",{headers:headers}).pipe(map(res=>res.json()));
+  }
 }
 
