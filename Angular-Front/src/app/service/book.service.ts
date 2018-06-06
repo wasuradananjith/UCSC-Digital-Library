@@ -109,7 +109,7 @@ export class BookService {
   borrowReservation(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post("http://localhost:3000/book/reserve-cancel",book,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post("http://localhost:3000/book/reserve-borrow",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 }
 

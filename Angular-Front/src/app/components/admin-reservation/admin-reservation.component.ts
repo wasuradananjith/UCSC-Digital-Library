@@ -96,7 +96,6 @@ export class AdminReservationComponent implements OnInit {
       this.modalService.onHide.subscribe((reason: String) => {
         window.location.reload();
       });
-      //this.router.navigate(['student-home']);
     });
   }
 }

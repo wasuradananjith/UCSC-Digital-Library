@@ -4,6 +4,7 @@ const Book = require('../models/book');
 const User = require('../models/user');
 const Student = require('../models/student');
 const Copy = require('../models/copy');
+const Borrow = require('../models/borrow');
 const Suggestion = require('../models/booksuggestion');
 const Reservation = require('../models/reservation');
 const nodemailer = require('nodemailer');
@@ -426,5 +427,95 @@ router.post("/reservation-search",(req,res)=>{
     });
 });
 
+// route to borrow a reserved book
+router.post("/reserve-borrow",(req,res)=>{
+
+    let today = new Date();
+    let fullYear = today.getFullYear();
+    let fullMonth = today.getMonth()+1;
+    let fullDate = today.getDate();
+    if (fullMonth<10){
+        fullMonth='0'+fullMonth;
+    }
+    if(fullDate<10){
+        fullDate='0'+fullDate;
+    }
+    let date = fullYear+'-'+fullMonth+'-'+fullDate;
+
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    let seconds = today.getSeconds();
+
+    if (hours<10){
+        hours='0'+hours;
+    }
+    if (minutes<10){
+        minutes='0'+minutes;
+    }
+    if (seconds<10){
+        seconds='0'+seconds;
+    }
+    let time = hours + ":" + minutes + ":" + seconds;
+    let dateTime = date+' ' + time;
+
+    req.body.copy.availability="Borrowed";
+    req.body.copy.last_borrowed_date=dateTime;
+
+    const newBorrow =  new Borrow({
+        email:req.body.email,
+        student:req.body.student,
+        isbn:req.body.isbn,
+        title:req.body.title,
+        author:req.body.author,
+        subject:req.body.subject,
+        borrowed_date:dateTime,
+        fine:null,
+        copy:req.body.copy
+    });
+
+    // add new record to the borrows
+    Borrow.saveBorrow(newBorrow,(error,borrow)=>{
+        if (borrow){
+
+            // get the book details to update the status
+            Book.findByISBN(req.body.isbn,(error,book)=>{
+               if (book){
+                   let returnedBook = book;
+                   for (i = 0; i < returnedBook.copies.length; i++) {
+                       if (returnedBook.copies[i]._id==req.body.copy._id){
+                           returnedBook.copies[i].availability="Borrowed";
+                           returnedBook.copies[i].last_borrowed_date = dateTime;
+                           break;
+                       }
+                   }
+
+                   // update the book
+                   Book.updateBook(returnedBook,(error,bookUpdate)=>{
+                       if (bookUpdate){
+                           Reservation.deleteReservation(req.body,(error,reservationCancel)=>{
+                               if(reservationCancel){
+                                   res.json({state:true,msg:"Borrow Successful!"});
+                               }
+                               if(error || !reservationCancel){
+                                   res.json({state:false,msg:"Failed to borrow"});
+                               }
+                           });
+                       }
+                       if (error || !bookUpdate){
+                           res.json({state:false,msg:"Failed to borrow"});
+                       }
+                   });
+               }
+               if (!book || error){
+                   res.json({state:false,msg:"Failed to borrow"});
+               }
+            });
+
+        }
+        if (error || !borrow){
+            res.json({state:false,msg:"Failed to borrow"});
+        }
+    });
+});
 
 module.exports = router;

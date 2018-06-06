@@ -43,12 +43,13 @@ module.exports.getFilteredBooks = (searchText,callback)=> {
 
 // reserve a book copy
 module.exports.reserveBookCopy = (reservation,callback)=> {
-
-     /*Book.findOneAndUpdate({isbn:isbn},{no_of_available_copies:book.no_of_available_copies-1,no_of_reserved_copies:book.no_of_reserved_copies+1,
-         copies:book.copies},callback);*/
     Book.findOneAndUpdate({isbn:reservation[0].isbn},{$inc:{no_of_available_copies:-1,no_of_reserved_copies:1},$set:{copies:reservation}},callback);
 };
 
+// update book status
+module.exports.updateBook = (book,callback)=> {
+    Book.findOneAndUpdate({isbn:book.isbn},{$inc:{no_of_borrowed_copies:+1,no_of_reserved_copies:-1},$set:{copies:book.copies}},callback);
+};
 
 // find a book
 module.exports.findBook = (book,callback)=> {
