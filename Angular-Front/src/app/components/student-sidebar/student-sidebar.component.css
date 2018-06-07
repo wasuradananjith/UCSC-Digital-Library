@@ -15,7 +15,7 @@
 }
 
 .sidebar ul li a:hover{
-  color: #1f003e;
+  background-color: rgba(255,255,255,0.2);
 }
 
 .sidebar ul li a.focus {
