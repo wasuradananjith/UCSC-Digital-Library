@@ -484,3 +484,94 @@ label{
 .my-modal label,input{
   color: #1f003e;
 }
+
+.container{
+  width: 1000px;
+}
+
+a.list-group-item {
+  height:auto;
+  min-height:220px;
+}
+a.list-group-item.active small {
+  color:#fff;
+}
+.stars {
+  margin:20px auto 1px;
+}
+
+
+.my-image{
+  background: url("../../../assets/img/no-image.jpg");
+}
+
+img{
+  height:160px;
+  width:150px;
+}
+
+.center {
+  margin: auto;
+  padding: 10px;
+}
+
+.reserve-button{
+  margin-top: 10%;
+}
+
+h4{
+  font-weight: bold;
+}
+
+h1{
+  color: #1f003e;
+}
+
+#page-wrapper{
+  font-family: 'Roboto', sans-serif;
+}
+
+.my-modal{
+  font-family: 'Roboto', sans-serif;
+}
+
+label{
+  padding-top: 1%;
+}
+
+.modal-body{
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.btn-azure, .btn-azure:focus {
+  background-color: #8e4e9c !important;
+  color: #fff;
+}
+
+.btn-azure:hover,
+.open .btn-azure.dropdown-toggle {
+  background-color: #a393a9 !important;
+  color: #fff
+}
+
+.btn-azure{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.invalid-feedback{
+  color: #d20000;
+  text-align: left;
+  font-size: smaller;
+  margin-left: 1%;
+}
+
+.my-modal label,input{
+  color: #1f003e;
+}
+
+.my-modal h2{
+  color: #1f003e;
+  margin-left: 43%;
+}

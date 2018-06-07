@@ -1,6 +1,6 @@
 .my-navbar{
   background: #3b0063;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .navbar-default .navbar-brand {
@@ -17,8 +17,8 @@
   -o-transition: all .3s ease-in;
   -webkit-transition: all .3s ease-in;
   transition: all .3s ease-in;
-  background-color: white;
-  color: #3b0063;
+  background-color: rgba(255,255,255,0.2);
+  /*color: #3b0063;*/
 }
 
 .navbar-default .navbar-nav:hover{
@@ -57,7 +57,7 @@ li .dropdown:hover .dropdown-content {
 
 
 .modal-body{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
 }
 .my-modal h2{

@@ -15,12 +15,10 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class AdminBooksComponent implements OnInit {
   modalRef: BsModalRef;
   user:any;
-  book={
-    isbn:'',
-    title:'',
-    author:'',
-    subject:'',
-    no_of_copies:''
+  books:any;
+  book:any;
+  searchText = {
+    enteredText:""
   };
   constructor(private authService:AuthService,private router:Router,private modalService: BsModalService,
               private flashMessage:FlashMessagesService,private bookService:BookService) {
@@ -40,6 +38,7 @@ export class AdminBooksComponent implements OnInit {
         }
 
       });
+      this.loadAllBooks();
     }
 
   }
@@ -48,6 +47,13 @@ export class AdminBooksComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.book={ isbn:'', title:'', author:'', subject:'', no_of_copies:''};
     this.modalRef = this.modalService.show(template);
+  }
+
+  // load all the books
+  loadAllBooks(){
+    this.bookService.fetchAllBookDetails().subscribe(res=>{
+      this.books = res.msg;
+    });
   }
 
   // add a new book
