@@ -20,7 +20,7 @@
 
       <div class="col-lg-6">
         <div class="input-group">
-          <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by book details/ student details...">
+          <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by ISBN/ Title/ Author / Category...">
           <span class="input-group-btn">
         <button class="btn btn-azure" style="width: 50px" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
       </span>
@@ -78,10 +78,10 @@
           <div class="col-md-3 text-center">
             <h2>{{books[i].no_of_available_copies}}<small> Available </small></h2>
             <div *ngIf="books[i].no_of_available_copies>0">
-              <button type="button" class="btn btn-success btn-lg btn-block" (click)="onReserve(reserveBookModal,books[i])">Reserve Now!</button>
+              <button type="button" class="btn btn-success btn-lg btn-block" (click)="onBorrow(selectStudentModal,books[i])">Borrow Now!</button>
             </div>
             <div *ngIf="books[i].no_of_available_copies<=0">
-              <button type="button" class="btn btn-success btn-lg btn-block" disabled>Reserve Now!</button>
+              <button type="button" class="btn btn-success btn-lg btn-block" disabled>Borrow Now!</button>
             </div>
 
           </div>
@@ -160,3 +160,42 @@
   </div>
 </ng-template>
 
+<!--Model for Alert-->
+<ng-template #borrowBookModal>
+  <div class="my-modal">
+    <div class="modal-header">
+      <h2 class="modal-title pull-left">Alert</h2>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="alertType=='Success'">
+        <strong><h4 style="color: darkgreen">{{message}}</h4></strong>
+      </div>
+      <div *ngIf="alertType=='Error'">
+        <strong><h4 style="color: #a90000">{{message}}</h4></strong>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!--Model for Alert-->
+<ng-template #selectStudentModal>
+    <div class="my-modal">
+        <div class="modal-header">
+          <h2 class="modal-title pull-left"  style="margin-left: 100px">Select Student</h2>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="alertType=='Success'">
+            <strong><h4 style="color: darkgreen">{{message}}</h4></strong>
+          </div>
+          <div *ngIf="alertType=='Error'">
+            <strong><h4 style="color: #a90000">{{message}}</h4></strong>
+          </div>
+        </div>
+  </div>
+</ng-template>

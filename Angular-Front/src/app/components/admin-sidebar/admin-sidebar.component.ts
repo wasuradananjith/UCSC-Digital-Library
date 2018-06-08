@@ -13,12 +13,10 @@ export class AdminSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.bookService.getTotalReservations().subscribe(res=>{
-      console.log(res);
       this.reservationCount = res.msg;
     });
 
     this.bookService.getTotalSuggestions().subscribe(res=>{
-      console.log(res);
       this.bookSuggestionCount = res.msg;
     });
   }

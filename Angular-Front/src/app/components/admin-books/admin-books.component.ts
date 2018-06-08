@@ -107,4 +107,10 @@ export class AdminBooksComponent implements OnInit {
       this.books = res.msg;
     });
   }
+
+  // when borrow button is pressed
+  onBorrow(template:TemplateRef<any>,book){
+    this.modalRef = this.modalService.show(template);
+  }
+
 }
