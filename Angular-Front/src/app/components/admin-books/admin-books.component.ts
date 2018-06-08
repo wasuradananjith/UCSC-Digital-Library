@@ -14,6 +14,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class AdminBooksComponent implements OnInit {
   modalRef: BsModalRef;
+  message:String;
   user:any;
   books:any;
   book:any;
@@ -92,6 +93,18 @@ export class AdminBooksComponent implements OnInit {
 
       });
     }
+  }
 
+  // when something is typed on the search bar
+  onKey(event: any) {
+    this.bookService.filterBookDetails(this.searchText).subscribe(res=>{
+      if(res.msg==""){
+        this.message="No search results found";
+      }
+      else{
+        this.message="";
+      }
+      this.books = res.msg;
+    });
   }
 }
