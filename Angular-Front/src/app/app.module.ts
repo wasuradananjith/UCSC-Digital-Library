@@ -24,7 +24,9 @@ import { StudentBooksComponent } from './components/student-books/student-books.
 import { StudentReservationComponent } from './components/student-reservation/student-reservation.component';
 import { AdminReservationComponent } from './components/admin-reservation/admin-reservation.component';
 import { AdminBooksComponent } from './components/admin-books/admin-books.component';
+import { AppRoutingModule } from './/app-routing.module';
 
+/*
 const applicationRoutes:Routes=[
   {path:'',component:HomeComponent},
   {path:'login',component:LoginComponent},
@@ -35,6 +37,7 @@ const applicationRoutes:Routes=[
   {path:'student-home/reservations',component:StudentReservationComponent},
   {path:'admin-home/reservations',component:AdminReservationComponent}
 ];
+*/
 
 export function tokenGetter() {
   return localStorage.getItem('tokenid');
@@ -65,7 +68,6 @@ export function tokenGetter() {
     FlashMessagesModule,
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
-    RouterModule.forRoot(applicationRoutes),
     ModalModule.forRoot(),
     JwtModule.forRoot({
       config: {
@@ -73,7 +75,8 @@ export function tokenGetter() {
         whitelistedDomains: ['localhost:4200'],
         blacklistedRoutes: ['localhost:4200/auth/']
       }
-    })
+    }),
+    AppRoutingModule
   ],
   providers: [AuthService,AuthGuard,FlashMessagesService],
   bootstrap: [AppComponent]
