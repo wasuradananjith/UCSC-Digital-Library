@@ -24,7 +24,7 @@ import { StudentBooksComponent } from './components/student-books/student-books.
 import { StudentReservationComponent } from './components/student-reservation/student-reservation.component';
 import { AdminReservationComponent } from './components/admin-reservation/admin-reservation.component';
 import { AdminBooksComponent } from './components/admin-books/admin-books.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 /*
 const applicationRoutes:Routes=[

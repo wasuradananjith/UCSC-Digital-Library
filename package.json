@@ -1,5 +1,5 @@
 {
-  "name": "ucsc-library",
+  "name": "UCSC-Digital-Library",
   "version": "1.0.0",
   "description": "A library system for UCSC",
   "main": "app.js",

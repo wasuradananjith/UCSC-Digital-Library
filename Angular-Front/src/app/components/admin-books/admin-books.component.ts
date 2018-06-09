@@ -110,7 +110,7 @@ export class AdminBooksComponent implements OnInit {
 
   // when borrow button is pressed
   onBorrow(template:TemplateRef<any>,book){
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this.modalService.show(template,{class:'modal-lg'});
   }
 
 }
