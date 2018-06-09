@@ -36,17 +36,8 @@ export class AdminReservationComponent implements OnInit {
         }
       });
 
-      this.loadAllReservations();
+      this.onKey("true"); // to load all reservations
     }
-  }
-
-  // get all reservations
-  loadAllReservations(){
-    this.bookService.fetchAllReservationsAdmin().subscribe(res=>{
-      this.books = res.msg;
-
-      console.log(this.books);
-    });
   }
 
   // when something is typed on the search bar

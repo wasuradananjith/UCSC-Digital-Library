@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group">
-          <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by book details/ student details...">
+          <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by book details/ student email...">
           <span class="input-group-btn">
         <button class="btn btn-azure" style="width: 50px" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
       </span>
@@ -59,35 +59,24 @@
           </div>
           <div class="col-md-7">
             <h4 class="list-group-item-heading">{{books[i].title}}</h4>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <p class="list-group-item-text">
                 <br>
               <li><strong>ISBN</strong> - {{books[i].isbn}}</li>
               <li><strong>Author</strong> - {{books[i].author}}</li>
               <li><strong>Category</strong> - {{books[i].subject}}</li>
-
-              <br>
-              <li><strong>Date Added</strong> - {{books[i].copy.date_added}}</li>
+              <li><strong>Date Added</strong> - {{books[i].date_added}}</li>
+              <li><strong>Email</strong> - {{books[i].student_email}}</li>
               </p>
             </div>
 
-            <div class="col-md-6">
-              <p class="list-group-item-text">
-                <br>
-              <li><strong>Student Name</strong> - {{books[i].student.name}}</li>
-              <li><strong>Reg No</strong> - {{books[i].student.reg_no}}</li>
-              <li><strong>Index No</strong> - {{books[i].student.index_no}}</li>
-              <li><strong>Email</strong> - <small>{{books[i].student.email}}</small></li>
-              <li><strong>Date Reserved</strong> - {{books[i].copy.last_borrowed_date}}</li>
-            </div>
           </div>
           <div class="col-md-2 text-center">
             <h2>
               <small></small>
             </h2>
-            <button type="button" class="btn btn-success btn-block" (click)="onBorrow(reserveBookModal,books[i])">Confirm Borrow</button>
             <br>
-            <button type="button" class="btn btn-danger btn-block" (click)="onCancel(reserveBookModal,books[i])">Cancel Reservation</button>
+            <button type="button" class="btn btn-danger btn-block" (click)="onDismiss(reserveBookModal,books[i])">Dissmiss</button>
           </div>
         </a>
       </div>

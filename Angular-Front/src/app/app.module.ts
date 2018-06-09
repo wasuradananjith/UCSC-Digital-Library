@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { AuthService } from './service/auth.service';
+import { StudentService } from './service/student.service';
 import { AuthGuard } from './service/auth.guard';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { StudentHomeComponent } from './components/student-home/student-home.component'
@@ -25,6 +26,7 @@ import { StudentReservationComponent } from './components/student-reservation/st
 import { AdminReservationComponent } from './components/admin-reservation/admin-reservation.component';
 import { AdminBooksComponent } from './components/admin-books/admin-books.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AdminSuggestionsComponent } from './components/admin-suggestions/admin-suggestions.component';
 
 /*
 const applicationRoutes:Routes=[
@@ -58,7 +60,8 @@ export function tokenGetter() {
     StudentBooksComponent,
     StudentReservationComponent,
     AdminReservationComponent,
-    AdminBooksComponent
+    AdminBooksComponent,
+    AdminSuggestionsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AuthService} from "../../service/auth.service";
 import { BookService} from "../../service/book.service";
+import { StudentService} from "../../service/student.service";
 import { Router } from "@angular/router";
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -17,11 +18,15 @@ export class AdminBooksComponent implements OnInit {
   message:String;
   user:any;
   books:any;
+  students:any;
   book:any;
+  student:any
+  alertType:String;
   searchText = {
-    enteredText:""
+    enteredText:"",
+    enteredTextStudent:""
   };
-  constructor(private authService:AuthService,private router:Router,private modalService: BsModalService,
+  constructor(private authService:AuthService,private studentService:StudentService,private router:Router,private modalService: BsModalService,
               private flashMessage:FlashMessagesService,private bookService:BookService) {
   }
 
@@ -29,17 +34,17 @@ export class AdminBooksComponent implements OnInit {
     if (!this.authService.isLoggedIn()){
       this.router.navigate(['']);
     }
-    else{
-      this.authService.getAdminHome().subscribe(res=>{
+    else {
+      this.authService.getAdminHome().subscribe(res => {
         this.user = res.user;
         console.log(this.user)
 
-        if(this.user.type=="Student"){
+        if (this.user.type == "Student") {
           this.router.navigate(['student-home']);
         }
 
       });
-      this.loadAllBooks();
+      this.onKeyBookSearch("true"); // load all the books
     }
 
   }
@@ -96,7 +101,7 @@ export class AdminBooksComponent implements OnInit {
   }
 
   // when something is typed on the search bar
-  onKey(event: any) {
+  onKeyBookSearch(event: any) {
     this.bookService.filterBookDetails(this.searchText).subscribe(res=>{
       if(res.msg==""){
         this.message="No search results found";
@@ -110,7 +115,39 @@ export class AdminBooksComponent implements OnInit {
 
   // when borrow button is pressed
   onBorrow(template:TemplateRef<any>,book){
+    this.book = book;
     this.modalRef = this.modalService.show(template,{class:'modal-lg'});
+    this.onKeyStudentSearch("true"); // load the student details
   }
 
+  // when something is typed on the search bar
+  onKeyStudentSearch(event: any) {
+    this.studentService.filterStudentDetails(this.searchText).subscribe(response=>{
+      if(response.msg==""){
+        this.message="No search results found";
+      }
+      else{
+        this.message="";
+      }
+      this.students = response.msg;
+    });
+  }
+
+  // after selecting the student proceed to borrow
+  onStudentSelect(template:TemplateRef<any>,student){
+    this.bookService.borrowBook(this.book,student).subscribe(res => {
+      if (res.state) {
+        this.alertType = "Success";
+        this.message = res.msg;
+      }
+      else {
+        this.alertType = "Error";
+        this.message = res.msg;
+      }
+      this.modalRef = this.modalService.show(template);
+      this.modalService.onHide.subscribe((reason: String) => {
+        window.location.reload();
+      });
+    });
+  }
 }

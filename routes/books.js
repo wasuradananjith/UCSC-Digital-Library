@@ -518,4 +518,107 @@ router.post("/reserve-borrow",(req,res)=>{
     });
 });
 
+// route to borrow a book
+router.post("/borrow",(req,res)=>{
+
+    let selectedCopy;
+
+    let today = new Date();
+    let fullYear = today.getFullYear();
+    let fullMonth = today.getMonth()+1;
+    let fullDate = today.getDate();
+    if (fullMonth<10){
+        fullMonth='0'+fullMonth;
+    }
+    if(fullDate<10){
+        fullDate='0'+fullDate;
+    }
+    let date = fullYear+'-'+fullMonth+'-'+fullDate;
+
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    let seconds = today.getSeconds();
+
+    if (hours<10){
+        hours='0'+hours;
+    }
+    if (minutes<10){
+        minutes='0'+minutes;
+    }
+    if (seconds<10){
+        seconds='0'+seconds;
+    }
+    let time = hours + ":" + minutes + ":" + seconds;
+    let dateTime = date+' ' + time;
+
+    for (i = 0; i < req.body.book.copies.length; i++) {
+        if (req.body.book.copies[i].availability=="Available"){
+            req.body.book.copies[i].availability="Borrowed";
+            req.body.book.copies[i].last_borrowed_date = dateTime;
+            selectedCopy= req.body.book.copies[i];
+            break;
+        }
+    }
+
+    const newBorrow =  new Borrow({
+        email:req.body.student.email,
+        student:req.body.student,
+        isbn:req.body.book.isbn,
+        title:req.body.book.title,
+        author:req.body.book.author,
+        subject:req.body.book.subject,
+        borrowed_date:dateTime,
+        fine:null,
+        copy:selectedCopy
+    });
+
+    // add new record to the borrows
+    Borrow.saveBorrow(newBorrow,(error,borrow)=>{
+        if (borrow){
+            let returnedBook = req.body.book;
+            // update the book
+            Book.updateBook(returnedBook,(error,bookUpdate)=>{
+                if (bookUpdate){
+                    res.json({state:true,msg:"Borrow Successful!"});
+                }
+                if (error || !bookUpdate){
+                    res.json({state:false,msg:"Failed to borrow"});
+                }
+            });
+
+        }
+        if (error || !borrow){
+            res.json({state:false,msg:"Failed to borrow"});
+        }
+    });
+});
+
+// route to filter/search suggestion details
+router.post("/suggestion-search",(req,res)=>{
+    const searchText = req.body.enteredText;
+    Suggestion.getFilteredSuggestions(searchText,(error,books)=>{
+        if (books){
+            res.json({state:true,msg:books});
+        }
+        if (error || !books){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
+// route to cancel a reservation
+router.post("/suggestion-dismiss",(req,res)=>{
+    const currentBook = req.body;
+    Suggestion.deleteSuggestion(currentBook,(error,suggestion)=>{
+        if (suggestion){
+            res.json({state:true,msg:"Suggestion Deleted"});
+        }
+        if (error || !suggestion){
+            res.json({state:false,msg:"Fail to delete the suggestion"});
+        }
+    });
+
+
+});
+
 module.exports = router;

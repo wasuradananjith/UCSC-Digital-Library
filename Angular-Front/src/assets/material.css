@@ -4,13 +4,13 @@ h1,p{
 }
 button{
   font-family: 'Roboto', sans-serif;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 
 button:focus {
   outline: none !important;
 }
-.btn {
+.btn,.list-group-item,.panel {
   border-radius: 2px;
   border: 0;
   transition: .2s ease-out;
@@ -18,7 +18,7 @@ button:focus {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-.btn:hover {
+.btn,.list-group-item,.panel:hover {
   color: #fff;
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
@@ -122,4 +122,24 @@ button:focus {
   background-color: transparent;
   color: #000;
 }
+
+.form-control{
+  border-top: none;
+  outline: none;
+  border-left: none;
+  border-right:none;
+}
+
+.sidebar{
+  -webkit-box-shadow: 4px 0px 5px -1px rgba(0,0,0,0.35);
+  -moz-box-shadow: 4px 0px 5px -1px rgba(0,0,0,0.35);
+  box-shadow: 4px 0px 5px -1px rgba(0,0,0,0.35);
+}
+
+.sidebar li:hover{
+  -webkit-box-shadow: 0px 6px 10px -1px rgba(0,0,0,0.11);
+  -moz-box-shadow: 0px 6px 10px -1px rgba(0,0,0,0.11);
+  box-shadow: 0px 6px 10px -1px rgba(0,0,0,0.11);
+}
+
 

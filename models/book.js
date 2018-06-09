@@ -31,7 +31,7 @@ module.exports.getAllBooks = (callback)=> {
     Book.find({},callback).sort({ title: 1 });
 };
 
-// fetch all the books
+// fetch filtered book details
 module.exports.getFilteredBooks = (searchText,callback)=> {
     let text = "/"+searchText+"/i";
     Book.find({$or:[{title: new RegExp(searchText, "i")},
@@ -49,6 +49,11 @@ module.exports.reserveBookCopy = (reservation,callback)=> {
 // update book status
 module.exports.updateBook = (book,callback)=> {
     Book.findOneAndUpdate({isbn:book.isbn},{$inc:{no_of_borrowed_copies:+1,no_of_reserved_copies:-1},$set:{copies:book.copies}},callback);
+};
+
+// update book on borrow
+module.exports.updateBook = (book,callback)=> {
+    Book.findOneAndUpdate({isbn:book.isbn},{$inc:{no_of_borrowed_copies:+1,no_of_available_copies:-1},$set:{copies:book.copies}},callback);
 };
 
 // find a book

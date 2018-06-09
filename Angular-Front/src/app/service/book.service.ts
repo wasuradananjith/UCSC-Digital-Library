@@ -9,7 +9,7 @@ export class BookService {
 
   constructor(private http:Http) { }
 
-  // send the reques to backend to add a new book
+  // send the request to backend to add a new book
   addNewBook(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
@@ -30,11 +30,18 @@ export class BookService {
     return this.http.post("http://localhost:3000/book/search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
 
-  // search book details
+  // search reservation details
   filterReservationDetails(searchText){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this.http.post("http://localhost:3000/book/reservation-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // search suggestion details
+  filterSuggestionDetails(searchText){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/suggestion-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // search book details
@@ -105,11 +112,26 @@ export class BookService {
     return this.http.post("http://localhost:3000/book/reservations-admin",{headers:headers}).pipe(map(res=>res.json()));
   }
 
-  // cancel a reservation
+  // borrow a reserved book
   borrowReservation(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this.http.post("http://localhost:3000/book/reserve-borrow",book,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // borrow a reserved book
+  borrowBook(book,student){
+    let borrow = {book:book, student:student};
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/borrow",borrow,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // dismiss a reservation
+  dismissSuggestion(book){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/suggestion-dismiss",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 }
 

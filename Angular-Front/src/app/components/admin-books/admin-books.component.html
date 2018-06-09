@@ -20,7 +20,7 @@
 
       <div class="col-lg-6">
         <div class="input-group">
-          <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by ISBN/ Title/ Author / Category...">
+          <input (keyup)="onKeyBookSearch($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by ISBN/ Title/ Author / Category...">
           <span class="input-group-btn">
         <button class="btn btn-azure" style="width: 50px" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
       </span>
@@ -190,12 +190,55 @@
           </button>
         </div>
         <div class="modal-body">
-          <div *ngIf="alertType=='Success'">
-            <strong><h4 style="color: darkgreen">{{message}}</h4></strong>
+
+          <a class="list-group-item normal">
+            <div class="media col-md-3">
+              <figure class="pull-left center my-image">
+                <img class="img-responsive" src="http://covers.openlibrary.org/b/isbn/{{book.isbn}}.jpg" alt="No cover" />
+              </figure>
+            </div>
+            <div class="col-md-9">
+              <h4 class="list-group-item-heading">{{book.title}}</h4>
+              <p class="list-group-item-text">
+                <br>
+              <li><strong>ISBN</strong> - {{book.isbn}}</li>
+              <li><strong>Author</strong> - {{book.author}}</li>
+              <li><strong>Category</strong> - {{book.subject}}</li>
+              <br>
+              <li><strong>Borrowed Copies</strong> - {{book.no_of_borrowed_copies}}</li>
+              <li><strong>Reserved Copies</strong> - {{book.no_of_reserved_copies}}</li>
+              </p>
+            </div>
+          </a>
+
+          <br>
+          <div class="input-group-btn">
+            <input autofocus (keyup)="onKeyStudentSearch($event)" type="text" class="form-control" name="searchText.enteredTextStudent" [(ngModel)]="searchText.enteredTextStudent" placeholder="Search by Index No/ Reg No/ Name/ Email/ Phone...">
           </div>
-          <div *ngIf="alertType=='Error'">
-            <strong><h4 style="color: #a90000">{{message}}</h4></strong>
-          </div>
+          <br>
+
+            <table class="table table-fixed">
+              <thead>
+              <tr align="center">
+                <th class="col-xs-1">Index</th>
+                <th class="col-xs-2">Reg No</th>
+                <th class="col-xs-2">Name</th>
+                <th class="col-xs-3">Email</th>
+                <th class="col-xs-2">Phone</th>
+                <th class="col-xs-2">Select</th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let student of students; let i = index">
+                  <td class="col-xs-1">{{student.index_no}}</td>
+                  <td class="col-xs-2">{{student.reg_no}}</td>
+                  <td class="col-xs-2">{{student.name}}</td>
+                  <td class="col-xs-3">{{student.email}}</td>
+                  <td class="col-xs-2">{{student.phone}}</td>
+                  <td class="col-xs-2"><button class="btn btn-azure" (click)="onStudentSelect(borrowBookModal,student)">Select</button></td>
+                </tr>
+              </tbody>
+            </table>
         </div>
   </div>
 </ng-template>

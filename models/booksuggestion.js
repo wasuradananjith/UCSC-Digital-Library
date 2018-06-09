@@ -21,3 +21,19 @@ module.exports.saveSuggestion = (newSuggestion,callback)=>{
 module.exports.getTotalCount = (callback)=>{
     Suggestion.count({},callback);
 };
+
+// fetch all the reservations
+module.exports.getFilteredSuggestions = (searchText,callback)=> {
+    let text = "/"+searchText+"/i";
+    Suggestion.find({$or:[{title: new RegExp(searchText, "i")},
+            {isbn: new RegExp(searchText, "i")},
+            {author: new RegExp(searchText, "i")},
+            {subject: new RegExp(searchText, "i")},
+            {student_email: new RegExp(searchText, "i")},
+        ]}, callback).sort({ title: 1 });
+};
+
+// delete a suggestion
+module.exports.deleteSuggestion = (book,callback)=>{
+    Suggestion.findOneAndDelete({_id:book._id},callback);
+};
