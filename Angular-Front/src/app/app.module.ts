@@ -27,6 +27,8 @@ import { AdminReservationComponent } from './components/admin-reservation/admin-
 import { AdminBooksComponent } from './components/admin-books/admin-books.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AdminSuggestionsComponent } from './components/admin-suggestions/admin-suggestions.component';
+import { AdminBorrowedBooksComponent } from './components/admin-borrowed-books/admin-borrowed-books.component';
+import { AdminFinesComponent } from './components/admin-fines/admin-fines.component';
 
 /*
 const applicationRoutes:Routes=[
@@ -61,7 +63,9 @@ export function tokenGetter() {
     StudentReservationComponent,
     AdminReservationComponent,
     AdminBooksComponent,
-    AdminSuggestionsComponent
+    AdminSuggestionsComponent,
+    AdminBorrowedBooksComponent,
+    AdminFinesComponent
   ],
   imports: [
     BrowserModule,

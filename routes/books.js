@@ -646,4 +646,17 @@ router.post("/borrow-fine",(req,res)=>{
     });
 });
 
+// route to filter/search borrow details
+router.post("/borrow-search",(req,res)=>{
+    const searchText = req.body.enteredText;
+    Borrow.searchBorrow(searchText,(error,books)=>{
+        if (books){
+            res.json({state:true,msg:books});
+        }
+        if (error || !books){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
 module.exports = router;

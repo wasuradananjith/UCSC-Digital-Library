@@ -37,6 +37,14 @@ export class BookService {
     return this.http.post("http://localhost:3000/book/reservation-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
 
+  // search borrow details
+  filterBorrowDetails(searchText){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/borrow-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+
   // search suggestion details
   filterSuggestionDetails(searchText){
     let headers = new Headers();

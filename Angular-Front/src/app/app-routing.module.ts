@@ -9,6 +9,8 @@ import {AdminHomeComponent} from "./components/admin-home/admin-home.component";
 import {StudentBooksComponent} from "./components/student-books/student-books.component";
 import {StudentReservationComponent} from "./components/student-reservation/student-reservation.component";
 import {AdminSuggestionsComponent} from "./components/admin-suggestions/admin-suggestions.component";
+import {AdminBorrowedBooksComponent} from "./components/admin-borrowed-books/admin-borrowed-books.component";
+import {AdminFinesComponent} from "./components/admin-fines/admin-fines.component";
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -19,7 +21,9 @@ const routes: Routes = [
   {path:'student-home/books',component:StudentBooksComponent},
   {path:'student-home/reservations',component:StudentReservationComponent},
   {path:'admin-home/reservations',component:AdminReservationComponent},
-  {path:'admin-home/suggestions',component:AdminSuggestionsComponent}
+  {path:'admin-home/suggestions',component:AdminSuggestionsComponent},
+  {path:'admin-home/borrowed-books',component:AdminBorrowedBooksComponent},
+  {path:'admin-home/fines',component:AdminFinesComponent}
 ];
 
 
