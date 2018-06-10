@@ -56,6 +56,11 @@ module.exports.updateBook = (book,callback)=> {
     Book.findOneAndUpdate({isbn:book.isbn},{$inc:{no_of_borrowed_copies:+1,no_of_available_copies:-1},$set:{copies:book.copies}},callback);
 };
 
+// update book on borrow
+module.exports.updateBookOnReturn = (book,callback)=> {
+    Book.findOneAndUpdate({isbn:book.isbn},{$inc:{no_of_borrowed_copies:-1,no_of_available_copies:+1},$set:{copies:book.copies}},callback);
+};
+
 // find a book
 module.exports.findBook = (book,callback)=> {
     Book.findOne({isbn:book.isbn},callback);

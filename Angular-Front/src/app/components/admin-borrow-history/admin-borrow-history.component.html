@@ -4,7 +4,7 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">Borrowed Books</h1>
+        <h1 class="page-header">Borrow History</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -67,7 +67,7 @@
               <li><strong>Category</strong> - {{books[i].subject}}</li>
 
               <br>
-              <li><strong>Date Added</strong> - {{books[i].copy.date_added}}h</li>
+              <li><strong>Date Added</strong> - {{books[i].copy.date_added}}</li>
               </p>
             </div>
 
@@ -78,7 +78,7 @@
               <li><strong>Reg No</strong> - {{books[i].student.reg_no}}</li>
               <li><strong>Index No</strong> - {{books[i].student.index_no}}</li>
               <li><strong>Email</strong> - <small>{{books[i].student.email}}</small></li>
-              <li><strong>Date Borrowed</strong> - {{books[i].copy.last_borrowed_date}}h</li>
+              <li><strong>Date Borrowed</strong> - {{books[i].copy.last_borrowed_date}}</li>
             </div>
           </div>
           <div class="col-md-2 text-center">
@@ -86,10 +86,9 @@
               <span class="label label-warning">Fine Rs.{{books[i].fine}}</span>
             </h2>
             <h2 *ngIf="books[i].fine==null">
-              <small></small>
+              <small>Returned On {{books[i].returned_date}}h</small>
             </h2>
             <br>
-            <button type="button" class="btn btn-success btn-lg btn-block" (click)="onReturn(reserveBookModal,books[i])">Return Book!</button>
           </div>
         </a>
       </div>

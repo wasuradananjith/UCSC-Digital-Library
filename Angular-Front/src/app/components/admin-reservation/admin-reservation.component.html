@@ -46,7 +46,7 @@
     <div class="row">
       <div class="row center">
         <div *ngIf="books==''">
-          <p>No reservations</p>
+          <p>No search result found</p>
         </div>
 
       </div>
@@ -67,7 +67,7 @@
               <li><strong>Category</strong> - {{books[i].subject}}</li>
 
               <br>
-              <li><strong>Date Added</strong> - {{books[i].copy.date_added}}</li>
+              <li><strong>Date Added</strong> - {{books[i].copy.date_added}}h</li>
               </p>
             </div>
 
@@ -78,7 +78,7 @@
               <li><strong>Reg No</strong> - {{books[i].student.reg_no}}</li>
               <li><strong>Index No</strong> - {{books[i].student.index_no}}</li>
               <li><strong>Email</strong> - <small>{{books[i].student.email}}</small></li>
-              <li><strong>Date Reserved</strong> - {{books[i].copy.last_borrowed_date}}</li>
+              <li><strong>Date Reserved</strong> - {{books[i].copy.last_borrowed_date}}h</li>
             </div>
           </div>
           <div class="col-md-2 text-center">

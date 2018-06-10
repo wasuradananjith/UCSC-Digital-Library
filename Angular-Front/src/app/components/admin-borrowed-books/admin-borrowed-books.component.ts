@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {AuthService} from "../../service/auth.service";
 import {Router} from "@angular/router";
 import {BookService} from "../../service/book.service";
+import {BsModalRef} from "ngx-bootstrap/modal/bs-modal-ref.service";
+import {BsModalService} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-admin-borrowed-books',
@@ -9,6 +11,7 @@ import {BookService} from "../../service/book.service";
   styleUrls: ['./admin-borrowed-books.component.css']
 })
 export class AdminBorrowedBooksComponent implements OnInit {
+  modalRef:BsModalRef;
   user:any;
   books:any;
   message:String;
@@ -16,7 +19,7 @@ export class AdminBorrowedBooksComponent implements OnInit {
   searchText = {
     enteredText:""
   };
-  constructor(private authService:AuthService,private router:Router,private bookService:BookService) { }
+  constructor(private authService:AuthService,private router:Router,private bookService:BookService,private modalService:BsModalService) { }
 
   ngOnInit() {
     if (!this.authService.isLoggedIn()){
@@ -49,5 +52,21 @@ export class AdminBorrowedBooksComponent implements OnInit {
     });
   }
 
-
+// when the return button is pressed
+  onReturn(template:TemplateRef<any>,book) {
+    this.bookService.returnBook(book).subscribe(res => {
+      if (res.state) {
+        this.alertType = "Success";
+        this.message = res.msg;
+      }
+      else {
+        this.alertType = "Error";
+        this.message = res.msg;
+      }
+      this.modalRef = this.modalService.show(template);
+      this.modalService.onHide.subscribe((reason: String) => {
+        window.location.reload();
+      });
+    });
+  }
 }

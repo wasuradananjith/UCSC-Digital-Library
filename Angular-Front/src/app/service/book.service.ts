@@ -52,6 +52,13 @@ export class BookService {
     return this.http.post("http://localhost:3000/book/suggestion-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
 
+  // search suggestion details
+  filterReturnDetails(searchText){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/return-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
   // search book details
   reserveCopy(book){
     let student = JSON.parse(localStorage.getItem("user"));
@@ -154,6 +161,13 @@ export class BookService {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this.http.post("http://localhost:3000/book/borrow-fine",borrow,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // return a borrowed book
+  returnBook(book){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/return",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 }
 

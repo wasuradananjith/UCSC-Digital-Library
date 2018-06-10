@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
-const borrowSchema = new schema({
+const returnSchema = new schema({
     email:{type:String},
     student:{type:Object},
     isbn:{type:String},
@@ -9,31 +9,22 @@ const borrowSchema = new schema({
     author:{type:String},
     subject:{type:String},
     borrowed_date:{type:String},
+    returned_date:{type:String},
     fine:{type:String},
     copy:{type:Object}
 });
 
-const Borrow = module.exports = mongoose.model("Borrow",borrowSchema);
+const Return = module.exports = mongoose.model("Return",returnSchema);
 
 // add a new borrowed book record
-module.exports.saveBorrow = (newBorrow,callback)=>{
-    newBorrow.save(callback);
-};
-
-// get all borrow details
-module.exports.getAllBorrows = (callback)=>{
-    Borrow.find({},callback);
-};
-
-// update borrow
-module.exports.updateBorrow = (borrow,callback)=> {
-    Borrow.findOneAndUpdate({email:borrow.email,isbn:borrow.isbn,borrowed_date:borrow.borrowed_date},{fine:borrow.fine},callback);
+module.exports.saveReturn = (newReturn,callback)=>{
+    newReturn.save(callback);
 };
 
 // fetch all the reservations
-module.exports.searchBorrow = (searchText,callback)=> {
+module.exports.searchReturnedBooks = (searchText,callback)=> {
     let text = "/"+searchText+"/i";
-    Borrow.find({$or:[{title: new RegExp(searchText, "i")},
+    Return.find({$or:[{title: new RegExp(searchText, "i")},
             {isbn: new RegExp(searchText, "i")},
             {author: new RegExp(searchText, "i")},
             {subject: new RegExp(searchText, "i")},
@@ -45,9 +36,4 @@ module.exports.searchBorrow = (searchText,callback)=> {
             {"student.address": new RegExp(searchText, "i")},
             {"student.nic": new RegExp(searchText, "i")}
         ]}, callback).sort({ title: 1 });
-};
-
-// delete a reservation
-module.exports.deleteBorrow = (book,callback)=>{
-    Borrow.findOneAndDelete({_id:book._id},callback);
 };

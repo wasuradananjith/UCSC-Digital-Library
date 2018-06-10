@@ -5,6 +5,7 @@ const User = require('../models/user');
 const Student = require('../models/student');
 const Copy = require('../models/copy');
 const Borrow = require('../models/borrow');
+const Return = require('../models/returnbook');
 const Suggestion = require('../models/booksuggestion');
 const Reservation = require('../models/reservation');
 const nodemailer = require('nodemailer');
@@ -650,6 +651,108 @@ router.post("/borrow-fine",(req,res)=>{
 router.post("/borrow-search",(req,res)=>{
     const searchText = req.body.enteredText;
     Borrow.searchBorrow(searchText,(error,books)=>{
+        if (books){
+            res.json({state:true,msg:books});
+        }
+        if (error || !books){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
+// route to filter/search borrow details
+router.post("/return",(req,res)=>{
+    let today = new Date();
+    let fullYear = today.getFullYear();
+    let fullMonth = today.getMonth()+1;
+    let fullDate = today.getDate();
+    if (fullMonth<10){
+        fullMonth='0'+fullMonth;
+    }
+    if(fullDate<10){
+        fullDate='0'+fullDate;
+    }
+    let date = fullYear+'-'+fullMonth+'-'+fullDate;
+
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    let seconds = today.getSeconds();
+
+    if (hours<10){
+        hours='0'+hours;
+    }
+    if (minutes<10){
+        minutes='0'+minutes;
+    }
+    if (seconds<10){
+        seconds='0'+seconds;
+    }
+    let time = hours + ":" + minutes + ":" + seconds;
+    let dateTime = date+' ' + time;
+
+    req.body.copy.availability="Available";
+
+    const newReturn =  new Return({
+        email:req.body.email,
+        student:req.body.student,
+        isbn:req.body.isbn,
+        title:req.body.title,
+        author:req.body.author,
+        subject:req.body.subject,
+        borrowed_date:req.body.borrowed_date,
+        returned_date:dateTime,
+        fine:req.body.fine,
+        copy:req.body.copy
+    });
+
+    // add new record to the borrows
+    Return.saveReturn(newReturn,(error,returnedBorrowed)=>{
+        if (returnedBorrowed){
+
+            // get the book details to update the status
+            Book.findByISBN(req.body.isbn,(error,book)=>{
+                if (book){
+                    let returnedBook = book;
+                    for (i = 0; i < returnedBook.copies.length; i++) {
+                        if (returnedBook.copies[i]._id==req.body.copy._id){
+                            returnedBook.copies[i].availability="Available";
+                            break;
+                        }
+                    }
+
+                    // update the book
+                    Book.updateBookOnReturn(returnedBook,(error,bookUpdate)=>{
+                        if (bookUpdate){
+                            Borrow.deleteBorrow(req.body,(error,deleteBorrow)=>{
+                                if(deleteBorrow){
+                                    res.json({state:true,msg:"Book Returned Successfully!"});
+                                }
+                                if(error || !deleteBorrow){
+                                    res.json({state:false,msg:"Failed to return the book"});
+                                }
+                            });
+                        }
+                        if (error || !bookUpdate){
+                            res.json({state:false,msg:"Failed to return the book"});
+                        }
+                    });
+                }
+                if (!book || error){
+                    res.json({state:false,msg:"Failed to return the book"});
+                }
+            });
+
+        }
+        if (error || !returnedBorrowed){
+            res.json({state:false,msg:"Failed to return the book"});
+        }
+    });
+});
+
+// route to filter/search returned books details
+router.post("/return-search",(req,res)=>{
+    const searchText = req.body.enteredText;
+    Return.searchReturnedBooks(searchText,(error,books)=>{
         if (books){
             res.json({state:true,msg:books});
         }

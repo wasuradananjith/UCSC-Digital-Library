@@ -46,7 +46,7 @@
     <div class="row">
       <div class="row center">
         <div *ngIf="books==''">
-          <p>No reservations</p>
+          <p>No search result found</p>
         </div>
 
       </div>
@@ -65,7 +65,7 @@
               <li><strong>ISBN</strong> - {{books[i].isbn}}</li>
               <li><strong>Author</strong> - {{books[i].author}}</li>
               <li><strong>Category</strong> - {{books[i].subject}}</li>
-              <li><strong>Date Added</strong> - {{books[i].date_added}}</li>
+              <li><strong>Date Added</strong> - {{books[i].date_added}}h</li>
               <li><strong>Email</strong> - {{books[i].student_email}}</li>
               </p>
             </div>
@@ -76,7 +76,7 @@
               <small></small>
             </h2>
             <br>
-            <button type="button" class="btn btn-danger btn-block" (click)="onDismiss(reserveBookModal,books[i])">Dissmiss</button>
+            <button type="button" class="btn btn-danger btn-lg btn-block" (click)="onDismiss(reserveBookModal,books[i])">Dissmiss</button>
           </div>
         </a>
       </div>
