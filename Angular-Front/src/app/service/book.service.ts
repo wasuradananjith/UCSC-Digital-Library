@@ -133,5 +133,19 @@ export class BookService {
     headers.append('Content-Type','application/json');
     return this.http.post("http://localhost:3000/book/suggestion-dismiss",book,{headers:headers}).pipe(map(res=>res.json()));
   }
+
+  // get borrowed book details
+  getAllBorrows(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/get-borrows",{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // update borrow fine
+  updateBorrowFine(borrow){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/book/borrow-fine",borrow,{headers:headers}).pipe(map(res=>res.json()));
+  }
 }
 

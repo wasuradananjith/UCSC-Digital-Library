@@ -617,8 +617,33 @@ router.post("/suggestion-dismiss",(req,res)=>{
             res.json({state:false,msg:"Fail to delete the suggestion"});
         }
     });
+});
 
+// route to get all borrow details
+router.post("/get-borrows",(req,res)=>{
+    Borrow.getAllBorrows((error,borrow)=>{
+        if (borrow){
+            res.json({state:true,msg:borrow});
+        }
+        if (error || !borrow){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
 
+// route to get all borrow details
+router.post("/borrow-fine",(req,res)=>{
+    let borrow = req.body;
+    Borrow.updateBorrow(borrow,(error,borrow)=>{
+        if (borrow){
+            console.log(borrow);
+            res.json({state:true,msg:borrow});
+        }
+        if (error || !borrow){
+            console.log(borrow);
+            res.json({state:false,msg:[]});
+        }
+    });
 });
 
 module.exports = router;

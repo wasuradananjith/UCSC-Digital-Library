@@ -12,6 +12,8 @@ export class AdminHomeComponent implements OnInit {
   user:any;
   reservationCount:any;
   bookSuggestionCount:any;
+  fineCount=0;
+  borrowedCount=0;
   constructor(private bookService:BookService,private authService:AuthService,private router:Router) { }
 
   ngOnInit() {
@@ -30,13 +32,30 @@ export class AdminHomeComponent implements OnInit {
     }
 
     this.bookService.getTotalReservations().subscribe(res=>{
-      console.log(res);
       this.reservationCount = res.msg;
     });
 
     this.bookService.getTotalSuggestions().subscribe(res=>{
-      console.log(res);
       this.bookSuggestionCount = res.msg;
+    });
+
+    // get today date
+    let todaySeconds = new Date().getTime();
+
+    this.bookService.getAllBorrows().subscribe(res=>{
+      for (let borrow of res.msg) {
+        let borrowedDate = new Date(borrow.borrowed_date.substring(0,10));
+        let timeDiff = Math.abs(todaySeconds - borrowedDate.getTime());
+        let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))-1;
+        if (diffDays>7){
+          borrow.fine=diffDays*10;
+          this.fineCount++;
+          this.bookService.updateBorrowFine(borrow).subscribe(res=>{
+            console.log(res);
+          });
+        }
+        this.borrowedCount++;
+      }
     });
   }
 }

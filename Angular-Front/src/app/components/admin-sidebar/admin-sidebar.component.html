@@ -21,7 +21,7 @@
       </li>
       <li>
         <a [routerLink]="['/admin-home/reservations']"><i class="fa fa-tasks"></i> Reservations
-          <span class="badge badge-secondary">
+          <span class="badge badge-secondary pull-right" style="margin-top: 1%">
             <div *ngIf="reservationCount>0">
               {{reservationCount}} NEW
             </div>
@@ -30,13 +30,34 @@
       </li>
       <li>
         <a [routerLink]="['/admin-home/suggestions']"><i class="fa fa-comments"></i> Suggestions
-          <span class="badge badge-secondary">
+          <span class="badge badge-secondary pull-right" style="margin-top: 1%">
             <div *ngIf="bookSuggestionCount>0">
               {{bookSuggestionCount}} NEW
             </div>
           </span>
         </a>
       </li>
+
+      <li>
+        <a [routerLink]="['/admin-home/fines']"><i class="fas fa-shopping-cart"></i> Borrowed Books
+          <span class="badge badge-secondary pull-right" style="margin-top: 1%">
+            <div *ngIf="borrowedCount>0">
+              {{borrowedCount}} NEW
+            </div>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a [routerLink]="['/admin-home/fines']"><i class="fas fa-money-bill-alt"></i> Fines
+          <span class="badge badge-secondary pull-right" style="margin-top: 1%">
+            <div *ngIf="fineCount>0">
+              {{fineCount}} NEW
+            </div>
+          </span>
+        </a>
+      </li>
+
       <li>
         <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
       </li>

@@ -19,3 +19,13 @@ const Borrow = module.exports = mongoose.model("Borrow",borrowSchema);
 module.exports.saveBorrow = (newBorrow,callback)=>{
     newBorrow.save(callback);
 };
+
+// get all borrow details
+module.exports.getAllBorrows = (callback)=>{
+    Borrow.find({},callback);
+};
+
+// update borrow
+module.exports.updateBorrow = (borrow,callback)=> {
+    Borrow.findOneAndUpdate({email:borrow.email,isbn:borrow.isbn,borrowed_date:borrow.borrowed_date},{fine:borrow.fine},callback);
+};

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BookService} from "../../service/book.service";
 
+
 @Component({
   selector: 'app-admin-sidebar',
   templateUrl: './admin-sidebar.component.html',
@@ -9,6 +10,8 @@ import {BookService} from "../../service/book.service";
 export class AdminSidebarComponent implements OnInit {
   reservationCount:any;
   bookSuggestionCount:any;
+  fineCount=0;
+  borrowedCount=0;
   constructor(private bookService:BookService) { }
 
   ngOnInit() {
@@ -18,6 +21,15 @@ export class AdminSidebarComponent implements OnInit {
 
     this.bookService.getTotalSuggestions().subscribe(res=>{
       this.bookSuggestionCount = res.msg;
+    });
+
+    this.bookService.getAllBorrows().subscribe(res=>{
+      for (let fine of res.msg) {
+        this.borrowedCount++;
+        if(fine.fine!=null){
+          this.fineCount++;
+        }
+      }
     });
   }
 
