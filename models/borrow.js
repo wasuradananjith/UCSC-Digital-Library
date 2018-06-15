@@ -9,6 +9,7 @@ const borrowSchema = new schema({
     author:{type:String},
     subject:{type:String},
     borrowed_date:{type:String},
+    return_date:{type:String},
     fine:{type:String},
     copy:{type:Object}
 });

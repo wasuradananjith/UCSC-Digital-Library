@@ -91,6 +91,9 @@ export class AdminBooksComponent implements OnInit {
         if (res.state){
           this.flashMessage.show(res.msg, { cssClass: 'alert-success', timeout: 2000 });
           this.book={ isbn:'', title:'', author:'', subject:'', no_of_copies:''};
+          this.modalService.onHide.subscribe((reason: String) => {
+            window.location.reload();
+          });
         }
         else{
           this.flashMessage.show(res.msg, { cssClass: 'alert-danger', timeout: 2000 });

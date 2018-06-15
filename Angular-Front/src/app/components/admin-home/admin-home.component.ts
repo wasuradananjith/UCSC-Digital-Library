@@ -23,7 +23,7 @@ export class AdminHomeComponent implements OnInit {
     else{
       this.authService.getAdminHome().subscribe(res=>{
         this.user = res.user;
-        console.log(this.user)
+        console.log(this.user);
 
         if(this.user.type=="Student"){
           this.router.navigate(['student-home']);
@@ -44,11 +44,12 @@ export class AdminHomeComponent implements OnInit {
 
     this.bookService.getAllBorrows().subscribe(res=>{
       for (let borrow of res.msg) {
-        let borrowedDate = new Date(borrow.borrowed_date.substring(0,10));
-        let timeDiff = Math.abs(todaySeconds - borrowedDate.getTime());
+        let returnDate = new Date(borrow.return_date);
+        console.log(returnDate);
+        let timeDiff = todaySeconds - returnDate.getTime();
         let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))-1;
-        if (diffDays>7){
-          borrow.fine=diffDays*10;
+        if (diffDays>1){
+          borrow.fine=diffDays*5;
           this.fineCount++;
           this.bookService.updateBorrowFine(borrow).subscribe(res=>{
             console.log(res);

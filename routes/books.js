@@ -36,7 +36,7 @@ router.post("/add",(req,res)=>{
     if(fullDate<10){
         fullDate='0'+fullDate;
     }
-    let date = fullYear+'-'+fullMonth+'-'+fullDate;
+    let date = fullYear+'/'+fullMonth+'/'+fullDate;
 
     let hours = today.getHours();
     let minutes = today.getMinutes();
@@ -175,29 +175,12 @@ router.post("/reserve",(req,res)=>{
     let fullYear = today.getFullYear();
     let fullMonth = today.getMonth()+1;
     let fullDate = today.getDate();
-    if (fullMonth<10){
-        fullMonth='0'+fullMonth;
-    }
-    if(fullDate<10){
-        fullDate='0'+fullDate;
-    }
-    let date = fullYear+'-'+fullMonth+'-'+fullDate;
 
-    let hours = today.getHours();
-    let minutes = today.getMinutes();
-    let seconds = today.getSeconds();
+    // set reserved date
+    let dateReserved = fullYear+'/'+fullMonth+'/'+fullDate;
 
-    if (hours<10){
-        hours='0'+hours;
-    }
-    if (minutes<10){
-        minutes='0'+minutes;
-    }
-    if (seconds<10){
-        seconds='0'+seconds;
-    }
-    let time = hours + ":" + minutes + ":" + seconds;
-    let dateTime = date+' ' + time;
+    // set the date to return the book
+    today.setDate(today.getDate()+7);
 
     let isbn = copies[0].isbn; // to be inserted into the reservations collection
     let selectedCopy=null; // to be inserted into the reservations collection
@@ -205,7 +188,7 @@ router.post("/reserve",(req,res)=>{
     for (i = 0; i < copies.length; i++) {
         if (copies[i].availability=="Available"){
             copies[i].availability="Reserved";
-            copies[i].last_borrowed_date = dateTime;
+            copies[i].last_borrowed_date = dateReserved;
             selectedCopy= copies[i];
             break;
         }
@@ -351,7 +334,7 @@ router.post("/suggestion-add",(req,res)=>{
     if(fullDate<10){
         fullDate='0'+fullDate;
     }
-    let date = fullYear+'-'+fullMonth+'-'+fullDate;
+    let date = fullYear+'/'+fullMonth+'/'+fullDate;
 
     let hours = today.getHours();
     let minutes = today.getMinutes();
@@ -431,36 +414,21 @@ router.post("/reservation-search",(req,res)=>{
 // route to borrow a reserved book
 router.post("/reserve-borrow",(req,res)=>{
 
+    // get today date
     let today = new Date();
     let fullYear = today.getFullYear();
     let fullMonth = today.getMonth()+1;
     let fullDate = today.getDate();
-    if (fullMonth<10){
-        fullMonth='0'+fullMonth;
-    }
-    if(fullDate<10){
-        fullDate='0'+fullDate;
-    }
-    let date = fullYear+'-'+fullMonth+'-'+fullDate;
 
-    let hours = today.getHours();
-    let minutes = today.getMinutes();
-    let seconds = today.getSeconds();
+    // set borrowed date
+    let dateBorrowed = fullYear+'/'+fullMonth+'/'+fullDate;
 
-    if (hours<10){
-        hours='0'+hours;
-    }
-    if (minutes<10){
-        minutes='0'+minutes;
-    }
-    if (seconds<10){
-        seconds='0'+seconds;
-    }
-    let time = hours + ":" + minutes + ":" + seconds;
-    let dateTime = date+' ' + time;
+    // set the date to return the book
+    today.setDate(today.getDate()+7);
+    let dateToReturn = today.getFullYear()+'/'+ (today.getMonth()+1) +'/'+today.getDate();
 
     req.body.copy.availability="Borrowed";
-    req.body.copy.last_borrowed_date=dateTime;
+    req.body.copy.last_borrowed_date=dateBorrowed;
 
     const newBorrow =  new Borrow({
         email:req.body.email,
@@ -469,7 +437,9 @@ router.post("/reserve-borrow",(req,res)=>{
         title:req.body.title,
         author:req.body.author,
         subject:req.body.subject,
-        borrowed_date:dateTime,
+        borrowed_date:dateBorrowed,
+        borrowed_time:dateBorrowed,
+        return_date:dateToReturn,
         fine:null,
         copy:req.body.copy
     });
@@ -485,7 +455,7 @@ router.post("/reserve-borrow",(req,res)=>{
                    for (i = 0; i < returnedBook.copies.length; i++) {
                        if (returnedBook.copies[i]._id==req.body.copy._id){
                            returnedBook.copies[i].availability="Borrowed";
-                           returnedBook.copies[i].last_borrowed_date = dateTime;
+                           returnedBook.copies[i].last_borrowed_date = dateBorrowed;
                            break;
                        }
                    }
@@ -524,38 +494,23 @@ router.post("/borrow",(req,res)=>{
 
     let selectedCopy;
 
+    // get today date
     let today = new Date();
     let fullYear = today.getFullYear();
     let fullMonth = today.getMonth()+1;
     let fullDate = today.getDate();
-    if (fullMonth<10){
-        fullMonth='0'+fullMonth;
-    }
-    if(fullDate<10){
-        fullDate='0'+fullDate;
-    }
-    let date = fullYear+'-'+fullMonth+'-'+fullDate;
 
-    let hours = today.getHours();
-    let minutes = today.getMinutes();
-    let seconds = today.getSeconds();
+    // set borrowed date
+    let dateBorrowed = fullYear+'/'+fullMonth+'/'+fullDate;
 
-    if (hours<10){
-        hours='0'+hours;
-    }
-    if (minutes<10){
-        minutes='0'+minutes;
-    }
-    if (seconds<10){
-        seconds='0'+seconds;
-    }
-    let time = hours + ":" + minutes + ":" + seconds;
-    let dateTime = date+' ' + time;
+    // set the date to return the book
+    today.setDate(today.getDate()+7);
+    let dateToReturn = today.getFullYear()+'/'+ (today.getMonth()+1) +'/'+today.getDate();
 
     for (i = 0; i < req.body.book.copies.length; i++) {
         if (req.body.book.copies[i].availability=="Available"){
             req.body.book.copies[i].availability="Borrowed";
-            req.body.book.copies[i].last_borrowed_date = dateTime;
+            req.body.book.copies[i].last_borrowed_date = dateBorrowed;
             selectedCopy= req.body.book.copies[i];
             break;
         }
@@ -568,7 +523,8 @@ router.post("/borrow",(req,res)=>{
         title:req.body.book.title,
         author:req.body.book.author,
         subject:req.body.book.subject,
-        borrowed_date:dateTime,
+        borrowed_date:dateBorrowed,
+        return_date:dateToReturn,
         fine:null,
         copy:selectedCopy
     });
@@ -632,7 +588,7 @@ router.post("/get-borrows",(req,res)=>{
     });
 });
 
-// route to get all borrow details
+// route to update the fines
 router.post("/borrow-fine",(req,res)=>{
     let borrow = req.body;
     Borrow.updateBorrow(borrow,(error,borrow)=>{
