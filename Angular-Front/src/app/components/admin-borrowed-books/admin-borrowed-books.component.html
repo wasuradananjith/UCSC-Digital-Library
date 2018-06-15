@@ -89,7 +89,10 @@
               <small></small>
             </h2>
             <br>
-            <button type="button" class="btn btn-success btn-lg btn-block" (click)="onReturn(reserveBookModal,books[i])">Return Book!</button>
+            <button *ngIf="books[i].fine==null" type="button" class="btn btn-success btn-lg btn-block" (click)="onReturn(reserveBookModal,books[i])">Return Book!</button>
+            <label *ngIf="books[i].fine==null"><small  style="color: green">Return before {{books[i].return_date}}</small></label>
+            <button *ngIf="books[i].fine!=null" type="button" class="btn btn-danger btn-lg btn-block" (click)="onReturn(reserveBookModal,books[i])">Return Book!</button>
+            <label *ngIf="books[i].fine!=null"><small  style="color: red">Overdued on {{books[i].return_date}}</small></label>
           </div>
         </a>
       </div>

@@ -83,9 +83,10 @@
           </div>
           <div class="col-md-2 text-center">
             <br>
-            <h2 *ngIf="books[i].fine!=null">
-              <span class="label label-warning">Fine Rs.{{books[i].fine}}</span>
-            </h2>
+            <div *ngIf="books[i].fine!=null">
+              <h2><small  style="color: red">Overdued on {{books[i].return_date}}</small></h2>
+              <h2><span class="label label-warning">Fine Rs.{{books[i].fine}}</span></h2>
+            </div>
           </div>
         </a>
       </div>

@@ -25,7 +25,7 @@ export class AdminFinesComponent implements OnInit {
     else{
       this.authService.getAdminHome().subscribe(res=>{
         this.user = res.user;
-        console.log(this.user)
+        console.log(this.user);
 
         if(this.user.type=="Student"){
           this.router.navigate(['student-home']);
