@@ -19,6 +19,7 @@ const config = require('./config/database');
 const user = require('./routes/users');
 const book = require('./routes/books');
 const student = require('./routes/students');
+const report = require('./routes/reports');
 
 const connection = mongoose.connect(config.database);
 if(connection){
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname,"public"))); // front-end is in publi
 app.use('/user',user);
 app.use('/book',book);
 app.use('/student',student);
+app.use('/report',report);
 
 app.get("/",(req,res)=>{
     res.send("UCSC Library");

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule,Routes } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule} from "@angular/http";
-import { ModalModule,BsDropdownModule,CarouselModule  } from 'ngx-bootstrap';
+import { ModalModule,BsDropdownModule,CarouselModule,TabsModule  } from 'ngx-bootstrap';
 import { FlashMessagesModule,FlashMessagesService } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
@@ -12,7 +12,6 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { AuthService } from './service/auth.service';
-import { StudentService } from './service/student.service';
 import { AuthGuard } from './service/auth.guard';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { StudentHomeComponent } from './components/student-home/student-home.component'
@@ -30,6 +29,7 @@ import { AdminSuggestionsComponent } from './components/admin-suggestions/admin-
 import { AdminBorrowedBooksComponent } from './components/admin-borrowed-books/admin-borrowed-books.component';
 import { AdminFinesComponent } from './components/admin-fines/admin-fines.component';
 import { AdminBorrowHistoryComponent } from './components/admin-borrow-history/admin-borrow-history.component';
+import { AdminReportsComponent } from './components/admin-reports/admin-reports.component';
 
 /*
 const applicationRoutes:Routes=[
@@ -67,7 +67,8 @@ export function tokenGetter() {
     AdminSuggestionsComponent,
     AdminBorrowedBooksComponent,
     AdminFinesComponent,
-    AdminBorrowHistoryComponent
+    AdminBorrowHistoryComponent,
+    AdminReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +79,7 @@ export function tokenGetter() {
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
+    TabsModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

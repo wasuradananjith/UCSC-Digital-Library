@@ -3,6 +3,9 @@ const router = express.Router();
 const Student = require('../models/student');
 const config = require('../config/database');
 
+router.get("",(req,res)=>{
+    res.send("Hello Students");
+});
 
 // route to get all the book details
 router.post("/get-all",(req,res)=>{

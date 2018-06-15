@@ -12,6 +12,7 @@ import {AdminSuggestionsComponent} from "./components/admin-suggestions/admin-su
 import {AdminBorrowedBooksComponent} from "./components/admin-borrowed-books/admin-borrowed-books.component";
 import {AdminFinesComponent} from "./components/admin-fines/admin-fines.component";
 import {AdminBorrowHistoryComponent} from "./components/admin-borrow-history/admin-borrow-history.component";
+import {AdminReportsComponent} from "./components/admin-reports/admin-reports.component";
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path:'admin-home/suggestions',component:AdminSuggestionsComponent},
   {path:'admin-home/borrowed-books',component:AdminBorrowedBooksComponent},
   {path:'admin-home/fines',component:AdminFinesComponent},
-  {path:'admin-home/borrow-history',component:AdminBorrowHistoryComponent}
+  {path:'admin-home/borrow-history',component:AdminBorrowHistoryComponent},
+  {path:'admin-home/reports',component:AdminReportsComponent},
 ];
 
 
