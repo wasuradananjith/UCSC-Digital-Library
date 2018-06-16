@@ -15,6 +15,7 @@ import {AdminBorrowHistoryComponent} from "./components/admin-borrow-history/adm
 import {AdminReportsComponent} from "./components/admin-reports/admin-reports.component";
 import {StudentBorrowedBooksComponent} from "./components/student-borrowed-books/student-borrowed-books.component";
 import {StudentBorrowHistoryComponent} from "./components/student-borrow-history/student-borrow-history.component";
+import {StudentFinesComponent} from "./components/student-fines/student-fines.component";
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path:'student-home/reservations',component:StudentReservationComponent},
   {path:'student-home/borrowed-books',component:StudentBorrowedBooksComponent},
   {path:'student-home/borrow-history',component:StudentBorrowHistoryComponent},
+  {path:'student-home/fines',component:StudentFinesComponent}
 ];
 
 

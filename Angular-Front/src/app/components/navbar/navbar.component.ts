@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
     this.myAlertType="Success";
     this.modalRef = this.modalService.show(template);
     //this.flashMessage.show('You are successfully logged out', { cssClass: 'alert-success', timeout: 3000 });
-    this.router.navigate(['']);
+    this.router.navigate(['login']);
     return false;
   }
 

@@ -18,22 +18,34 @@
       </li>
       <li>
         <a [routerLink]="['/student-home/reservations']"><i class="fa fa-tasks"></i> Reservations
-          <span class="badge badge-secondary">
+          <span class="badge badge-secondary pull-right">
             <div *ngIf="reservationCount>0">
               {{reservationCount}} NEW
             </div>
           </span>
         </a>
       </li>
+
       <li>
         <a [routerLink]="['/student-home/borrowed-books']"><i class="fa fa-book"></i> Borrowed Books
-          <span class="badge badge-secondary">
+          <span class="badge badge-secondary pull-right">
             <div *ngIf="borrowCount>0">
               {{borrowCount}} NEW
             </div>
           </span>
 
         </a>
+      </li>
+
+      <li>
+        <a [routerLink]="['/student-home/fines']"><i class="fas fa-money-bill-alt"></i> Fines
+          <span class="badge badge-secondary pull-right" style="margin-top: 1%">
+            <div *ngIf="fineCount>0">
+              {{fineCount}} NEW
+            </div>
+          </span>
+        </a>
+
       </li>
 
       <li>

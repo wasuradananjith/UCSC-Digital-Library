@@ -1,0 +1,80 @@
+<div *ngIf="user">
+  <app-student-sidebar></app-student-sidebar>
+
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Fines</h1>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+      <div *ngIf="fineCount==0" class="row center">
+          <p>No fines</p>
+      </div>
+
+      <div *ngIf="fineCount!=0">
+        <div *ngFor="let book of books; let i = index" class="list-group">
+          <div *ngIf="book.fine!=null">
+            <a class="list-group-item">
+              <div class="media col-md-3">
+                <figure class="pull-left center my-image">
+                  <img class="img-responsive" src="http://covers.openlibrary.org/b/isbn/{{books[i].isbn}}.jpg" alt="No cover" />
+                </figure>
+              </div>
+              <div class="col-md-7">
+                <h4 class="list-group-item-heading">{{books[i].title}}</h4>
+                <div class="col-md-6">
+                  <p class="list-group-item-text">
+                    <br>
+                  <li><strong>ISBN</strong> - {{books[i].isbn}}</li>
+                  <li><strong>Author</strong> - {{books[i].author}}</li>
+                  <li><strong>Category</strong> - {{books[i].subject}}</li>
+                  <br>
+                  <li><strong>Date Borrowed</strong> - {{books[i].borrowed_date}}</li>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-2 text-center">
+                <h2 *ngIf="books[i].fine!=null">
+                  <span class="label label-warning">Fine Rs.{{books[i].fine}}</span>
+                </h2>
+                <h2 *ngIf="books[i].fine==null">
+                  <small></small>
+                </h2>
+                <br>
+                <label *ngIf="books[i].fine==null"><h3  style="color: green">Return before {{books[i].return_date}}</h3></label>
+                <label *ngIf="books[i].fine!=null"><h3  style="color: red">Overdued on {{books[i].return_date}}</h3></label>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Model for Alert-->
+<ng-template #reserveBookModal>
+  <div class="my-modal">
+    <div class="modal-header">
+      <h2 class="modal-title pull-left">Alert</h2>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="alertType=='Success'">
+        <strong><h4 style="color: darkgreen">{{message}}</h4></strong>
+      </div>
+      <div *ngIf="alertType=='Error'">
+        <strong><h4 style="color: #a90000">{{message}}</h4></strong>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
