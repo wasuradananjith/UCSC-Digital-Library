@@ -85,9 +85,9 @@
             <h2 *ngIf="books[i].fine!=null">
               <span class="label label-warning">Fine Rs.{{books[i].fine}}</span>
             </h2>
-            <h2 *ngIf="books[i].fine==null">
-              <small>Returned On {{books[i].returned_date}}h</small>
-            </h2>
+            <label *ngIf="books[i].fine==null" style="color: green">
+              <h3>Returned On {{books[i].returned_date}}</h3>
+            </label>
             <br>
           </div>
         </a>

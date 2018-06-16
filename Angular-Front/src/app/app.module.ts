@@ -31,6 +31,7 @@ import { AdminFinesComponent } from './components/admin-fines/admin-fines.compon
 import { AdminBorrowHistoryComponent } from './components/admin-borrow-history/admin-borrow-history.component';
 import { AdminReportsComponent } from './components/admin-reports/admin-reports.component';
 import { StudentBorrowedBooksComponent } from './components/student-borrowed-books/student-borrowed-books.component';
+import { StudentBorrowHistoryComponent } from './components/student-borrow-history/student-borrow-history.component';
 
 /*
 const applicationRoutes:Routes=[
@@ -70,7 +71,8 @@ export function tokenGetter() {
     AdminFinesComponent,
     AdminBorrowHistoryComponent,
     AdminReportsComponent,
-    StudentBorrowedBooksComponent
+    StudentBorrowedBooksComponent,
+    StudentBorrowHistoryComponent
   ],
   imports: [
     BrowserModule,

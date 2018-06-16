@@ -52,11 +52,18 @@ export class BookService {
     return this.http.post(this.baseURL+"suggestion-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
 
-  // search suggestion details
+  // search return details
   filterReturnDetails(searchText){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this.http.post(this.baseURL+"return-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // search return details for a particular student
+  filterReturnDetailsStudent(details){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post(this.baseURL+"return-search-student",details,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // search book details

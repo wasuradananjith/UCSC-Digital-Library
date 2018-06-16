@@ -14,6 +14,7 @@ import {AdminFinesComponent} from "./components/admin-fines/admin-fines.componen
 import {AdminBorrowHistoryComponent} from "./components/admin-borrow-history/admin-borrow-history.component";
 import {AdminReportsComponent} from "./components/admin-reports/admin-reports.component";
 import {StudentBorrowedBooksComponent} from "./components/student-borrowed-books/student-borrowed-books.component";
+import {StudentBorrowHistoryComponent} from "./components/student-borrow-history/student-borrow-history.component";
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path:'admin-home/reports',component:AdminReportsComponent},
   {path:'student-home/books',component:StudentBooksComponent},
   {path:'student-home/reservations',component:StudentReservationComponent},
-  {path:'student-home/borrowed-books',component:StudentBorrowedBooksComponent}
+  {path:'student-home/borrowed-books',component:StudentBorrowedBooksComponent},
+  {path:'student-home/borrow-history',component:StudentBorrowHistoryComponent},
 ];
 
 

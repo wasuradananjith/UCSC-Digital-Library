@@ -1,10 +1,10 @@
 <div *ngIf="user">
-  <app-admin-sidebar></app-admin-sidebar>
+  <app-student-sidebar></app-student-sidebar>
 
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">Borrowed Books</h1>
+        <h1 class="page-header">Borrow History</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -13,12 +13,13 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group">
-          <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by book details/ student details...">
+          <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by book details...">
           <span class="input-group-btn">
         <button class="btn btn-azure" style="width: 50px" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
       </span>
         </div><!-- /input-group -->
       </div><!-- /.col-lg-6 -->
+
 
     </div>
 
@@ -44,21 +45,10 @@
               <li><strong>ISBN</strong> - {{books[i].isbn}}</li>
               <li><strong>Author</strong> - {{books[i].author}}</li>
               <li><strong>Category</strong> - {{books[i].subject}}</li>
-
-              <br>
               <li><strong>Date Added</strong> - {{books[i].copy.date_added}}h</li>
               </p>
             </div>
 
-            <div class="col-md-6">
-              <p class="list-group-item-text">
-                <br>
-              <li><strong>Student Name</strong> - {{books[i].student.name}}</li>
-              <li><strong>Reg No</strong> - {{books[i].student.reg_no}}</li>
-              <li><strong>Index No</strong> - {{books[i].student.index_no}}</li>
-              <li><strong>Email</strong> - <small>{{books[i].student.email}}</small></li>
-              <li><strong>Date Borrowed</strong> - {{books[i].borrowed_date}}</li>
-            </div>
           </div>
           <div class="col-md-2 text-center">
             <h2 *ngIf="books[i].fine!=null">
@@ -68,10 +58,8 @@
               <small></small>
             </h2>
             <br>
-            <button *ngIf="books[i].fine==null" type="button" class="btn btn-success btn-lg btn-block" (click)="onReturn(reserveBookModal,books[i])">Return Book!</button>
-            <label *ngIf="books[i].fine==null"><small  style="color: green">Return before {{books[i].return_date}}</small></label>
-            <button *ngIf="books[i].fine!=null" type="button" class="btn btn-danger btn-lg btn-block" (click)="onReturn(reserveBookModal,books[i])">Return Book!</button>
-            <label *ngIf="books[i].fine!=null"><small  style="color: red">Overdued on {{books[i].return_date}}</small></label>
+            <label *ngIf="books[i].fine==null"><h3  style="color: green">Returned on {{books[i].returned_date}}</h3></label>
+            <label *ngIf="books[i].fine!=null"><h3  style="color: red">Returned on {{books[i].returned_date}}</h3></label>
           </div>
         </a>
       </div>

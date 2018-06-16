@@ -657,33 +657,15 @@ router.post("/borrow-search",(req,res)=>{
 
 // route to filter/search borrow details
 router.post("/return",(req,res)=>{
+
+    // get today date
     let today = new Date();
     let fullYear = today.getFullYear();
     let fullMonth = today.getMonth()+1;
     let fullDate = today.getDate();
-    if (fullMonth<10){
-        fullMonth='0'+fullMonth;
-    }
-    if(fullDate<10){
-        fullDate='0'+fullDate;
-    }
-    let date = fullYear+'-'+fullMonth+'-'+fullDate;
 
-    let hours = today.getHours();
-    let minutes = today.getMinutes();
-    let seconds = today.getSeconds();
-
-    if (hours<10){
-        hours='0'+hours;
-    }
-    if (minutes<10){
-        minutes='0'+minutes;
-    }
-    if (seconds<10){
-        seconds='0'+seconds;
-    }
-    let time = hours + ":" + minutes + ":" + seconds;
-    let dateTime = date+' ' + time;
+    // set returned date
+    let dateReturned = fullYear+'/'+fullMonth+'/'+fullDate;
 
     req.body.copy.availability="Available";
 
@@ -695,7 +677,7 @@ router.post("/return",(req,res)=>{
         author:req.body.author,
         subject:req.body.subject,
         borrowed_date:req.body.borrowed_date,
-        returned_date:dateTime,
+        returned_date:dateReturned,
         fine:req.body.fine,
         copy:req.body.copy
     });
@@ -748,6 +730,18 @@ router.post("/return",(req,res)=>{
 router.post("/return-search",(req,res)=>{
     const searchText = req.body.enteredText;
     Return.searchReturnedBooks(searchText,(error,books)=>{
+        if (books){
+            res.json({state:true,msg:books});
+        }
+        if (error || !books){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
+// route to filter/search returned books details for a particular student
+router.post("/return-search-student",(req,res)=>{
+    Return.searchReturnedBooksByStudent(req.body,(error,books)=>{
         if (books){
             res.json({state:true,msg:books});
         }

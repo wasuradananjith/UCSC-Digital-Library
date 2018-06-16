@@ -21,7 +21,7 @@ module.exports.saveReturn = (newReturn,callback)=>{
     newReturn.save(callback);
 };
 
-// fetch all the reservations
+// fetch all the returned books
 module.exports.searchReturnedBooks = (searchText,callback)=> {
     let text = "/"+searchText+"/i";
     Return.find({$or:[{title: new RegExp(searchText, "i")},
@@ -36,4 +36,18 @@ module.exports.searchReturnedBooks = (searchText,callback)=> {
             {"student.address": new RegExp(searchText, "i")},
             {"student.nic": new RegExp(searchText, "i")}
         ]}, callback).sort({ title: 1 });
+};
+
+// fetch all the returned books for a particular student
+module.exports.searchReturnedBooksByStudent = (details,callback)=> {
+    Return.find(
+        {$and:[
+            {email:details.email},
+            {$or: [{title: new RegExp(details.enteredText, "i")},
+                        {isbn: new RegExp(details.enteredText, "i")},
+                        {author: new RegExp(details.enteredText, "i")},
+                        {subject: new RegExp(details.enteredText, "i")}
+                        ]}
+                        ]
+        }, callback);
 };
