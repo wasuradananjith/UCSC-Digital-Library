@@ -8,12 +8,17 @@ import { BookService } from '../../service/book.service';
 })
 export class StudentSidebarComponent implements OnInit {
   reservationCount="";
+  borrowCount="";
   user:any;
   constructor(private bookService:BookService) {}
 
   ngOnInit() {
     this.bookService.getReservationCount().subscribe(res=>{
       this.reservationCount = res.msg;
+    });
+
+    this.bookService.getBorrowCount(JSON.parse(localStorage.getItem("user"))).subscribe(res=>{
+      this.borrowCount = res.msg;
     });
   }
 

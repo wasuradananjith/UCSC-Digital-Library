@@ -35,7 +35,7 @@ export class AdminBorrowedBooksComponent implements OnInit {
         }
       });
 
-      this.onKey("true"); // to load all reservations
+      this.onKey("true"); // to load all borrowed books
     }
   }
 

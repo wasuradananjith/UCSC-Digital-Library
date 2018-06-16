@@ -84,6 +84,13 @@ export class BookService {
     return this.http.post(this.baseURL+"reservation-count",student,{headers:headers}).pipe(map(res=>res.json()));
   }
 
+  // get the borrow count for a particular user
+  getBorrowCount(student){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post(this.baseURL+"borrow-count",student,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
   // get the reservations for a particular user
   fetchAllReservations(){
     let student = JSON.parse(localStorage.getItem("user"));

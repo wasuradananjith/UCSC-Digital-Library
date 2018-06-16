@@ -75,3 +75,7 @@
 .fa, .fas{
   padding-right: 2%;
 }
+
+.sidebar ul>li>a:focus{
+  color: #1f003e;
+}

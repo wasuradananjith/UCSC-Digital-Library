@@ -244,6 +244,19 @@ router.post("/reservation-count",(req,res)=>{
     });
 });
 
+// route to get borrow count for a particular user
+router.post("/borrow-count",(req,res)=>{
+    const email = req.body.email;
+    Borrow.getCount(email,(error,count)=>{
+        if (count){
+            res.json({state:true,msg:count});
+        }
+        if (error || !count){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
 // route to get total reservations count
 router.post("/reservation-total",(req,res)=>{
     Reservation.getTotalCount((error,count)=>{
@@ -492,60 +505,86 @@ router.post("/reserve-borrow",(req,res)=>{
 // route to borrow a book
 router.post("/borrow",(req,res)=>{
 
-    let selectedCopy;
+    let student_email = req.body.student.email;
+    let book_isbn = req.body.book.isbn;
 
-    // get today date
-    let today = new Date();
-    let fullYear = today.getFullYear();
-    let fullMonth = today.getMonth()+1;
-    let fullDate = today.getDate();
-
-    // set borrowed date
-    let dateBorrowed = fullYear+'/'+fullMonth+'/'+fullDate;
-
-    // set the date to return the book
-    today.setDate(today.getDate()+7);
-    let dateToReturn = today.getFullYear()+'/'+ (today.getMonth()+1) +'/'+today.getDate();
-
-    for (i = 0; i < req.body.book.copies.length; i++) {
-        if (req.body.book.copies[i].availability=="Available"){
-            req.body.book.copies[i].availability="Borrowed";
-            req.body.book.copies[i].last_borrowed_date = dateBorrowed;
-            selectedCopy= req.body.book.copies[i];
-            break;
+    Reservation.checkSimilarReservations({email:student_email, isbn:book_isbn},(error,isReserved)=>{
+        if (isReserved!=""){
+            res.json({state:false,msg:"You have already reserved a copy of this book!"});
         }
-    }
-
-    const newBorrow =  new Borrow({
-        email:req.body.student.email,
-        student:req.body.student,
-        isbn:req.body.book.isbn,
-        title:req.body.book.title,
-        author:req.body.book.author,
-        subject:req.body.book.subject,
-        borrowed_date:dateBorrowed,
-        return_date:dateToReturn,
-        fine:null,
-        copy:selectedCopy
-    });
-
-    // add new record to the borrows
-    Borrow.saveBorrow(newBorrow,(error,borrow)=>{
-        if (borrow){
-            let returnedBook = req.body.book;
-            // update the book
-            Book.updateBook(returnedBook,(error,bookUpdate)=>{
-                if (bookUpdate){
-                    res.json({state:true,msg:"Borrow Successful!"});
+        if (error){
+            res.json({state:false,msg:"Failed to borrow"});
+        }
+        // not borrowing a the same reserved book twice
+        if (isReserved==""){
+            // check whether the student is borrowing the same book twice
+            Borrow.checkSimilarBooks({email:student_email, isbn: book_isbn},(error,foundSimilar)=>{
+                if (foundSimilar!=""){
+                    res.json({state:false,msg:"You have already borrowed this book!"});
                 }
-                if (error || !bookUpdate){
+                if (error){
                     res.json({state:false,msg:"Failed to borrow"});
                 }
-            });
+                // not borrowing the same book twice
+                if (foundSimilar==""){
+                    let selectedCopy;
 
-        }
-        if (error || !borrow){
-            res.json({state:false,msg:"Failed to borrow"});
+                    // get today date
+                    let today = new Date();
+                    let fullYear = today.getFullYear();
+                    let fullMonth = today.getMonth()+1;
+                    let fullDate = today.getDate();
+
+                    // set borrowed date
+                    let dateBorrowed = fullYear+'/'+fullMonth+'/'+fullDate;
+
+                    // set the date to return the book
+                    today.setDate(today.getDate()+7);
+                    let dateToReturn = today.getFullYear()+'/'+ (today.getMonth()+1) +'/'+today.getDate();
+
+                    for (i = 0; i < req.body.book.copies.length; i++) {
+                        if (req.body.book.copies[i].availability=="Available"){
+                            req.body.book.copies[i].availability="Borrowed";
+                            req.body.book.copies[i].last_borrowed_date = dateBorrowed;
+                            selectedCopy= req.body.book.copies[i];
+                            break;
+                        }
+                    }
+
+                    const newBorrow =  new Borrow({
+                        email:req.body.student.email,
+                        student:req.body.student,
+                        isbn:req.body.book.isbn,
+                        title:req.body.book.title,
+                        author:req.body.book.author,
+                        subject:req.body.book.subject,
+                        borrowed_date:dateBorrowed,
+                        return_date:dateToReturn,
+                        fine:null,
+                        copy:selectedCopy
+                    });
+
+                    // add new record to the borrows
+                    Borrow.saveBorrow(newBorrow,(error,borrow)=>{
+                        if (borrow){
+                            let returnedBook = req.body.book;
+                            // update the book
+                            Book.updateBook(returnedBook,(error,bookUpdate)=>{
+                                if (bookUpdate){
+                                    res.json({state:true,msg:"Borrow Successful!"});
+                                }
+                                if (error || !bookUpdate){
+                                    res.json({state:false,msg:"Failed to borrow"});
+                                }
+                            });
+
+                        }
+                        if (error || !borrow){
+                            res.json({state:false,msg:"Failed to borrow"});
+                        }
+                    });
+                }
+            });
         }
     });
 });

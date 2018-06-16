@@ -15,7 +15,9 @@
       <div>
         <tabset>
           <tab heading="Overdues (Fines)" id="tab1">
-            Basic content
+            <br>
+            <button class="btn btn-azure" (click)="generateAllFines()">Generate All Fines</button>
+
           </tab>
           <tab heading="Books">Basic content 1</tab>
           <tab heading="Basic Title 2">Basic content 2</tab>
@@ -27,4 +29,66 @@
   </div>
 </div>
 
+<table id="basic-table" style="display: none;">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Country</th>
+    <th>IP-address</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td align="right">1</td>
+    <td>Donna</td>
+    <td>Moore</td>
+    <td>dmoore0@furl.net</td>
+    <td>China</td>
+    <td>211.56.242.221</td>
+  </tr>
+  <tr>
+    <td align="right">2</td>
+    <td>Janice</td>
+    <td>Henry</td>
+    <td>jhenry1@theatlantic.com</td>
+    <td>Ukraine</td>
+    <td>38.36.7.199</td>
+  </tr>
+  <tr>
+    <td align="right">3</td>
+    <td>Ruth</td>
+    <td>Wells</td>
+    <td>rwells2@constantcontact.com</td>
+    <td>Trinidad and Tobago</td>
+    <td>19.162.133.184</td>
+  </tr>
+  <tr>
+    <td align="right">4</td>
+    <td>Jason</td>
+    <td>Ray</td>
+    <td>jray3@psu.edu</td>
+    <td>Brazil</td>
+    <td>10.68.11.42</td>
+  </tr>
+  <tr>
+    <td align="right">5</td>
+    <td>Jane</td>
+    <td>Stephens</td>
+    <td>jstephens4@go.com</td>
+    <td>United States</td>
+    <td>47.32.129.71</td>
+  </tr>
+  <tr>
+    <td align="right">6</td>
+    <td>Adam</td>
+    <td>Nichols</td>
+    <td>anichols5@com.com</td>
+    <td>Canada</td>
+    <td>18.186.38.37</td>
+  </tr>
+  </tbody>
+</table>
 

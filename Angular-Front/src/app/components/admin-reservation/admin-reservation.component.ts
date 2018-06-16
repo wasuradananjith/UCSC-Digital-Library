@@ -74,19 +74,31 @@ export class AdminReservationComponent implements OnInit {
 
   // when the borrow button is pressed
   onBorrow(template:TemplateRef<any>,book) {
-    this.bookService.borrowReservation(book).subscribe(res => {
-      if (res.state) {
-        this.alertType = "Success";
-        this.message = res.msg;
-      }
-      else {
+    let student = {email:book.email};
+
+    this.bookService.getBorrowCount(student).subscribe(res=>{
+      // if the borrowed count is 2 or greater
+      if (res.msg>=2){
         this.alertType = "Error";
-        this.message = res.msg;
+        this.message = book.student.name+" have already borrowed 2 books!";
+        this.modalRef = this.modalService.show(template);
       }
-      this.modalRef = this.modalService.show(template);
-      this.modalService.onHide.subscribe((reason: String) => {
-        window.location.reload();
-      });
+      else{
+        this.bookService.borrowReservation(book).subscribe(res => {
+          if (res.state) {
+            this.alertType = "Success";
+            this.message = res.msg;
+          }
+          else {
+            this.alertType = "Error";
+            this.message = res.msg;
+          }
+          this.modalRef = this.modalService.show(template);
+          this.modalService.onHide.subscribe((reason: String) => {
+            window.location.reload();
+          });
+        });
+      }
     });
   }
 }

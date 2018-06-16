@@ -59,3 +59,8 @@ module.exports.getFilteredReservations = (searchText,callback)=> {
             {"student.nic": new RegExp(searchText, "i")}
         ]}, callback).sort({ title: 1 });
 };
+
+// check whether the student is trying to borrow a reserved book
+module.exports.checkSimilarReservations = (details,callback)=>{
+    Reservation.find(details,callback);
+};

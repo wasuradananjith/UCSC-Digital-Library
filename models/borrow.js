@@ -52,3 +52,14 @@ module.exports.searchBorrow = (searchText,callback)=> {
 module.exports.deleteBorrow = (book,callback)=>{
     Borrow.findOneAndDelete({_id:book._id},callback);
 };
+
+
+// get borrow count for a particular user
+module.exports.getCount = (email,callback)=>{
+    Borrow.count({email:email},callback);
+};
+
+// check whether the student borrowing the same book twice
+module.exports.checkSimilarBooks = (details,callback)=>{
+    Borrow.find(details,callback);
+};

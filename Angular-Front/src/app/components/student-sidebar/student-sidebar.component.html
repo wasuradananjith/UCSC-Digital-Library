@@ -26,6 +26,16 @@
         </a>
       </li>
       <li>
+        <a [routerLink]="['/student-home/borrowed-books']"><i class="fa fa-book"></i> Borrowed Books
+          <span class="badge badge-secondary">
+            <div *ngIf="borrowCount>0">
+              {{borrowCount}} NEW
+            </div>
+          </span>
+
+        </a>
+      </li>
+      <li>
         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
           <li>

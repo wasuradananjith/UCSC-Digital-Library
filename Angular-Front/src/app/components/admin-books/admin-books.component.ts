@@ -16,6 +16,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class AdminBooksComponent implements OnInit {
   modalRef: BsModalRef;
   message:String;
+  modalMessage:String;
   user:any;
   books:any;
   students:any;
@@ -138,19 +139,31 @@ export class AdminBooksComponent implements OnInit {
 
   // after selecting the student proceed to borrow
   onStudentSelect(template:TemplateRef<any>,student){
-    this.bookService.borrowBook(this.book,student).subscribe(res => {
-      if (res.state) {
-        this.alertType = "Success";
-        this.message = res.msg;
-      }
-      else {
+    this.bookService.getBorrowCount(student).subscribe(res=>{
+      // if the borrowed count is 2 or greater
+      if (res.msg>=2){
         this.alertType = "Error";
-        this.message = res.msg;
+        this.modalMessage = student.name+" have already borrowed 2 books!";
+        this.modalRef = this.modalService.show(template);
       }
-      this.modalRef = this.modalService.show(template);
-      this.modalService.onHide.subscribe((reason: String) => {
-        window.location.reload();
-      });
+      else{
+        this.bookService.borrowBook(this.book,student).subscribe(res => {
+          if (res.state) {
+            this.alertType = "Success";
+            this.modalMessage = res.msg;
+          }
+          else {
+            this.alertType = "Error";
+            this.modalMessage = res.msg;
+          }
+          this.modalRef = this.modalService.show(template);
+          this.modalService.onHide.subscribe((reason: String) => {
+            window.location.reload();
+          });
+        });
+      }
     });
+
+
   }
 }
