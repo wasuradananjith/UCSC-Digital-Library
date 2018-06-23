@@ -16,10 +16,14 @@
         <tabset>
           <tab heading="Overdue Fine" id="tab1">
             <br>
-
+            <div style="position: absolute; z-index: -1">
+              <div id="captureFineTable">
+                <img src="../../../assets/img/report-header.jpg" style="width: auto" alt="">
+              </div>
+            </div>
             <button class="btn btn-info pull-right" (click)="generateAllFines()">Print Report  <i class="fa fa-print"></i></button>
             <!-- /.row -->
-            <div id="captureFineTable">
+            <div>
               <br><br>
               <table class="table table-bordered">
                 <thead>

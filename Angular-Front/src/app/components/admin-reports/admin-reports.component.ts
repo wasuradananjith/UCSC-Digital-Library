@@ -57,6 +57,8 @@ export class AdminReportsComponent implements OnInit {
 
   generateAllFines(){
     this.totalFine=0;
+
+
     let columns = [
       {title: "Index/Reg No.", dataKey: "index"},
       {title: "Name", dataKey: "name"},
@@ -94,41 +96,51 @@ export class AdminReportsComponent implements OnInit {
       "odate":"",
       "fine":"Rs."+this.totalFine});
 
-// Only pt supported (not mm or in)
-    let doc = new jsPDF('p', 'pt');
-    doc.autoTable(columns, rows, {
-      styles: {overflow:"linebreak",fontSize:8,halign:'center'},
-      headerStyles: {fillColor:[142,78,156]},
-      columnStyles: {
-        "index": {columnWidth: 50},
-        "name": {columnWidth: 60},
-        "contact": {columnWidth: 80},
-        "isbn": {columnWidth: 80},
-        "title": {columnWidth: 110},
-        "bdate": {columnWidth: 50},
-        "odate": {columnWidth: 50},
-        "fine": {columnWidth: 40}
-      },
-      margin: {top: 60},
-      drawCell: function(cell, data) {
-        let rows = data.table.rows;
-        if (data.row.index == rows.length - 1) {
-          doc.setFillColor(224,224,224);
-          doc.setFontSize(11);
+    html2canvas(document.querySelector("#captureFineTable")).then(function (canvas) {
+      const imgData = canvas.toDataURL("image/png");
 
+
+// Only pt supported (not mm or in)
+      let doc = new jsPDF('p', 'pt');
+      doc.autoTable(columns, rows, {
+        styles: {overflow:"linebreak",fontSize:8,halign:'center'},
+        headerStyles: {fillColor:[142,78,156]},
+        columnStyles: {
+          "index": {columnWidth: 50},
+          "name": {columnWidth: 60},
+          "contact": {columnWidth: 80},
+          "isbn": {columnWidth: 80},
+          "title": {columnWidth: 110},
+          "bdate": {columnWidth: 50},
+          "odate": {columnWidth: 50},
+          "fine": {columnWidth: 40}
+        },
+        margin: {top: 150},
+        drawCell: function(cell, data) {
+          let rows = data.table.rows;
+          if (data.row.index == rows.length - 1) {
+            doc.setFillColor(224,224,224);
+            doc.setFontSize(11);
+
+          }
+        },
+        addPageContent: function(data) {
+          doc.addImage(imgData, 'PNG', 125,5,330,90);
+          doc.setFontSize(18);
+          doc.text("Overdue Fine Details",218,126);
         }
-      },
-      addPageContent: function(data) {
-        doc.text("Overdue Fine Details", 40, 30);
-      }
+      });
+
+
+      doc.save('Library-Dues-Report.pdf');
+      let string = doc.output('datauristring');
+      let iframe = "<iframe width='100%' height='100%' src='" + string + "'></iframe>"
+      let x = window.open();
+      x.document.open();
+      x.document.write(iframe);
+      x.document.close();
+
     });
-    doc.save('Library-Dues-Report.pdf');
-    let string = doc.output('datauristring');
-    let iframe = "<iframe width='100%' height='100%' src='" + string + "'></iframe>"
-    let x = window.open();
-    x.document.open();
-    x.document.write(iframe);
-    x.document.close();
   }
 
 }
