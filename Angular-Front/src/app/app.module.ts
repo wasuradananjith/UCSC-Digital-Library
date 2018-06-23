@@ -5,6 +5,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule} from "@angular/http";
 import { ModalModule,BsDropdownModule,CarouselModule,TabsModule  } from 'ngx-bootstrap';
 import { FlashMessagesModule,FlashMessagesService } from 'angular2-flash-messages';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -33,6 +34,8 @@ import { AdminReportsComponent } from './components/admin-reports/admin-reports.
 import { StudentBorrowedBooksComponent } from './components/student-borrowed-books/student-borrowed-books.component';
 import { StudentBorrowHistoryComponent } from './components/student-borrow-history/student-borrow-history.component';
 import { StudentFinesComponent } from './components/student-fines/student-fines.component';
+import { LatestBooksSliderComponent } from './components/latest-books-slider/latest-books-slider.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 /*
 const applicationRoutes:Routes=[
@@ -74,7 +77,9 @@ export function tokenGetter() {
     AdminReportsComponent,
     StudentBorrowedBooksComponent,
     StudentBorrowHistoryComponent,
-    StudentFinesComponent
+    StudentFinesComponent,
+    LatestBooksSliderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +87,7 @@ export function tokenGetter() {
     FormsModule,
     HttpModule,
     FlashMessagesModule,
+    AngularFontAwesomeModule,
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),

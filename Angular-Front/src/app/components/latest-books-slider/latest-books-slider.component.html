@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-header">Latest Books</h2>
+      <div class='col-md-12'>
+        <div class="row">
+
+          <div class="col-md-4" *ngFor="let book of booklist; let i = index">
+            <figure class="snip1401 my-image">
+              <img src="http://covers.openlibrary.org/b/isbn/{{book.isbn}}.jpg" style="height: 180px; padding-left: unset" alt="Haircutting" />
+              <figcaption>
+                <p><strong>{{book.title}}</strong></p>
+                <p>{{book.author}}</p>
+              </figcaption>
+              <a href="#"></a>
+            </figure>
+          </div>
+
+      </div>
+    </div>
+</div>
+

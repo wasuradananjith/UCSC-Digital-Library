@@ -17,11 +17,13 @@
               </div>
               <form [formGroup]="loginForm" (submit)="loginUser(LoginMsgModal)" novalidate>
 
-                <div class="form-group">
+                <div class="form-group inner-addon left-addon">
+                  <i class="glyphicon glyphicon-user"></i>
                   <input class="form-control" formControlName="login_email" type="email"  placeholder="Email" required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group inner-addon left-addon">
+                  <i class="glyphicon glyphicon-lock"></i>
                   <input class="form-control" formControlName="login_password" type="password"  placeholder="Password">
                   <a href="#" class="pull-xs-right">
                     <small>Forgot?</small>
@@ -44,7 +46,8 @@
               <p class="text-muted">Create a new account</p>
               <form [formGroup]="registerForm" (submit)="registerData(LoginMsgModal)" novalidate>
 
-                <div class="form-group">
+                <div class="form-group inner-addon left-addon">
+                  <i class="glyphicon glyphicon-pencil"></i>
                   <input class="form-control" formControlName="name" type="text"  placeholder="Full Name">
                   <div *ngIf="registerForm.controls['name'].invalid && (registerForm.controls['name'].touched)" class="invalid-feedback">
                     <div *ngIf="registerForm.controls['name'].errors.required">
@@ -53,7 +56,8 @@
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group inner-addon left-addon">
+                  <i class="glyphicon glyphicon-envelope"></i>
                   <input class="form-control" formControlName="email" type="email"  placeholder="Email">
                   <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].touched)" class="invalid-feedback">
                     <div *ngIf="registerForm.controls['email'].errors.required">
@@ -65,7 +69,8 @@
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group inner-addon left-addon">
+                  <i class="glyphicon glyphicon-lock"></i>
                   <input class="form-control" formControlName="password" type="password"  placeholder="Password">
                   <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].touched)" class="invalid-feedback">
                     <div *ngIf="registerForm.controls['password'].errors.required">
@@ -75,7 +80,8 @@
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group inner-addon left-addon">
+                  <i class="glyphicon glyphicon-eye-open"></i>
                   <input class="form-control" formControlName="cpassword" type="password"  placeholder="Confirm Password">
                   <div *ngIf="registerForm.controls['cpassword'].invalid && (registerForm.controls['cpassword'].touched)" class="invalid-feedback">
                     <div *ngIf="registerForm.controls['cpassword'].value != registerForm.controls['password'].value">

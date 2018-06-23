@@ -56,13 +56,6 @@ export class AdminBooksComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  // load all the books
-  loadAllBooks(){
-    this.bookService.fetchAllBookDetails().subscribe(res=>{
-      this.books = res.msg;
-    });
-  }
-
   // add a new book
   addBookData(){
     console.log(this.book);

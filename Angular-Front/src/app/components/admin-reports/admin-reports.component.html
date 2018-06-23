@@ -1,3 +1,4 @@
+<div class="my-background">
 <div *ngIf="user">
 
   <app-admin-sidebar></app-admin-sidebar>
@@ -58,7 +59,49 @@
             </div>
 
           </tab>
-          <tab heading="Books">Basic content 1</tab>
+          <tab heading="Borrowed Books">
+            <br>
+            <div style="position: absolute; z-index: -1">
+              <div id="captureFineTable">
+                <img src="../../../assets/img/report-header.jpg" style="width: auto" alt="">
+              </div>
+            </div>
+            <button class="btn btn-info pull-right" (click)="generateAllFines()">Print Report  <i class="fa fa-print"></i></button>
+            <!-- /.row -->
+            <div>
+              <br><br>
+              <table class="table table-bordered">
+                <thead>
+                <tr align="center">
+                  <th class="col-xs-1">Index/Reg No.</th>
+                  <th class="col-xs-1">Name</th>
+                  <th class="col-xs-2">Contact</th>
+                  <th class="col-xs-1">ISBN</th>
+                  <th class="col-xs-4">Title</th>
+                  <th class="col-xs-1">Borrowed Date</th>
+                  <th class="col-xs-1">Overdue Date</th>
+                  <th class="col-xs-1">Fine (Rs.)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let fine of fines; let i = index">
+                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.student.index_no}}<br>{{fine.student.reg_no}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.student.name}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-2">{{fine.student.email}}<br>{{fine.student.phone}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.isbn}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-4">{{fine.title}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.borrowed_date}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.return_date}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.fine}}</td>
+                </tr>
+                <tr style="font-size:120%;font-weight: bolder;background-color: #e0e0e0;padding: 1%">
+                  <td colspan="7" style="text-align: left;padding-left: 15%">TOTAL</td>
+                  <td class="col-xs-1">Rs. {{totalFine}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </tab>
           <tab heading="Basic Title 2">Basic content 2</tab>
         </tabset>
       </div>
@@ -67,5 +110,6 @@
   </div>
 </div>
 
+</div>
 
 

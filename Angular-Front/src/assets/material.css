@@ -130,11 +130,11 @@ button:focus {
   border-right:none;
 }
 
-.sidebar{
+/*.sidebar{
   -webkit-box-shadow: 4px 0px 5px -1px rgba(0,0,0,0.35);
   -moz-box-shadow: 4px 0px 5px -1px rgba(0,0,0,0.35);
   box-shadow: 4px 0px 5px -1px rgba(0,0,0,0.35);
-}
+}*/
 
 .sidebar li:hover{
   -webkit-box-shadow: 0px 6px 10px -1px rgba(0,0,0,0.11);

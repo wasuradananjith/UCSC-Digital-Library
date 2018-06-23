@@ -17,6 +17,7 @@ export class AdminReportsComponent implements OnInit {
   user:any;
   totalFine=0;
   fines:any;
+  books:any;
   message:String;
   searchText = {
     enteredText:""
@@ -36,6 +37,7 @@ export class AdminReportsComponent implements OnInit {
         }
       });
 
+      // load fine details
       this.bookService.filterBorrowDetails(this.searchText).subscribe(res=>{
         if(res.msg==""){
           this.message="No search results found";
@@ -50,6 +52,17 @@ export class AdminReportsComponent implements OnInit {
             }
           }
         }
+      });
+
+      // load borrowed books
+      this.bookService.filterBorrowDetails(this.searchText).subscribe(res=>{
+        if(res.msg==""){
+          this.message="No search results found";
+        }
+        else{
+          this.message="";
+        }
+        this.books = res.msg;
       });
     }
 

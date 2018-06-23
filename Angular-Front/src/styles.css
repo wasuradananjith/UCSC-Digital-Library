@@ -17,3 +17,14 @@
   color: #1f003e;
   width: 160px;
 }
+
+body{
+  /*background: linear-gradient(#000000,#000000,#000000);*/
+  background-image: url("assets/img/loginbackground.gif");
+  background-attachment: fixed;
+}
+
+.my-background{
+  background-color: rgba(76, 73, 87, 0.98);
+}
+

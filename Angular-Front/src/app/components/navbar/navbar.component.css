@@ -64,3 +64,13 @@ li .dropdown:hover .dropdown-content {
   color: #1f003e;
   margin-left: 43%;
 }
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+  background-color: #999999;
+}
+.dropdown-menu a{
+  color: white;
+}
+
