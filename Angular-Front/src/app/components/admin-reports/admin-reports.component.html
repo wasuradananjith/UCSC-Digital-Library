@@ -14,9 +14,44 @@
     <div class="row">
       <div>
         <tabset>
-          <tab heading="Overdues (Fines)" id="tab1">
+          <tab heading="Overdue Fine" id="tab1">
             <br>
-            <button class="btn btn-azure" (click)="generateAllFines()">Generate All Fines</button>
+
+            <button class="btn btn-info pull-right" (click)="generateAllFines()">Print Report  <i class="fa fa-print"></i></button>
+            <!-- /.row -->
+            <div id="captureFineTable">
+              <br><br>
+              <table class="table table-bordered">
+                <thead>
+                <tr align="center">
+                  <th class="col-xs-1">Index/Reg No.</th>
+                  <th class="col-xs-1">Name</th>
+                  <th class="col-xs-2">Contact</th>
+                  <th class="col-xs-1">ISBN</th>
+                  <th class="col-xs-4">Title</th>
+                  <th class="col-xs-1">Borrowed Date</th>
+                  <th class="col-xs-1">Overdue Date</th>
+                  <th class="col-xs-1">Fine (Rs.)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let fine of fines; let i = index">
+                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.student.index_no}}<br>{{fine.student.reg_no}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.student.name}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-2">{{fine.student.email}}<br>{{fine.student.phone}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.isbn}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-4">{{fine.title}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.borrowed_date}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.return_date}}</td>
+                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.fine}}</td>
+                </tr>
+                <tr style="font-size:120%;font-weight: bolder;background-color: #e0e0e0;padding: 1%">
+                  <td colspan="7" style="text-align: left;padding-left: 15%">TOTAL</td>
+                  <td class="col-xs-1">Rs. {{totalFine}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
 
           </tab>
           <tab heading="Books">Basic content 1</tab>
@@ -24,71 +59,9 @@
         </tabset>
       </div>
     </div>
-    <!-- /.row -->
 
   </div>
 </div>
 
-<table id="basic-table" style="display: none;">
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Email</th>
-    <th>Country</th>
-    <th>IP-address</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td align="right">1</td>
-    <td>Donna</td>
-    <td>Moore</td>
-    <td>dmoore0@furl.net</td>
-    <td>China</td>
-    <td>211.56.242.221</td>
-  </tr>
-  <tr>
-    <td align="right">2</td>
-    <td>Janice</td>
-    <td>Henry</td>
-    <td>jhenry1@theatlantic.com</td>
-    <td>Ukraine</td>
-    <td>38.36.7.199</td>
-  </tr>
-  <tr>
-    <td align="right">3</td>
-    <td>Ruth</td>
-    <td>Wells</td>
-    <td>rwells2@constantcontact.com</td>
-    <td>Trinidad and Tobago</td>
-    <td>19.162.133.184</td>
-  </tr>
-  <tr>
-    <td align="right">4</td>
-    <td>Jason</td>
-    <td>Ray</td>
-    <td>jray3@psu.edu</td>
-    <td>Brazil</td>
-    <td>10.68.11.42</td>
-  </tr>
-  <tr>
-    <td align="right">5</td>
-    <td>Jane</td>
-    <td>Stephens</td>
-    <td>jstephens4@go.com</td>
-    <td>United States</td>
-    <td>47.32.129.71</td>
-  </tr>
-  <tr>
-    <td align="right">6</td>
-    <td>Adam</td>
-    <td>Nichols</td>
-    <td>anichols5@com.com</td>
-    <td>Canada</td>
-    <td>18.186.38.37</td>
-  </tr>
-  </tbody>
-</table>
+
 

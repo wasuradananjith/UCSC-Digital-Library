@@ -598,3 +598,8 @@ th,thead,td {
 .panel-purple {
   background-color: #62528a;
 }
+
+thead{
+  background-color: #8e4e9c;
+  color: white;
+}

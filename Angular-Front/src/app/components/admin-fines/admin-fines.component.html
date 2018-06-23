@@ -4,7 +4,7 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">Fine Details</h1>
+        <h1 class="page-header">Overdue Fine Details</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -84,7 +84,7 @@
           <div class="col-md-2 text-center">
             <br>
             <div *ngIf="books[i].fine!=null">
-              <h2><small  style="color: red">Overdued on {{books[i].return_date}}</small></h2>
+              <h2><small  style="color: red">Overdue Date {{books[i].return_date}}</small></h2>
               <h2><span class="label label-warning">Fine Rs.{{books[i].fine}}</span></h2>
             </div>
           </div>
