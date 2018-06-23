@@ -28,3 +28,6 @@ body{
   background-color: rgba(76, 73, 87, 0.98);
 }
 
+h1,h2,h3,h4,.modal-header h2{
+  font-family: "Oswald Regular";
+}

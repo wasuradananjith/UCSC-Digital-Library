@@ -205,4 +205,18 @@ a>small{
 .left-addon input  { padding-left:  30px; }
 .right-addon input { padding-right: 30px; }
 
+input{
+  font-size: medium;
+
+}
+
+h3{
+  font-family: "Oswald Regular";
+}
+
+.btn-azure{
+  width: 100px;
+  height: 40px;
+  font-size: medium;
+}
 
