@@ -186,11 +186,9 @@ export class AdminReportsComponent implements OnInit {
 
       // generate report
       let columns = [
-        {title: "Index/Reg No.", dataKey: "index"},
-        {title: "Name", dataKey: "name"},
-        {title: "Contact", dataKey: "contact"},
         {title: "ISBN", dataKey: "isbn"},
         {title: "Title", dataKey: "title"},
+        {title: "Subject/Category", dataKey: "subject"},
         {title: "Borrowed Date", dataKey: "bdate"},
         {title: "Returned Date", dataKey: "rdate"},
         {title: "Fine (Rs.)", dataKey: "fine"},
@@ -200,11 +198,9 @@ export class AdminReportsComponent implements OnInit {
       let i;
       for (i = 0; i < this.books.length; i++) {
         let book = {
-          "index": this.books[i].student.index_no,
-          "name": this.books[i].student.name,
-          "contact": this.books[i].student.email,
           "isbn": this.books[i].isbn,
           "title": this.books[i].title,
+          "subject": this.books[i].subject,
           "bdate": this.books[i].borrowed_date,
           "rdate": this.books[i].returned_date,
           "fine": this.books[i].fine
@@ -221,14 +217,12 @@ export class AdminReportsComponent implements OnInit {
           styles: {overflow:"linebreak",fontSize:8,halign:'center'},
           headerStyles: {fillColor:[142,78,156]},
           columnStyles: {
-            "index": {columnWidth: 50},
-            "name": {columnWidth: 60},
-            "contact": {columnWidth: 80},
             "isbn": {columnWidth: 80},
-            "title": {columnWidth: 110},
+            "title": {columnWidth: 200},
+            "subject": {columnWidth: 80},
             "bdate": {columnWidth: 50},
             "rdate": {columnWidth: 50},
-            "fine": {columnWidth: 40}
+            "fine": {columnWidth: 50}
           },
           margin: {top: 200},
           addPageContent: function(data) {
@@ -237,23 +231,23 @@ export class AdminReportsComponent implements OnInit {
             doc.text("Borrow History",218,126);
             doc.setFontSize(10);
 
-            doc.text("Index No: ",75,150);
-            doc.text(student.index_no,130,150);
+            doc.text("Index No: ",55,150);
+            doc.text(student.index_no,110,150);
 
-            doc.text("Reg No: ",75,162);
-            doc.text(student.reg_no,130,162);
+            doc.text("Reg No: ",55,162);
+            doc.text(student.reg_no,110,162);
 
-            doc.text("Name: ",75,174);
-            doc.text(student.name,130,174);
+            doc.text("Name: ",55,174);
+            doc.text(student.name,110,174);
 
-            doc.text("Email: ",275,150);
-            doc.text(student.email,325,150);
+            doc.text("Email: ",255,150);
+            doc.text(student.email,305,150);
 
-            doc.text("Phone: ",275,162);
-            doc.text(student.phone,325,162);
+            doc.text("Phone: ",255,162);
+            doc.text(student.phone,305,162);
 
-            doc.text("Address: ",275,174);
-            doc.text(student.address,325,174);
+            doc.text("Address: ",255,174);
+            doc.text(student.address,305,174);
           }
         });
 
