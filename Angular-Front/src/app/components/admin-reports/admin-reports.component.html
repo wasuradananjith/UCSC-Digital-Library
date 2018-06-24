@@ -59,50 +59,50 @@
             </div>
 
           </tab>
-          <tab heading="Borrowed Books">
+          <tab heading="Borrow History">
             <br>
             <div style="position: absolute; z-index: -1">
-              <div id="captureFineTable">
+              <div id="captureBorrowHistory">
                 <img src="../../../assets/img/report-header.jpg" style="width: auto" alt="">
               </div>
             </div>
-            <button class="btn btn-info pull-right" (click)="generateAllFines()">Print Report  <i class="fa fa-print"></i></button>
             <!-- /.row -->
             <div>
-              <br><br>
+
+              <div class="col-lg-6">
+                <div class="input-group">
+                  <input (keyup)="onKeyStudentSearch($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredTextStudent" placeholder="Search by Index No/ Reg No/ Name/ Email/ Phone...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-azure" style="width: 50px" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                  </span>
+                </div>
+              </div>
+              <br><br><br>
+
               <table class="table table-bordered">
                 <thead>
                 <tr align="center">
-                  <th class="col-xs-1">Index/Reg No.</th>
-                  <th class="col-xs-1">Name</th>
-                  <th class="col-xs-2">Contact</th>
-                  <th class="col-xs-1">ISBN</th>
-                  <th class="col-xs-4">Title</th>
-                  <th class="col-xs-1">Borrowed Date</th>
-                  <th class="col-xs-1">Overdue Date</th>
-                  <th class="col-xs-1">Fine (Rs.)</th>
+                  <th class="col-xs-1">Index</th>
+                  <th class="col-xs-2">Reg No</th>
+                  <th class="col-xs-2">Name</th>
+                  <th class="col-xs-3">Email</th>
+                  <th class="col-xs-2">Phone</th>
+                  <th class="col-xs-2">Select</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let fine of fines; let i = index">
-                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.student.index_no}}<br>{{fine.student.reg_no}}</td>
-                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.student.name}}</td>
-                  <td *ngIf="fine.fine!=null" class="col-xs-2">{{fine.student.email}}<br>{{fine.student.phone}}</td>
-                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.isbn}}</td>
-                  <td *ngIf="fine.fine!=null" class="col-xs-4">{{fine.title}}</td>
-                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.borrowed_date}}</td>
-                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.return_date}}</td>
-                  <td *ngIf="fine.fine!=null" class="col-xs-1">{{fine.fine}}</td>
-                </tr>
-                <tr style="font-size:120%;font-weight: bolder;background-color: #e0e0e0;padding: 1%">
-                  <td colspan="7" style="text-align: left;padding-left: 15%">TOTAL</td>
-                  <td class="col-xs-1">Rs. {{totalFine}}</td>
+                <tr *ngFor="let student of students; let i = index">
+                  <td class="col-xs-1">{{student.index_no}}</td>
+                  <td class="col-xs-2">{{student.reg_no}}</td>
+                  <td class="col-xs-2">{{student.name}}</td>
+                  <td class="col-xs-3">{{student.email}}</td>
+                  <td class="col-xs-2">{{student.phone}}</td>
+                  <td class="col-xs-2"><button class="btn btn-info" (click)="onStudentSelect(student)">Print Report  <i class="fa fa-print"></i></button></td>
                 </tr>
                 </tbody>
               </table>
             </div>
           </tab>
-          <tab heading="Basic Title 2">Basic content 2</tab>
         </tabset>
       </div>
     </div>

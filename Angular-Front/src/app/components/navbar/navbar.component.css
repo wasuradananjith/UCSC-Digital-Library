@@ -68,7 +68,7 @@ li .dropdown:hover .dropdown-content {
 .dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0;
-  background-color: #999999;
+  background-color: rgba(76, 73, 87, 0.98);
 }
 .dropdown-menu a{
   color: white;

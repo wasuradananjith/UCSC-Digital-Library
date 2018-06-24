@@ -38,6 +38,7 @@ import { LatestBooksSliderComponent } from './components/latest-books-slider/lat
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import {BookService} from "./service/book.service";
+import {StudentService} from "./service/student.service";
 
 /*
 const applicationRoutes:Routes=[
@@ -104,7 +105,7 @@ export function tokenGetter() {
     }),
     AppRoutingModule
   ],
-  providers: [AuthService,AuthGuard,FlashMessagesService,BookService],
+  providers: [AuthService,AuthGuard,FlashMessagesService,BookService,StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
