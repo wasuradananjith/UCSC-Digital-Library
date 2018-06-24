@@ -36,6 +36,7 @@ import { StudentBorrowHistoryComponent } from './components/student-borrow-histo
 import { StudentFinesComponent } from './components/student-fines/student-fines.component';
 import { LatestBooksSliderComponent } from './components/latest-books-slider/latest-books-slider.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 /*
 const applicationRoutes:Routes=[
@@ -79,7 +80,8 @@ export function tokenGetter() {
     StudentBorrowHistoryComponent,
     StudentFinesComponent,
     LatestBooksSliderComponent,
-    FooterComponent
+    FooterComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
