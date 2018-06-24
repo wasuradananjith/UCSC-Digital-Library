@@ -17,14 +17,28 @@ export class StudentSidebarComponent implements OnInit {
   constructor(private bookService:BookService) {}
 
   ngOnInit() {
+    this.countTotalReservations();
+    this.countTotalBorrows();
+    this.countTotalFine();
+    setInterval(this.countTotalReservations.bind(this),5000);
+    setInterval(this.countTotalBorrows.bind(this),5000);
+
+  }
+
+  countTotalReservations(){
     this.bookService.getReservationCount().subscribe(res=>{
       this.reservationCount = res.msg;
     });
 
+  }
+
+  countTotalBorrows(){
     this.bookService.getBorrowCount(JSON.parse(localStorage.getItem("user"))).subscribe(res=>{
       this.borrowCount = res.msg;
     });
+  }
 
+  countTotalFine(){
     this.bookService.filterBorrowDetails(this.searchText).subscribe(res=>{
       for (let fine of res.msg) {
         if(fine.fine!=null){

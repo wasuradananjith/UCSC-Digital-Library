@@ -46,7 +46,7 @@
             </h2>
             <br>
             <label *ngIf="books[i].fine==null"><h3  style="color: green">Return before {{books[i].return_date}}</h3></label>
-            <label *ngIf="books[i].fine!=null"><h3  style="color: red">Overdued on {{books[i].return_date}}</h3></label>
+            <label *ngIf="books[i].fine!=null"><h3  style="color: red">Overdue Date: {{books[i].return_date}}</h3></label>
           </div>
         </a>
       </div>
