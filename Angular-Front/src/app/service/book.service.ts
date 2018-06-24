@@ -183,5 +183,20 @@ export class BookService {
     headers.append('Content-Type','application/json');
     return this.http.post(this.baseURL+"return",book,{headers:headers}).pipe(map(res=>res.json()));
   }
+
+  // edit number of copies
+  editBookDetails(book,oldNumberOfCopies){
+    let editBook = {book:book, oldNumberOfCopies:oldNumberOfCopies};
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post(this.baseURL+"edit",editBook,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
+  // delete a book
+  deleteBook(book){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post(this.baseURL+"delete",book,{headers:headers}).pipe(map(res=>res.json()));
+  }
 }
 

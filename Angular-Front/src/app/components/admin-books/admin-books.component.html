@@ -27,29 +27,6 @@
         </div><!-- /input-group -->
       </div><!-- /.col-lg-6 -->
 
-     <!-- <div class="col-lg-12">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>-->
-
-
     </div>
 
     <div class="row">
@@ -82,6 +59,15 @@
             </div>
             <div *ngIf="books[i].no_of_available_copies<=0">
               <button type="button" class="btn btn-success btn-lg btn-block" disabled>Borrow Now!</button>
+            </div>
+
+            <div class="row pull-right" style="margin-top: 20%">
+              <div class="col-md-6" style="margin-top: 2%" *ngIf="books[i].no_of_available_copies>=0">
+              <button class="icon-button" (click)="openEditModal(EditCopies,books[i])" style="font-size:24px; color: forestgreen" data-toggle="tooltip" title="Edit number of copies"><i class="fa fa-edit"></i></button>
+            </div>
+              <div class="col-md-6" *ngIf="books[i].no_of_available_copies>=0">
+                <button class="icon-button" (click)="openDeleteModal(deleteBookModal,books[i])" style="font-size:24px; color: red"  data-toggle="tooltip" title="Delete Book"><i class="fa fa-trash-o"></i></button>
+              </div>
             </div>
 
           </div>
@@ -161,6 +147,74 @@
   </div>
 </ng-template>
 
+
+<!--Model to edit copies-->
+<ng-template #EditCopies>
+  <div class="my-modal">
+    <div class="modal-header">
+      <h3 class="modal-title pull-left" style="margin-left: 40%">Edit Copies</h3>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <flash-messages></flash-messages>
+      <form novalidate>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">ISBN</label>
+            <div class="col-md-8">
+              <input class="form-control" name="isbn" type="text"  placeholder="ISBN" [(ngModel)]="book.isbn" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Title</label>
+            <div class="col-md-8">
+              <textarea rows="2" class="form-control" name="title" type="text"  placeholder="Title" [(ngModel)]="book.title" disabled></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Author</label>
+            <div class="col-md-8">
+              <input class="form-control" name="author" type="text"  placeholder="Author" [(ngModel)]="book.author" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Subject/Category</label>
+            <div class="col-md-8">
+              <input class="form-control" name="subject" type="text"  placeholder="Subject/Category" [(ngModel)]="book.subject" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Number of Copies</label>
+            <div class="col-md-8">
+              <input class="form-control" name="no_of_copies" type="number"  placeholder="Number of Copies" [(ngModel)]="book.no_of_copies">
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" (click)="editBookData()" class="btn btn-azure center">Edit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+
 <!--Model for Alert-->
 <ng-template #borrowBookModal>
   <div class="my-modal">
@@ -181,7 +235,30 @@
   </div>
 </ng-template>
 
-<!--Model for Alert-->
+<!--Model to delete a book-->
+<ng-template #deleteBookModal>
+  <div class="my-modal">
+    <div class="modal-header">
+      <h2 class="modal-title pull-left">Alert</h2>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h4 style="color: #3b0063">Are you sure you want to delete {{book.isbn}} - {{book.title}} by {{book.author}}?</h4>
+      <br>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <button  class="col-md-2 btn btn-danger"(click)="deleteBook(borrowBookModal,book)">Yes</button>
+        <div class="col-md-4"></div>
+        <button  class="col-md-2 btn btn-success"(click)="modalRef.hide()">No</button>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!--Model to select student -->
 <ng-template #selectStudentModal>
     <div class="modal-dialog my-modal modal-lg">
         <div class="modal-header">

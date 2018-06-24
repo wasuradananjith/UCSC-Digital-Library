@@ -66,8 +66,17 @@ module.exports.findBook = (book,callback)=> {
     Book.findOne({isbn:book.isbn},callback);
 };
 
+// delete a book
+module.exports.deleteBook = (book,callback)=> {
+    Book.findOneAndRemove({isbn:book.isbn},callback);
+};
 
 // update cancelled reservation
 module.exports.changeBookCopyStatus = (book,callback)=> {
    Book.findOneAndUpdate({isbn:book.isbn},{$inc:{no_of_available_copies:+1,no_of_reserved_copies:-1},$set:{copies:book.copies}},callback);
+};
+
+// update new book copies
+module.exports.updateBookCopy = (book,callback)=> {
+    Book.findOneAndUpdate({isbn:book.isbn},{$set:{copies:book.copies,no_of_available_copies:book.no_of_available_copies, no_of_copies:book.no_of_copies}},callback);
 };

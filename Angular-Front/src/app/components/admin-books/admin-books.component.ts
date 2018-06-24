@@ -21,7 +21,8 @@ export class AdminBooksComponent implements OnInit {
   books:any;
   students:any;
   book:any;
-  student:any
+  student:any;
+  oldNumberOfCopies:any;
   alertType:String;
   searchText = {
     enteredText:"",
@@ -116,6 +117,86 @@ export class AdminBooksComponent implements OnInit {
     this.modalRef = this.modalService.show(template,{class:'modal-lg'});
     this.onKeyStudentSearch("true"); // load the student details
   }
+
+  // when edit button is pressed
+  openEditModal(template:TemplateRef<any>,book){
+    this.book = book;
+    this.oldNumberOfCopies = book.no_of_copies;
+    this.modalRef = this.modalService.show(template);
+  }
+
+  // when edit button is pressed
+  openDeleteModal(template:TemplateRef<any>,book){
+    this.book = book;
+    this.modalRef = this.modalService.show(template);
+  }
+
+  // edit number of copies
+  editBookData(){
+    let newNumberOfCopies = this.book.no_of_copies;
+    if (this.oldNumberOfCopies == newNumberOfCopies){
+      this.flashMessage.show("No change has been done", { cssClass: 'alert-info', timeout: 2000 });
+    }
+    else{
+      if (this.oldNumberOfCopies > newNumberOfCopies){
+        if (this.book.no_of_available_copies<(this.oldNumberOfCopies-newNumberOfCopies)){
+          this.flashMessage.show("No enough number of available copies to delete", { cssClass: 'alert-info', timeout: 2000 });
+        }
+        else{
+          this.bookService.editBookDetails(this.book,this.oldNumberOfCopies).subscribe(res=>{
+            if(res.state==false){
+              this.flashMessage.show(res.msg, { cssClass: 'alert-danger', timeout: 2000 });
+            }
+            else{
+              this.flashMessage.show(res.msg, { cssClass: 'alert-success', timeout: 2000 });
+            }
+          });
+        }
+      }
+      else{
+        this.bookService.editBookDetails(this.book,this.oldNumberOfCopies).subscribe(res=>{
+          if(res.state==false){
+            this.flashMessage.show(res.msg, { cssClass: 'alert-danger', timeout: 2000 });
+          }
+          else{
+            this.flashMessage.show(res.msg, { cssClass: 'alert-success', timeout: 2000 });
+          }
+        });
+      }
+    }
+    this.modalService.onHide.subscribe((reason: String) => {
+      window.location.reload();
+    });
+
+  }
+
+  // delete a particular book
+  deleteBook(template:TemplateRef<any>,book){
+    this.book = book;
+    // cannot delete book if someone already have it
+
+    if (this.book.no_of_copies.toString()!=this.book.no_of_available_copies.toString()){
+      this.alertType = "Error";
+      this.modalMessage = "This book have already been reserved/borrowed, Cannot Delete!";
+    }
+    else{
+      this.bookService.deleteBook(this.book).subscribe(res => {
+        if (res.state) {
+          this.alertType = "Success";
+          this.modalMessage = res.msg;
+        }
+        else {
+          this.alertType = "Error";
+          this.modalMessage = res.msg;
+        }
+      });
+    }
+    this.modalRef = this.modalService.show(template);
+    this.modalService.onHide.subscribe((reason: String) => {
+      window.location.reload();
+    });
+  }
+
 
   // when something is typed on the search bar
   onKeyStudentSearch(event: any) {

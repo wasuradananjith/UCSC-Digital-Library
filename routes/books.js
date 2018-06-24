@@ -14,8 +14,8 @@ const config = require('../config/database');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'aweerateamscorp2@gmail.com',
-        pass: 'aweera123'
+        user: 'ucscdigitallibrary@gmail.com',
+        pass: 'ucsc@123'
     }
 });
 
@@ -747,6 +747,96 @@ router.post("/return-search-student",(req,res)=>{
         }
         if (error || !books){
             res.json({state:false,msg:[]});
+        }
+    });
+});
+
+// route to edit book copy
+router.post("/edit",(req,res)=>{
+    let editBook = req.body;
+    let difference = Math.abs(editBook.oldNumberOfCopies - editBook.book.no_of_copies);
+    if (editBook.book.no_of_copies>editBook.oldNumberOfCopies){
+
+        let today = new Date();
+        let fullYear = today.getFullYear();
+        let fullMonth = today.getMonth()+1;
+        let fullDate = today.getDate();
+        if (fullMonth<10){
+            fullMonth='0'+fullMonth;
+        }
+        if(fullDate<10){
+            fullDate='0'+fullDate;
+        }
+        let date = fullYear+'/'+fullMonth+'/'+fullDate;
+
+        let hours = today.getHours();
+        let minutes = today.getMinutes();
+        let seconds = today.getSeconds();
+
+        if (hours<10){
+            hours='0'+hours;
+        }
+        if (minutes<10){
+            minutes='0'+minutes;
+        }
+        if (seconds<10){
+            seconds='0'+seconds;
+        }
+        let time = hours + ":" + minutes + ":" + seconds;
+        let dateTime = date+' ' + time;
+
+        // add copies
+        let count = 1;
+        while(count<=difference){
+            let newCopy = new Copy({
+                isbn:editBook.book.isbn,
+                availability:"Available",
+                date_added:dateTime,
+                last_borrowed_date:null
+            });
+            editBook.book.copies.push(newCopy);
+            count++;
+        }
+        editBook.book.no_of_available_copies = editBook.book.no_of_available_copies + difference;
+    }
+    else{
+        // delete copies
+        let count = 0;
+        let differenceAcheived = 0;
+        while(count<editBook.oldNumberOfCopies){
+            if (difference==differenceAcheived){
+                break;
+            }
+            else{
+                if (editBook.book.copies[count].availability=="Available"){
+                    editBook.book.copies.splice(count,1);
+                    differenceAcheived++;
+                }
+            }
+            count++;
+        }
+        editBook.book.no_of_available_copies = editBook.book.no_of_available_copies - difference;
+
+    }
+    // update the copy to database
+    Book.updateBookCopy(editBook.book,(err,book)=> {
+        if(err){
+            res.json({state:false,msg:"Failed to Add the Copies"});
+        }
+        if(book){
+            res.json({state:true,msg:"Copies Successfully Updated!"});
+        }
+    });
+});
+
+// route to filter/search returned books details for a particular student
+router.post("/delete",(req,res)=>{
+    Book.deleteBook(req.body,(error,book)=>{
+        if (book){
+            res.json({state:true,msg:"Book has been deleted successfully!"});
+        }
+        if (error || !book){
+            res.json({state:false,msg:"Failed to delete the book!"});
         }
     });
 });
