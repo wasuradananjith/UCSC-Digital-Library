@@ -59,7 +59,6 @@ export class AdminBooksComponent implements OnInit {
 
   // add a new book
   addBookData(){
-    console.log(this.book);
     // check whether all the fields are filled
     if (this.book.isbn==""){
       this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 1500 });
@@ -140,7 +139,7 @@ export class AdminBooksComponent implements OnInit {
     else{
       if (this.oldNumberOfCopies > newNumberOfCopies){
         if (this.book.no_of_available_copies<(this.oldNumberOfCopies-newNumberOfCopies)){
-          this.flashMessage.show("No enough number of available copies to delete", { cssClass: 'alert-info', timeout: 2000 });
+          this.flashMessage.show("Not enough number of available copies to delete", { cssClass: 'alert-info', timeout: 2000 });
         }
         else{
           this.bookService.editBookDetails(this.book,this.oldNumberOfCopies).subscribe(res=>{

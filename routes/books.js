@@ -473,8 +473,9 @@ router.post("/reserve-borrow",(req,res)=>{
                        }
                    }
 
+
                    // update the book
-                   Book.updateBook(returnedBook,(error,bookUpdate)=>{
+                   Book.updateBookOnReserveBorrow(returnedBook,(error,bookUpdate)=>{
                        if (bookUpdate){
                            Reservation.deleteReservation(req.body,(error,reservationCancel)=>{
                                if(reservationCancel){

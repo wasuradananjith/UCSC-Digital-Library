@@ -28,7 +28,7 @@ module.exports.findByISBN = (isbn,callback)=> {
 
 // fetch all the books
 module.exports.getAllBooks = (callback)=> {
-    Book.find({},callback).sort({ title: 1 });
+    Book.find({},callback).sort({ _id: -1 });
 };
 
 // fetch filtered book details
@@ -46,8 +46,8 @@ module.exports.reserveBookCopy = (reservation,callback)=> {
     Book.findOneAndUpdate({isbn:reservation[0].isbn},{$inc:{no_of_available_copies:-1,no_of_reserved_copies:1},$set:{copies:reservation}},callback);
 };
 
-// update book status
-module.exports.updateBook = (book,callback)=> {
+// update book when borrowing a reserved book
+module.exports.updateBookOnReserveBorrow = (book,callback)=> {
     Book.findOneAndUpdate({isbn:book.isbn},{$inc:{no_of_borrowed_copies:+1,no_of_reserved_copies:-1},$set:{copies:book.copies}},callback);
 };
 
