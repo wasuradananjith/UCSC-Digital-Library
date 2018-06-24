@@ -143,7 +143,7 @@ export class AdminReportsComponent implements OnInit {
         addPageContent: function(data) {
           doc.addImage(imgData, 'PNG', 125,5,330,90);
           doc.setFontSize(18);
-          doc.text("Overdue Fine Details",218,126);
+          doc.text("Overdue Fine Details",215,126);
         }
       });
 
@@ -197,13 +197,17 @@ export class AdminReportsComponent implements OnInit {
 
       let i;
       for (i = 0; i < this.books.length; i++) {
+        let currentFine = 0;
+        if (this.books[i].fine!=null){
+          currentFine = this.books[i].fine;
+        }
         let book = {
           "isbn": this.books[i].isbn,
           "title": this.books[i].title,
           "subject": this.books[i].subject,
           "bdate": this.books[i].borrowed_date,
           "rdate": this.books[i].returned_date,
-          "fine": this.books[i].fine
+          "fine": currentFine
         };
         rows.push(book);
       }

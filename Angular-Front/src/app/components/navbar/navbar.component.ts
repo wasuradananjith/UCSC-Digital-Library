@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
   // call a function to logout a user
   logoutUser(template:TemplateRef<any>){
     this.authService.logout();
-    this.myMessage='You are successfully logged out';
+    this.myMessage='You have successfully logged out';
     this.myAlertType="Success";
     this.modalRef = this.modalService.show(template);
     //this.flashMessage.show('You are successfully logged out', { cssClass: 'alert-success', timeout: 3000 });

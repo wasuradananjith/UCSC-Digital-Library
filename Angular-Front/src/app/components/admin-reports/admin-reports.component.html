@@ -70,11 +70,9 @@
             <div>
 
               <div class="col-lg-6">
-                <div class="input-group">
+                <div class="form-group inner-addon left-addon">
+                  <i class="glyphicon glyphicon-search"></i>
                   <input (keyup)="onKeyStudentSearch($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredTextStudent" placeholder="Search by Index No/ Reg No/ Name/ Email/ Phone...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-azure" style="width: 50px" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                  </span>
                 </div>
               </div>
               <br><br><br>

@@ -36,11 +36,9 @@
       </div>-->
 
       <div class="col-lg-6">
-        <div class="input-group">
+        <div class="form-group inner-addon left-addon">
+          <i class="glyphicon glyphicon-search"></i>
           <input (keyup)="onKey($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by ISBN/ Title/ Author / Category...">
-          <span class="input-group-btn">
-        <button class="btn btn-azure" style="width: 50px" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-      </span>
         </div><!-- /input-group -->
       </div><!-- /.col-lg-6 -->
 
