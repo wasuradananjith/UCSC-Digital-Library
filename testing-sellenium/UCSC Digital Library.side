@@ -1,0 +1,74 @@
+{
+  "id": "e4eac58f-ccf9-4c6a-8d3d-c990633b65c4",
+  "name": "UCSC Digital Library",
+  "url": "http://localhost:4200",
+  "tests": [{
+    "id": "85b5e459-fbeb-4da4-b659-d9adf30ea124",
+    "name": "Test Login",
+    "commands": [{
+      "id": "4aacbef6-e075-4def-a587-3eb8f6a9abbb",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "value": ""
+    }, {
+      "id": "bd80dd1d-4ace-4570-9688-f7c02a18839d",
+      "comment": "",
+      "command": "clickAt",
+      "target": "//a[contains(text(),'Login')]",
+      "value": "41,31"
+    }, {
+      "id": "b396fc79-79da-4f05-bd30-05a0d15bb319",
+      "comment": "",
+      "command": "clickAt",
+      "target": "//input[@type='email']",
+      "value": "142,18"
+    }, {
+      "id": "a02bc3bf-eabd-4a34-a615-84a77a5694ae",
+      "comment": "",
+      "command": "type",
+      "target": "//input[@type='email']",
+      "value": "wasuradananjith@gmail.com"
+    }, {
+      "id": "f57a2f4a-e007-46a6-b7bb-4c617e97e12b",
+      "comment": "",
+      "command": "type",
+      "target": "//input[@type='password']",
+      "value": "ucsc@123"
+    }, {
+      "id": "17bff1b0-a438-4c00-afa2-e8d80ad327f1",
+      "comment": "",
+      "command": "clickAt",
+      "target": "css=button.btn.btn-azure",
+      "value": "68,8"
+    }, {
+      "id": "9deb02dd-4267-41fb-9d54-648b06080e75",
+      "comment": "",
+      "command": "clickAt",
+      "target": "//modal-container",
+      "value": "588,527"
+    }, {
+      "id": "a7dd019c-5649-48d6-bfa5-fd78d178073f",
+      "comment": "",
+      "command": "clickAt",
+      "target": "//a[contains(text(),'Logout')]",
+      "value": "71,18"
+    }, {
+      "id": "c7469d45-a146-485b-be32-89efc6d64a7b",
+      "comment": "",
+      "command": "clickAt",
+      "target": "//modal-container",
+      "value": "666,518"
+    }]
+  }],
+  "suites": [{
+    "id": "15eed77c-9530-4210-907a-e32765599140",
+    "name": "Default Suite",
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:4200/"],
+  "plugins": [],
+  "version": "1.0"
+}
