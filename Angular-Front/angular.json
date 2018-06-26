@@ -27,6 +27,7 @@
               "node_modules/font-awesome/css/font-awesome.css",
               "src/assets/animate.min.css",
               "src/assets/material.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.css"
             ],
             "scripts": [

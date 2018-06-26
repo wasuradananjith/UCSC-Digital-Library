@@ -51,3 +51,8 @@ module.exports.searchReturnedBooksByStudent = (details,callback)=> {
                         ]
         }, callback);
 };
+
+// search old overdues
+module.exports.searchOldOverdue = (callback)=> {
+    Return.find({fine:{$ne: null}}, callback);
+};

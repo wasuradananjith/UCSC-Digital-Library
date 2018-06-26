@@ -4,7 +4,7 @@
   "url": "http://localhost:4200",
   "tests": [{
     "id": "85b5e459-fbeb-4da4-b659-d9adf30ea124",
-    "name": "Test Login",
+    "name": "Test Login/Logout",
     "commands": [{
       "id": "4aacbef6-e075-4def-a587-3eb8f6a9abbb",
       "comment": "",

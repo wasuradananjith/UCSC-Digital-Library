@@ -57,8 +57,62 @@
                 </tbody>
               </table>
             </div>
-
           </tab>
+
+          <tab heading="Paid Fine">
+            <br>
+            <div style="position: absolute; z-index: -1">
+              <div id="csptureFineInterval">
+                <img src="../../../assets/img/report-header.jpg" style="width: auto" alt="">
+              </div>
+            </div>
+            <!-- /.row -->
+            <div>
+              <br>
+              <div class="row" style="margin-left: 2%">
+                <div class="col-lg-1 col-md-1">
+                  <label><h4>From</h4></label>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group inner-addon left-addon">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                    <input type="text"
+                           placeholder="Select a date"
+                           class="form-control"
+                           name="fromDate"
+                           [(ngModel)]="fromDate"
+                           bsDatepicker
+                           triggers="mouseenter:click"
+                           [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD'}">
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row" style="margin-left: 2%">
+                <div class="col-lg-1 col-md-1">
+                  <label><h4>To</h4></label>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group inner-addon left-addon">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                    <input type="text"
+                           placeholder="Select a date"
+                           class="form-control"
+                           name="toDate"
+                           [(ngModel)]="toDate"
+                           bsDatepicker
+                           triggers="mouseenter:click"
+                           [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD'}">
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="col-lg-2 col-md-2"></div>
+              <button class="col-lg-2 col-md-2 btn btn-info" (click)="generateInterval(alertModal)">Print Report  <i class="fa fa-print"></i></button>
+            </div>
+          </tab>
+
           <tab heading="Borrow History">
             <br>
             <div style="position: absolute; z-index: -1">
@@ -101,6 +155,7 @@
               </table>
             </div>
           </tab>
+
         </tabset>
       </div>
     </div>
@@ -110,4 +165,22 @@
 
 </div>
 
-
+<!--Model for Alert-->
+<ng-template #alertModal>
+  <div class="my-modal">
+    <div class="modal-header">
+      <h2 class="modal-title pull-left">Alert</h2>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="alertType=='Success'">
+        <strong><h4 style="color: darkgreen">{{message}}</h4></strong>
+      </div>
+      <div *ngIf="alertType=='Error'">
+        <strong><h4 style="color: #a90000">{{message}}</h4></strong>
+      </div>
+    </div>
+  </div>
+</ng-template>

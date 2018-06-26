@@ -198,5 +198,12 @@ export class BookService {
     headers.append('Content-Type','application/json');
     return this.http.post(this.baseURL+"delete",book,{headers:headers}).pipe(map(res=>res.json()));
   }
+
+  // search old overdue details
+  fetchOldOverdue(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post(this.baseURL+"old-overdue",{headers:headers}).pipe(map(res=>res.json()));
+  }
 }
 

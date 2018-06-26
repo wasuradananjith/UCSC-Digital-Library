@@ -842,4 +842,16 @@ router.post("/delete",(req,res)=>{
     });
 });
 
+// route to filter/search returned books details
+router.post("/old-overdue",(req,res)=>{
+    Return.searchOldOverdue((error,books)=>{
+        if (books){
+            res.json({state:true,msg:books});
+        }
+        if (error || !books){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
 module.exports = router;

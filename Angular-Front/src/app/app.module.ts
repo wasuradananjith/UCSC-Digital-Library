@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule,Routes } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule} from "@angular/http";
-import { ModalModule,BsDropdownModule,CarouselModule,TabsModule  } from 'ngx-bootstrap';
+import { ModalModule,BsDropdownModule,CarouselModule,TabsModule,BsDatepickerModule} from 'ngx-bootstrap';
 import { FlashMessagesModule,FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -95,6 +94,7 @@ export function tokenGetter() {
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     TabsModule.forRoot(),
     JwtModule.forRoot({
       config: {

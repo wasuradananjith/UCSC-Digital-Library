@@ -57,3 +57,15 @@ h1,h2,h3,.modal-header h2{
 /* add padding  */
 .left-addon input  { padding-left:  30px; }
 .right-addon input { padding-right: 30px; }
+
+.theme-green .bs-datepicker-head {
+  background-color: #9c27b0;
+}
+
+.theme-green .bs-datepicker-body table td span.selected, .theme-green .bs-datepicker-body table td.selected span, .theme-green .bs-datepicker-body table td span[class*="select-"]:after, .theme-green .bs-datepicker-body table td[class*="select-"] span:after {
+  background-color: #9c27b0;
+}
+
+.theme-green .bs-datepicker-body table td.week span {
+  color: #9c27b0;
+}

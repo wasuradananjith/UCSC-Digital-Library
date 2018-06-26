@@ -51,7 +51,9 @@
           <div class="panel-body">
             <p> Make your Read-list ready! Find the latest books related to vast variety
               of fields and subjects, and reserve online instantly</p>
-            <a href="" class="btn btn-azure">Reserve Now</a>
+            <a *ngIf="authService.isLoggedIn() && getCurrentUserType()=='Admin'" [routerLink]="['/admin-home/reservations']" class="btn btn-azure">Reserve Now</a>
+            <a *ngIf="authService.isLoggedIn() && getCurrentUserType()=='Student'" [routerLink]="['/student-home/books']" class="btn btn-azure">Reserve Now</a>
+            <a *ngIf="!authService.isLoggedIn()" [routerLink]="['/login']" class="btn btn-azure">Reserve Now</a>
           </div>
         </div>
       </div>
@@ -65,7 +67,9 @@
               Are you tired of finding some book? Or your favourite book is missing?
               Let us know what you want, your suggestions are welcome!
             </p>
-            <a href="" class="btn btn-azure">Book Now</a>
+            <a *ngIf="authService.isLoggedIn() && getCurrentUserType()=='Admin'" [routerLink]="['/admin-home/suggestions']" class="btn btn-azure">Suggest Now</a>
+            <a *ngIf="authService.isLoggedIn() && getCurrentUserType()=='Student'" [routerLink]="['/student-home']" class="btn btn-azure">Suggest Now</a>
+            <a *ngIf="!authService.isLoggedIn()" [routerLink]="['/login']" class="btn btn-azure">Suggest Now</a>
           </div>
         </div>
       </div>
@@ -77,7 +81,9 @@
           <div class="panel-body">
             <p>Technological books to expand your IT and Computer Science skills, specially for
               all the undergraduates in University of Colombo School of Computing</p>
-            <a href="" class="btn btn-azure">Book Now</a>
+            <a *ngIf="authService.isLoggedIn() && getCurrentUserType()=='Admin'" [routerLink]="['/admin-home']" class="btn btn-azure">Register Now</a>
+            <a *ngIf="authService.isLoggedIn() && getCurrentUserType()=='Student'" [routerLink]="['/student-home']" class="btn btn-azure">Register Now</a>
+            <a *ngIf="!authService.isLoggedIn()" [routerLink]="['/login']" class="btn btn-azure">Register Now</a>
           </div>
         </div>
       </div>
