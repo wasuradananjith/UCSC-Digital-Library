@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {BookService} from "../../service/book.service";
+
 import * as jsPDF from 'jspdf';
 import * as html2canvas from "html2canvas";
 import 'jspdf-autotable';

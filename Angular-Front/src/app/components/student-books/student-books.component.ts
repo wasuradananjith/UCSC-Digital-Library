@@ -16,6 +16,7 @@ import * as $ from 'jquery';
 export class StudentBooksComponent implements OnInit {
   modalRef:BsModalRef;
   message:String;
+  modalMessage:String;
   alertType:String;
   reservationCount:any;
   searchText = {
@@ -76,11 +77,11 @@ export class StudentBooksComponent implements OnInit {
       this.bookService.reserveCopy(book).subscribe(res=>{
         if(res.state){
           this.alertType="Success";
-          this.message=res.msg;
+          this.modalMessage=res.msg;
         }
         else{
           this.alertType="Error";
-          this.message=res.msg;
+          this.modalMessage=res.msg;
         }
         this.modalRef = this.modalService.show(template);
         this.modalService.onHide.subscribe((reason :String)=>{
@@ -91,7 +92,7 @@ export class StudentBooksComponent implements OnInit {
     }
     else{
       this.alertType="Error";
-      this.message="You cannot reserve more than 5 books";
+      this.modalMessage="You cannot reserve more than 5 books";
       this.modalRef = this.modalService.show(template);
     }
 

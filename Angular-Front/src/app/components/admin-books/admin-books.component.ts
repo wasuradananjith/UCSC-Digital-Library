@@ -80,6 +80,10 @@ export class AdminBooksComponent implements OnInit {
       this.flashMessage.show('Please fill all the fields', { cssClass: 'alert-danger', timeout: 1500 });
       return;
     }
+    if (this.book.no_of_copies<=0){
+      this.flashMessage.show('Invalid Details Provided!, Please Check Number of Copies', { cssClass: 'alert-danger', timeout: 1500 });
+      return;
+    }
     else{
       return this.bookService.addNewBook(this.book).subscribe(res=>{
         if (res.state){
