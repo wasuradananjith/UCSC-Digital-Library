@@ -69,3 +69,14 @@ h1,h2,h3,.modal-header h2{
 .theme-green .bs-datepicker-body table td.week span {
   color: #9c27b0;
 }
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+  background-color: #9c27b0;
+  border-color: #9c27b0;
+}
+
+.pagination>li>a, .pagination>li>span{
+  color: #9c27b0;
+}
+
+

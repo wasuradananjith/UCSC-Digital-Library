@@ -14,6 +14,11 @@ import * as $ from 'jquery';
   styleUrls: ['./student-books.component.css']
 })
 export class StudentBooksComponent implements OnInit {
+  start:number;
+  end:number;
+  currentPage = 1;
+  pagesNumber=0;
+  page: number;
   modalRef:BsModalRef;
   message:String;
   modalMessage:String;
@@ -24,6 +29,7 @@ export class StudentBooksComponent implements OnInit {
   };
   user:any;
   books:any;
+  booksInitial:any;
   book:any;
   constructor(private flashMessage:FlashMessagesService,private authService:AuthService,private bookService:BookService,private router:Router,private modalService: BsModalService) { }
 
@@ -40,13 +46,21 @@ export class StudentBooksComponent implements OnInit {
         }
 
       });
-      this.loadAllBooks();
+      this.onKey("true");
     }
 
     this.bookService.getReservationCount().subscribe(res=>{
       this.reservationCount = res.msg;
       console.log(this.reservationCount);
     });
+  }
+
+  // on pagination changed
+  pageChanged(event: any): void {
+    this.start = 10*(event.page-1);
+    this.end = this.start + 10;
+    this.books = this.booksInitial.slice(this.start,this.end);
+
   }
 
   // load all the books
@@ -66,7 +80,9 @@ export class StudentBooksComponent implements OnInit {
       else{
         this.message="";
       }
-      this.books = res.msg;
+      this.booksInitial = res.msg;
+      this.books = this.booksInitial.slice(0,10);
+      this.pagesNumber = this.booksInitial.length;
     });
   }
 

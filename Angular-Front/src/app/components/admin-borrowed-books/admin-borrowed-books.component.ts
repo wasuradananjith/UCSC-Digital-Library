@@ -11,9 +11,15 @@ import {BsModalService} from "ngx-bootstrap";
   styleUrls: ['./admin-borrowed-books.component.css']
 })
 export class AdminBorrowedBooksComponent implements OnInit {
+  start:number;
+  end:number;
+  currentPage = 1;
+  pagesNumber=0;
+  page: number;
   modalRef:BsModalRef;
   user:any;
   books:any;
+  booksInitial:any;
   message:String;
   alertType:String;
   searchText = {
@@ -48,7 +54,9 @@ export class AdminBorrowedBooksComponent implements OnInit {
       else{
         this.message="";
       }
-      this.books = res.msg;
+      this.booksInitial = res.msg;
+      this.books = this.booksInitial.slice(0,10);
+      this.pagesNumber = this.booksInitial.length;
     });
   }
 

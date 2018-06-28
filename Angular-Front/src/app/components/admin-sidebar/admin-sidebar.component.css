@@ -80,5 +80,8 @@
  color: #1f003e;
 }
 
+.sidebar ul>li>a:active{
+  color: #1f003e;
+}
 
 

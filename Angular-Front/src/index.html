@@ -19,4 +19,11 @@
   <script src="assets/ninja-slider.js"></script>
 
 </body>
+
+<script>
+  $(".nav a").on("click", function() {
+    $(".nav").find(".active").removeClass("active");
+    $(this).parent().addClass("active");
+  });
+</script>
 </html>

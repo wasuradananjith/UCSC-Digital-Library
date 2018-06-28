@@ -6,7 +6,7 @@ const Borrow = require('../models/borrow');
 const Reservation = require('../models/reservation');
 
 router.get("",(req,res)=>{
-    res.send("Hello Students");
+    res.send("Hello Reservations");
 });
 
 // route to reserve a book copy
@@ -156,7 +156,6 @@ router.post("/cancel",(req,res)=>{
             });
         }
         if (error || !reservations){
-            console.log("Hello");
             res.json({state:false,msg:"Fail to cancel the reservation"});
         }
     });

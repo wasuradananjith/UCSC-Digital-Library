@@ -9,8 +9,14 @@ import {BookService} from "../../service/book.service";
   styleUrls: ['./admin-fines.component.css']
 })
 export class AdminFinesComponent implements OnInit {
+  start:number;
+  end:number;
+  currentPage = 1;
+  pagesNumber=0;
+  page: number;
   user:any;
   books:any;
+  booksInitial:any;
   message:String;
   alertType:String;
   searchText = {
@@ -37,6 +43,14 @@ export class AdminFinesComponent implements OnInit {
     }
   }
 
+  // on pagination changed
+  pageChanged(event: any): void {
+    this.start = 10*(event.page-1);
+    this.end = this.start + 10;
+    this.books = this.booksInitial.slice(this.start,this.end);
+
+  }
+
   // when something is typed on the search bar
   onKey(event: any) {
     this.bookService.filterBorrowDetails(this.searchText).subscribe(res=>{
@@ -46,7 +60,9 @@ export class AdminFinesComponent implements OnInit {
       else{
         this.message="";
       }
-      this.books = res.msg;
+      this.booksInitial = res.msg;
+      this.books = this.booksInitial.slice(0,10);
+      this.pagesNumber = this.booksInitial.length;
     });
   }
 

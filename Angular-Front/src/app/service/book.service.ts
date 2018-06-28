@@ -49,7 +49,7 @@ export class BookService {
   filterSuggestionDetails(searchText){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"book/suggestion-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"suggestion/search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // search return details
@@ -124,14 +124,14 @@ export class BookService {
   addNewBookSuggestion(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"book/suggestion-add",book,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"suggestion/add",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // get total suggestion count
   getTotalSuggestions(){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"book/suggestion-total",{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"suggestion/total",{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // load all reservations for admin
@@ -160,7 +160,7 @@ export class BookService {
   dismissSuggestion(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"book/suggestion-dismiss",book,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"suggestion/dismiss",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // get borrowed book details

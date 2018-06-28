@@ -8,17 +8,24 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 
+
 @Component({
   selector: 'app-admin-books',
   templateUrl: './admin-books.component.html',
   styleUrls: ['./admin-books.component.css']
 })
 export class AdminBooksComponent implements OnInit {
+  start:number;
+  end:number;
+  currentPage = 1;
+  pagesNumber=0;
+  page: number;
   modalRef: BsModalRef;
   message:String;
   modalMessage:String;
   user:any;
   books:any;
+  booksInitial:any;
   students:any;
   book:any;
   student:any;
@@ -28,6 +35,7 @@ export class AdminBooksComponent implements OnInit {
     enteredText:"",
     enteredTextStudent:""
   };
+
   constructor(private authService:AuthService,private studentService:StudentService,private router:Router,private modalService: BsModalService,
               private flashMessage:FlashMessagesService,private bookService:BookService) {
   }
@@ -39,7 +47,7 @@ export class AdminBooksComponent implements OnInit {
     else {
       this.authService.getAdminHome().subscribe(res => {
         this.user = res.user;
-        console.log(this.user)
+        console.log(this.user);
 
         if (this.user.type == "Student") {
           this.router.navigate(['student-home']);
@@ -50,6 +58,15 @@ export class AdminBooksComponent implements OnInit {
     }
 
   }
+
+  // on pagination changed
+  pageChanged(event: any): void {
+    this.start = 10*(event.page-1);
+    this.end = this.start + 10;
+    this.books = this.booksInitial.slice(this.start,this.end);
+
+  }
+
 
   // function to open a specific modal
   openModal(template: TemplateRef<any>) {
@@ -110,7 +127,9 @@ export class AdminBooksComponent implements OnInit {
       else{
         this.message="";
       }
-      this.books = res.msg;
+      this.booksInitial = res.msg;
+      this.books = this.booksInitial.slice(0,10);
+      this.pagesNumber = this.booksInitial.length;
     });
   }
 

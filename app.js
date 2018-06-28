@@ -21,6 +21,7 @@ const book = require('./routes/books');
 const reservation = require('./routes/reservations');
 const student = require('./routes/students');
 const report = require('./routes/reports');
+const suggestion = require('./routes/suggestions');
 
 const connection = mongoose.connect(config.database);
 if(connection){
@@ -38,6 +39,7 @@ app.use('/book',book);
 app.use('/reservation',reservation);
 app.use('/student',student);
 app.use('/report',report);
+app.use('/suggestion',suggestion);
 
 app.get("/",(req,res)=>{
     res.send("UCSC Library");

@@ -42,6 +42,10 @@
     </div>
 
     <div class="row">
+      <pagination [totalItems]="pagesNumber" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="5"></pagination>
+    </div>
+
+    <div class="row">
       <div class="row center">
         <div *ngIf="books==''">
           <p>No search result found</p>

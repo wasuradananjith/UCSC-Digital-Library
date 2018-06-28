@@ -9,8 +9,14 @@ import {BookService} from "../../service/book.service";
   styleUrls: ['./student-borrow-history.component.css']
 })
 export class StudentBorrowHistoryComponent implements OnInit {
+  start:number;
+  end:number;
+  currentPage = 1;
+  pagesNumber=0;
+  page: number;
   user:any;
   books: any;
+  booksInitial:any;
   message: String;
   alertType: String;
   searchText = {
@@ -35,6 +41,14 @@ export class StudentBorrowHistoryComponent implements OnInit {
     this.onKey("true"); // to load all returned books
   }
 
+  // on pagination changed
+  pageChanged(event: any): void {
+    this.start = 10*(event.page-1);
+    this.end = this.start + 10;
+    this.books = this.booksInitial.slice(this.start,this.end);
+
+  }
+
   // when something is typed on the search bar
   onKey(event: any) {
     let details = {email:JSON.parse(localStorage.getItem("user")).email,enteredText:this.searchText.enteredText};
@@ -45,7 +59,9 @@ export class StudentBorrowHistoryComponent implements OnInit {
       else {
         this.message = "";
       }
-      this.books = res.msg;
+      this.booksInitial = res.msg;
+      this.books = this.booksInitial.slice(0,10);
+      this.pagesNumber = this.booksInitial.length;
     });
   }
 

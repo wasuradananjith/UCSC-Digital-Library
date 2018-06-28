@@ -10,9 +10,15 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap";
   styleUrls: ['./admin-suggestions.component.css']
 })
 export class AdminSuggestionsComponent implements OnInit {
+  start:number;
+  end:number;
+  currentPage = 1;
+  pagesNumber=0;
+  page: number;
   modalRef:BsModalRef;
   user:any;
   books:any;
+  booksInitial:any;
   message:String;
   alertType:String;
   searchText = {
@@ -38,6 +44,14 @@ export class AdminSuggestionsComponent implements OnInit {
     this.onKey("true");
   }
 
+  // on pagination changed
+  pageChanged(event: any): void {
+    this.start = 10*(event.page-1);
+    this.end = this.start + 10;
+    this.books = this.booksInitial.slice(this.start,this.end);
+
+  }
+
   // when something is typed on the search bar
   onKey(event: any) {
     this.bookService.filterSuggestionDetails(this.searchText).subscribe(res=>{
@@ -47,7 +61,9 @@ export class AdminSuggestionsComponent implements OnInit {
       else{
         this.message="";
       }
-      this.books = res.msg;
+      this.booksInitial = res.msg;
+      this.books = this.booksInitial.slice(0,10);
+      this.pagesNumber = this.booksInitial.length;
     });
   }
 
