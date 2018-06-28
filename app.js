@@ -18,6 +18,7 @@ require('./config/passport')(passport);
 const config = require('./config/database');
 const user = require('./routes/users');
 const book = require('./routes/books');
+const reservation = require('./routes/reservations');
 const student = require('./routes/students');
 const report = require('./routes/reports');
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname,"public"))); // front-end is in publi
 
 app.use('/user',user);
 app.use('/book',book);
+app.use('/reservation',reservation);
 app.use('/student',student);
 app.use('/report',report);
 

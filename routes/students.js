@@ -7,19 +7,7 @@ router.get("",(req,res)=>{
     res.send("Hello Students");
 });
 
-// route to get all the book details
-router.post("/get-all",(req,res)=>{
-    /*Book.getAllBooks((error,books)=>{
-       if (books){
-           res.json({state:true,msg:books});
-       }
-        if (error || !books){
-            res.json({state:false,msg:[]});
-        }
-    });*/
-});
-
-// route to filter/search book details
+// route to filter/search student details
 router.post("/search",(req,res)=>{
     const searchText = req.body.enteredTextStudent;
     console.log(req.body.enteredText);

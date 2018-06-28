@@ -6,42 +6,42 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class BookService {
-  baseURL = "http://localhost:3000/book/";
+  baseURL = "http://localhost:3000/";
   constructor(private http:Http) { }
 
   // send the request to backend to add a new book
   addNewBook(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"add",book,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/add",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // get all the book details
   fetchAllBookDetails(){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"get-all",{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/get-all",{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // search book details
   filterBookDetails(searchText){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // search reservation details
   filterReservationDetails(searchText){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"reservation-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"reservation/search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // search borrow details
   filterBorrowDetails(searchText){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"borrow-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/borrow-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
 
 
@@ -49,21 +49,21 @@ export class BookService {
   filterSuggestionDetails(searchText){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"suggestion-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/suggestion-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // search return details
   filterReturnDetails(searchText){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"return-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/return-search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // search return details for a particular student
   filterReturnDetailsStudent(details){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"return-search-student",details,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/return-search-student",details,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // search book details
@@ -80,7 +80,7 @@ export class BookService {
 
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"reserve",reservation,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"reservation/add",reservation,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // get the reservation count for a particular user
@@ -88,14 +88,14 @@ export class BookService {
     let student = JSON.parse(localStorage.getItem("user"));
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"reservation-count",student,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"reservation/user-count",student,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // get the borrow count for a particular user
   getBorrowCount(student){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"borrow-count",student,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/borrow-count",student,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // get the reservations for a particular user
@@ -103,49 +103,49 @@ export class BookService {
     let student = JSON.parse(localStorage.getItem("user"));
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"reservations-student",student,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"reservation/student",student,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // cancel a reservation
   cancelReservation(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"reserve-cancel",book,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"reservation/cancel",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // get the reservation total count
   getTotalReservations(){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"reservation-total",{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"reservation/total",{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // send the reques to backend to add a new book
   addNewBookSuggestion(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"suggestion-add",book,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/suggestion-add",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // get total suggestion count
   getTotalSuggestions(){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"suggestion-total",{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/suggestion-total",{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // load all reservations for admin
   fetchAllReservationsAdmin(){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"reservations-admin",{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"reservation/admin",{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // borrow a reserved book
   borrowReservation(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"reserve-borrow",book,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"reservation/borrow",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // borrow a reserved book
@@ -153,35 +153,35 @@ export class BookService {
     let borrow = {book:book, student:student};
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"borrow",borrow,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/borrow",borrow,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // dismiss a reservation
   dismissSuggestion(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"suggestion-dismiss",book,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/suggestion-dismiss",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // get borrowed book details
   getAllBorrows(){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"get-borrows",{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/get-borrows",{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // update borrow fine
   updateBorrowFine(borrow){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"borrow-fine",borrow,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/borrow-fine",borrow,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // return a borrowed book
   returnBook(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"return",book,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/return",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // edit number of copies
@@ -189,21 +189,21 @@ export class BookService {
     let editBook = {book:book, oldNumberOfCopies:oldNumberOfCopies};
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"edit",editBook,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/edit",editBook,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // delete a book
   deleteBook(book){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"delete",book,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/delete",book,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // search old overdue details
   fetchOldOverdue(){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post(this.baseURL+"old-overdue",{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"book/old-overdue",{headers:headers}).pipe(map(res=>res.json()));
   }
 }
 
