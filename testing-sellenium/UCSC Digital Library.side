@@ -1108,6 +1108,70 @@
       "target": "//modal-container",
       "value": "749,1260"
     }]
+  }, {
+    "id": "81eb76cf-5a4c-4a40-a0a1-7ce94e8dd393",
+    "name": "Admin - Manage Users",
+    "commands": [{
+      "id": "6302261e-8014-4e77-85a5-4b2c317bbfcc",
+      "comment": "",
+      "command": "open",
+      "target": "/admin-home",
+      "value": ""
+    }, {
+      "id": "1addae43-e869-4617-aae2-a1f201221e6e",
+      "comment": "",
+      "command": "clickAt",
+      "target": "//a[contains(text(),'Manage Users')]",
+      "value": "111,27"
+    }, {
+      "id": "01fdc5b7-44f5-4054-8dcd-0aea6c9e883c",
+      "comment": "",
+      "command": "clickAt",
+      "target": "css=button.btn.btn-success",
+      "value": "95,24"
+    }, {
+      "id": "2f8df8a0-1b22-4bdc-8c09-4dad2c7b95f3",
+      "comment": "",
+      "command": "type",
+      "target": "name=current_password",
+      "value": "ucsc@123"
+    }, {
+      "id": "1ac879b3-97f0-430f-8737-41053cda151b",
+      "comment": "",
+      "command": "clickAt",
+      "target": "xpath=(//button[@type='button'])[3]",
+      "value": "35,16"
+    }, {
+      "id": "76c5801f-01a0-4004-a0b3-ac7dea84f3f0",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "xpath=(//button[@type='button'])[3]",
+      "value": ""
+    }, {
+      "id": "6c8c054d-8564-4980-a203-6d9928543ad0",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "xpath=(//button[@type='button'])[3]",
+      "value": ""
+    }, {
+      "id": "4496fa49-16d3-4ed7-9658-63328263e6d5",
+      "comment": "",
+      "command": "type",
+      "target": "name=confirm_password",
+      "value": "ucsc@123"
+    }, {
+      "id": "6d775c8a-e9a0-4ab0-ad8a-a9e88e983102",
+      "comment": "",
+      "command": "clickAt",
+      "target": "xpath=(//button[@type='button'])[3]",
+      "value": "57,27"
+    }, {
+      "id": "5fee64b3-89a3-4477-a1fb-c98dfabaff1b",
+      "comment": "",
+      "command": "clickAt",
+      "target": "//modal-container",
+      "value": "924,614"
+    }]
   }],
   "suites": [{
     "id": "15eed77c-9530-4210-907a-e32765599140",

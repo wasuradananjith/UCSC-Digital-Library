@@ -194,7 +194,7 @@ router.post("/borrow",(req,res)=>{
             // check whether the student is borrowing the same book twice
             Borrow.checkSimilarBooks({email:student_email, isbn: book_isbn},(error,foundSimilar)=>{
                 if (foundSimilar!=""){
-                    res.json({state:false,msg:"You have already borrowed this book!"});
+                    res.json({state:false,msg:req.body.student.name+" have already borrowed this book!"});
                 }
                 if (error){
                     res.json({state:false,msg:"Failed to borrow"});
