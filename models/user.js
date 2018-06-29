@@ -57,3 +57,32 @@ module.exports.passwordCheck = (plainpassword,hash,callback)=> {
 module.exports.findUserById = (id,callback)=>{
     User.findOne(id,callback);
 };
+
+// fetch filtered user details
+module.exports.getFilteredUsers = (searchText,callback)=> {
+    let text = "/"+searchText+"/i";
+    User.find({$or:[{email: new RegExp(searchText, "i")},
+            {name: new RegExp(searchText, "i")},
+            {type: new RegExp(searchText, "i")}]}, callback).sort({ title: 1 });
+};
+
+// update password for a particular user
+module.exports.updatePassword = (updatedPasswordData,callback)=> {
+    bcrypt.genSalt(10, (err, salt)=> {
+        bcrypt.hash(updatedPasswordData.password, salt, (err, hash)=> {
+            updatedPasswordData.password = hash;
+            if (err) {
+                callback(null,false);
+            }
+            User.findOneAndUpdate({email:updatedPasswordData.email},{$set:{password:updatedPasswordData.password}},callback);
+        });
+    });
+};
+
+// change password
+module.exports.getFilteredUsers = (searchText,callback)=> {
+    let text = "/"+searchText+"/i";
+    User.find({$or:[{email: new RegExp(searchText, "i")},
+            {name: new RegExp(searchText, "i")},
+            {type: new RegExp(searchText, "i")}]}, callback).sort({ title: 1 });
+};

@@ -57,6 +57,13 @@ export class AuthService {
     return this.http.get("http://localhost:3000/user/student-home",{headers:headers}).pipe(map(res=>res.json()));
   }
 
+  // search user details
+  filterUserDetails(searchText){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/user/search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+  }
+
   // get the stored token from local storage
   fetchToken(){
     const token = localStorage.getItem("tokenid");
@@ -70,7 +77,19 @@ export class AuthService {
     localStorage.clear();
   }
 
+  // update the user password
+  updatePassword(newPassword,email){
+    let updatePasswordData = {password:newPassword,email:email};
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post("http://localhost:3000/user/update-password",updatePasswordData,{headers:headers}).pipe(map(res=>res.json()));
+
+  }
+
+  // check whether the user is logged in
   isLoggedIn(){
     return !this.jwtHelper.isTokenExpired();
   }
+
+
 }

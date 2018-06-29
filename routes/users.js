@@ -102,6 +102,32 @@ router.post("/login",(req,res)=>{
     });
 });
 
+// route to filter/search book details
+router.post("/search",(req,res)=>{
+    const searchText = req.body.enteredText;
+    User.getFilteredUsers(searchText,(error,users)=>{
+        if (users){
+            res.json({state:true,msg:users});
+        }
+        if (error || !users){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
+// route to change password
+router.post("/update-password",(req,res)=>{
+
+    User.updatePassword(req.body,(error,password)=>{
+        if (password){
+            res.json({state:true,msg:password});
+        }
+        if (error || !password){
+            res.json({state:false,msg:[]});
+        }
+    });
+});
+
 router.get('/admin-home', passport.authenticate('jwt', { session: false}), (req, res)=> {
         res.json({user:req.user});
     }

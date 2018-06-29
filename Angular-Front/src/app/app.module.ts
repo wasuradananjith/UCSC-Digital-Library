@@ -38,6 +38,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import {BookService} from "./service/book.service";
 import {StudentService} from "./service/student.service";
+import { AdminManageUserComponent } from './components/admin-manage-user/admin-manage-user.component';
 
 /*
 const applicationRoutes:Routes=[
@@ -82,7 +83,8 @@ export function tokenGetter() {
     StudentFinesComponent,
     LatestBooksSliderComponent,
     FooterComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AdminManageUserComponent
   ],
   imports: [
     BrowserModule,

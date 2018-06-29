@@ -17,6 +17,7 @@ import {StudentBorrowedBooksComponent} from "./components/student-borrowed-books
 import {StudentBorrowHistoryComponent} from "./components/student-borrow-history/student-borrow-history.component";
 import {StudentFinesComponent} from "./components/student-fines/student-fines.component";
 import {AdminDashboardComponent} from "./components/admin-dashboard/admin-dashboard.component";
+import {AdminManageUserComponent} from "./components/admin-manage-user/admin-manage-user.component";
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -30,7 +31,8 @@ const routes: Routes = [
       {path:'borrowed-books',component:AdminBorrowedBooksComponent},
       {path:'fines',component:AdminFinesComponent},
       {path:'borrow-history',component:AdminBorrowHistoryComponent},
-      {path:'reports',component:AdminReportsComponent}
+      {path:'reports',component:AdminReportsComponent},
+      {path:'manage-users',component:AdminManageUserComponent}
       ]
   },
   {path:'student-home', component:StudentHomeComponent,

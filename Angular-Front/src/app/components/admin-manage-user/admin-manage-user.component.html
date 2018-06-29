@@ -1,0 +1,123 @@
+<div class="my-background">
+  <div *ngIf="user">
+
+    <div id="page-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">Manage Users</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+      </div>
+
+      <div class="col-lg-6">
+        <div class="form-group inner-addon left-addon">
+          <i class="glyphicon glyphicon-search"></i>
+          <input (keyup)="onKeyUserSearch($event)" type="text" class="form-control" name="searchText" [(ngModel)]="searchText.enteredText" placeholder="Search by User Name/Email/Type ...">
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+
+      <!-- /.row -->
+      <div class="row">
+        <table class="table table-bordered">
+          <thead>
+          <tr align="center">
+            <th class="col-xs-3">Name</th>
+            <th class="col-xs-2">Email</th>
+            <th class="col-xs-2">Type</th>
+            <th class="col-xs-4">Last Login</th>
+            <th class="col-xs-1">Change Password</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td class="col-xs-1">{{user.name}}</td>
+            <td class="col-xs-2">{{user.email}}</td>
+            <td class="col-xs-2">{{user.type}}</td>
+            <td class="col-xs-4">{{user.lastLogin}}</td>
+            <td class="col-xs-1"><button class="btn btn-success" (click)="onChangePassword(ChangePasswordModal,user)">Change Password  <i class="fa fa-unlock-alt"></i></button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.row -->
+    </div>
+  </div>
+</div>
+
+<!--Model to change password-->
+<ng-template #ChangePasswordModal>
+  <div class="my-modal">
+    <div class="modal-header">
+      <h3 class="modal-title pull-left" style="margin-left: 37%">Change Password</h3>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <flash-messages></flash-messages>
+      <form novalidate>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Name</label>
+            <div class="col-md-8">
+              <input class="form-control" name="name" type="text"  placeholder="Name" [(ngModel)]="selectedUser.name" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Email</label>
+            <div class="col-md-8">
+              <input class="form-control" name="email" type="email"  placeholder="Email" [(ngModel)]="selectedUser.email" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Type</label>
+            <div class="col-md-8">
+              <input class="form-control" name="type" type="text"  placeholder="Type" [(ngModel)]="selectedUser.type" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Last Login</label>
+            <div class="col-md-8">
+              <input class="form-control" name="last-login" type="text"  placeholder="Last Login" [(ngModel)]="selectedUser.lastLogin" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Current Password</label>
+            <div class="col-md-8">
+              <input autofocus class="form-control" name="current_password" type="password"  placeholder="Type current password here" [(ngModel)]="newPassword">
+              <strong><p *ngIf="newPassword.length<3" class="pull-left" style="color: red">Password must consist more than 3 characters</p></strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Confirm Password</label>
+            <div class="col-md-8">
+              <input class="form-control" name="confirm_password" type="password"  placeholder="Type password again" [(ngModel)]="confirmPassword">
+              <strong><p *ngIf="confirmPassword.length<3" class="pull-left" style="color: red">Password must consist more than 3 characters</p>
+                <p *ngIf="confirmPassword!=newPassword" class="pull-left" style="color: red">Password does not match</p></strong>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" (click)="changePassword(selectedUser.email)" class="btn btn-azure center">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
