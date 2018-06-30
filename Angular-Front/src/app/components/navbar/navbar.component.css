@@ -12,12 +12,18 @@
   font-size: 16px;
 }
 
+
+
+.navbar-default[_ngcontent-c1] .navbar-nav[_ngcontent-c1] > li[_ngcontent-c1] > a[_ngcontent-c1] {
+  background-color: #3b0063;
+}
+
 .my-navbar .navbar-nav li a:hover{
   -moz-transition: all .3s ease-in;
   -o-transition: all .3s ease-in;
   -webkit-transition: all .3s ease-in;
   transition: all .3s ease-in;
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255,255,255,0.2) !important;
   /*color: #3b0063;*/
 }
 
@@ -74,8 +80,6 @@ li .dropdown:hover .dropdown-content {
   color: white;
 }
 
-.navbar-default[_ngcontent-c1] .navbar-nav[_ngcontent-c1] > li[_ngcontent-c1] > a[_ngcontent-c1] {
-  color: #ffffff;
-  font-size: 16px;
-  background-color: #3b0063;
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+  color: white;
 }
