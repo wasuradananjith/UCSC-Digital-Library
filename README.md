@@ -8,7 +8,7 @@
 	<li>Install MongoDB</li>
 </ul>
 
-<h2>Follow the below instructions</h2>
+<h2>Follow the instructions below</h2>
 
 	1)	Run the MongoDB server by typing "mongod" in terminal
 
