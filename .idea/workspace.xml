@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1d65dfd1-34d0-4c53-9d7c-d687892bdf56" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/output.pdf" afterPath="" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="admin-books.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-books/admin-books.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4046">
+              <caret line="245" column="30" lean-forward="false" selection-start-line="245" selection-start-column="30" selection-end-line="245" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/app.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="952">
+              <caret line="96" column="17" lean-forward="false" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin-books.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-books/admin-books.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="680">
+              <caret line="40" column="105" lean-forward="false" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="105" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#2;n#a#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app-routing.module.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/app-routing.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="angular.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Angular-Front/angular.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/login/login.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#61#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin-borrow-history.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-borrow-history/admin-borrow-history.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="680">
+              <caret line="43" column="5" lean-forward="true" selection-start-line="29" selection-start-column="3" selection-end-line="43" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="material.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Angular-Front/src/assets/material.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2737">
+              <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navbar.component.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/navbar/navbar.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Angular-Front/src/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>/borrow</find>
+      <find>/add</find>
+      <find>alert</find>
+      <find>return-se</find>
+      <find>totalFine</find>
+      <find>reserve</find>
+      <find>total</find>
+      <find>count</find>
+      <find>student</find>
+      <find>reserve-cance</find>
+      <find>admin</find>
+      <find>reservation-sea</find>
+      <find>reser</find>
+      <find>reserve-bo</find>
+      <find>console</find>
+      <find>curre</find>
+      <find>sugges</find>
+      <find>search</find>
+      <find>login</find>
+      <find>findOne</find>
+      <find>select</find>
+      <find>update</find>
+      <find>regi</find>
+      <find>table-fixed</find>
+      <find>you have al</find>
+      <find>you have a</find>
+      <find>current</find>
+      <find>alrea</find>
+      <find>tool</find>
+      <find>out</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/home/home.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/home/home.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-reports/admin-reports.component.css" />
+        <option value="$PROJECT_DIR$/models/returnbook.js" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-sidebar/admin-sidebar.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-reports/admin-reports.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-reports/admin-reports.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/student-borrowed-books/student-borrowed-books.component.ts" />
+        <option value="$PROJECT_DIR$/routes/reports.js" />
+        <option value="$PROJECT_DIR$/routes/students.js" />
+        <option value="$PROJECT_DIR$/routes/reservations.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/routes/suggestions.js" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/service/book.service.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-books/admin-books.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/student-books/student-books.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/student-borrow-history/student-borrow-history.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-reservation/admin-reservation.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-suggestions/admin-suggestions.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-borrowed-books/admin-borrowed-books.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-fines/admin-fines.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-borrow-history/admin-borrow-history.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-sidebar/admin-sidebar.component.css" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/student-books/student-books.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-borrow-history/admin-borrow-history.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-borrowed-books/admin-borrowed-books.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-fines/admin-fines.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-reservation/admin-reservation.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-suggestions/admin-suggestions.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/student-borrow-history/student-borrow-history.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/app-routing.module.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-sidebar/admin-sidebar.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-dashboard/admin-dashboard.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-manage-user/admin-manage-user.component.css" />
+        <option value="$PROJECT_DIR$/models/user.js" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-manage-user/admin-manage-user.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-dashboard/admin-dashboard.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-manage-user/admin-manage-user.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/service/auth.service.ts" />
+        <option value="$PROJECT_DIR$/routes/users.js" />
+        <option value="$PROJECT_DIR$/routes/books.js" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/login/login.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/assets/ninja-slider.js" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/admin-books/admin-books.component.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/styles.css" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/index.html" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/assets/material.css" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/navbar/navbar.component.css" />
+        <option value="$PROJECT_DIR$/Angular-Front/src/app/components/login/login.component.ts" />
+        <option value="$PROJECT_DIR$/Angular-Front/angular.json" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/Angular-Front/node_modules" />
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-13" />
+    <option name="y" value="104" />
+    <option name="width" value="929" />
+    <option name="height" value="746" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="UCSC-Digital-Library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UCSC-Digital-Library" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UCSC-Digital-Library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UCSC-Digital-Library" type="462c0819:PsiDirectoryNode" />
+              <item name="Angular-Front" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UCSC-Digital-Library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UCSC-Digital-Library" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ucsc-library - Copy" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\UCSC\3rd Year\Semester 1\SCS3112 Advanced Web Development\Individual Project\UCSC-Digital-Library\Angular-Front\src\assets\img" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\UCSC\3rd Year\Semester 1\SCS3112 Advanced Web Development\Individual Project\UCSC-Digital-Library\routes" />
+      <recent name="E:\UCSC\3rd Year\Semester 1\SCS3112 Advanced Web Development\Individual Project\UCSC-Digital-Library\Angular-Front\src" />
+      <recent name="E:\UCSC\3rd Year\Semester 1\SCS3112 Advanced Web Development\Individual Project\UCSC-Digital-Library\Angular-Front\src\assets\img" />
+      <recent name="E:\UCSC\3rd Year\Semester 1\SCS3112 Advanced Web Development\Individual Project\UCSC-Digital-Library\models" />
+      <recent name="E:\UCSC\3rd Year\Semester 1\SCS3112 Advanced Web Development\Individual Project\UCSC-Digital-Library\Angular-Front\src\assets" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1d65dfd1-34d0-4c53-9d7c-d687892bdf56" name="Default" comment="" />
+      <created>1527311270666</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1527311270666</updated>
+      <workItem from="1527311271972" duration="39853000" />
+      <workItem from="1527400472203" duration="15335000" />
+      <workItem from="1527528912603" duration="17032000" />
+      <workItem from="1527569359228" duration="37619000" />
+      <workItem from="1527702980268" duration="11947000" />
+      <workItem from="1527779467557" duration="20276000" />
+      <workItem from="1527875609752" duration="21459000" />
+      <workItem from="1527959749108" duration="19732000" />
+      <workItem from="1528027710886" duration="6281000" />
+      <workItem from="1528043458712" duration="5120000" />
+      <workItem from="1528050736884" duration="3516000" />
+      <workItem from="1528128184739" duration="598000" />
+      <workItem from="1528184854593" duration="5272000" />
+      <workItem from="1528217354992" duration="5702000" />
+      <workItem from="1528245400770" duration="1265000" />
+      <workItem from="1528254620249" duration="945000" />
+      <workItem from="1528256361804" duration="5246000" />
+      <workItem from="1528330334461" duration="667000" />
+      <workItem from="1528345139844" duration="781000" />
+      <workItem from="1528359719210" duration="2624000" />
+      <workItem from="1528380320985" duration="1146000" />
+      <workItem from="1528392866639" duration="2266000" />
+      <workItem from="1528422578151" duration="1864000" />
+      <workItem from="1528443980928" duration="4276000" />
+      <workItem from="1528448729437" duration="965000" />
+      <workItem from="1528452441546" duration="1844000" />
+      <workItem from="1528455732636" duration="1835000" />
+      <workItem from="1528469479477" duration="3252000" />
+      <workItem from="1528486363879" duration="41000" />
+      <workItem from="1528558070995" duration="1561000" />
+      <workItem from="1528560227450" duration="16654000" />
+      <workItem from="1528643592122" duration="18475000" />
+      <workItem from="1528701467221" duration="693000" />
+      <workItem from="1528783835829" duration="1284000" />
+      <workItem from="1528992141210" duration="1727000" />
+      <workItem from="1529038498298" duration="12566000" />
+      <workItem from="1529075699511" duration="14265000" />
+      <workItem from="1529142187757" duration="1574000" />
+      <workItem from="1529169650349" duration="14407000" />
+      <workItem from="1529260207069" duration="5567000" />
+      <workItem from="1529346056344" duration="176000" />
+      <workItem from="1529633468246" duration="314000" />
+      <workItem from="1529725580191" duration="48223000" />
+      <workItem from="1529808916721" duration="33441000" />
+      <workItem from="1529907183102" duration="783000" />
+      <workItem from="1529934108167" duration="728000" />
+      <workItem from="1529947621337" duration="2272000" />
+      <workItem from="1530027901468" duration="4978000" />
+      <workItem from="1530035168973" duration="452000" />
+      <workItem from="1530035662861" duration="9614000" />
+      <workItem from="1530078092140" duration="5275000" />
+      <workItem from="1530143967450" duration="2300000" />
+      <workItem from="1530191160730" duration="13497000" />
+      <workItem from="1530254201491" duration="471000" />
+      <workItem from="1530254903247" duration="575000" />
+      <workItem from="1530259917896" duration="569000" />
+      <workItem from="1530282558596" duration="10650000" />
+      <workItem from="1530329030229" duration="8920000" />
+      <workItem from="1530383774358" duration="1950000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="472720000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21651785" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24013157" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Angular-Front/src/app/app.component.ts</url>
+          <line>3</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-reports/admin-reports.component.ts</url>
+          <line>7</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-reservation/admin-reservation.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-suggestions/admin-suggestions.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="65" column="50" lean-forward="false" selection-start-line="65" selection-start-column="50" selection-end-line="65" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-borrowed-books/admin-borrowed-books.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-fines/admin-fines.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="64" column="50" lean-forward="false" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-borrow-history/admin-borrow-history.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="134" lean-forward="false" selection-start-line="22" selection-start-column="134" selection-end-line="22" selection-end-column="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-suggestions/admin-suggestions.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="134" lean-forward="false" selection-start-line="44" selection-start-column="134" selection-end-line="44" selection-end-column="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/student-borrow-history/student-borrow-history.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="134" lean-forward="false" selection-start-line="22" selection-start-column="134" selection-end-line="22" selection-end-column="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/student-borrowed-books/student-borrowed-books.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/student-books/student-books.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="46" column="6" lean-forward="false" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-fines/admin-fines.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-697">
+          <caret line="44" column="134" lean-forward="false" selection-start-line="44" selection-start-column="134" selection-end-line="44" selection-end-column="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-reservation/admin-reservation.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="44" column="134" lean-forward="false" selection-start-line="44" selection-start-column="134" selection-end-line="44" selection-end-column="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-home/admin-home.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-home/admin-home.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="26" column="9" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="26" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-borrowed-books/admin-borrowed-books.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="22" column="134" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-dashboard/admin-dashboard.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="31" column="5" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="31" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-reports/admin-reports.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="628">
+          <caret line="156" column="22" lean-forward="true" selection-start-line="135" selection-start-column="14" selection-end-line="156" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-reports/admin-reports.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-manage-user/admin-manage-user.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-books/admin-books.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-manage-user/admin-manage-user.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="605" column="0" lean-forward="false" selection-start-line="605" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-dashboard/admin-dashboard.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-manage-user/admin-manage-user.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="84" column="5" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/service/auth.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="84" column="89" lean-forward="false" selection-start-line="84" selection-start-column="71" selection-end-line="84" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2057">
+          <caret line="121" column="20" lean-forward="false" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-books/admin-books.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="573" column="12" lean-forward="false" selection-start-line="573" selection-start-column="1" selection-end-line="573" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/service/book.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="151" column="2" lean-forward="false" selection-start-line="151" selection-start-column="2" selection-end-line="151" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-manage-user/admin-manage-user.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="97" column="58" lean-forward="false" selection-start-line="97" selection-start-column="51" selection-end-line="97" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/student.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-sidebar/admin-sidebar.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="82" column="23" lean-forward="false" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-sidebar/admin-sidebar.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="71" column="54" lean-forward="false" selection-start-line="71" selection-start-column="11" selection-end-line="71" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-714">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/assets/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/assets/ninja-slider.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1162">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/books.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="499" column="3" lean-forward="true" selection-start-line="499" selection-start-column="3" selection-end-line="499" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/book.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="81" column="2" lean-forward="true" selection-start-line="81" selection-start-column="2" selection-end-line="81" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-reports/admin-reports.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1989">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/login/login.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="27" column="21" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="32" lean-forward="false" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-books/admin-books.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4046">
+          <caret line="245" column="30" lean-forward="false" selection-start-line="245" selection-start-column="30" selection-end-line="245" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="96" column="17" lean-forward="false" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/assets/material.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2737">
+          <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/navbar/navbar.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-books/admin-books.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="105" lean-forward="false" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="105" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#2;n#a#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/admin-borrow-history/admin-borrow-history.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="43" column="5" lean-forward="true" selection-start-line="29" selection-start-column="3" selection-end-line="43" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/components/login/login.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/src/app/app-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular-Front/angular.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
