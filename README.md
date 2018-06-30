@@ -1,11 +1,13 @@
-UCSC-Digital-Library
+<h1>UCSC-Digital-Library</h1>
 
-Pre-requisites
-• Install Node.js
-• Install Angular-Cli
-• Install MongoDB
+<h2>Pre-requisites</h2>
+<ul> 
+	<li>Install Node.js</li>
+<li>Install Angular-Cli<li>
+	<li>Install MongoDB</li>
 
-Follow the below instructions
+<h2>Follow the below instructions</h2>
+
 	1)	Run the MongoDB server by typing "mongod" in terminal
 
 	2)	Then navigate to the folder where the backend files are located using terminal
