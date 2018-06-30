@@ -3,8 +3,9 @@
 <h2>Pre-requisites</h2>
 <ul> 
 	<li>Install Node.js</li>
-<li>Install Angular-Cli<li>
+	<li>Install Angular-Cli</li>
 	<li>Install MongoDB</li>
+</ul>
 
 <h2>Follow the below instructions</h2>
 
