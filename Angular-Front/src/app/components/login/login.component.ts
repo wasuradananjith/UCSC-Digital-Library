@@ -29,6 +29,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['']);
+    }
   }
 
   createForm() {
@@ -152,5 +155,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // on click forgot password link
+  onClickForgotPassword(template:TemplateRef<any>){
+    this.loginMessage="Please contact the Administrator!";
+    this.loginAlertType="Error";
+    this.modalRef = this.modalService.show(template);
+  }
 
 }

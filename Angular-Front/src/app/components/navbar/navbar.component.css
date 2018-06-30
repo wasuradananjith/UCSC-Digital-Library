@@ -74,3 +74,8 @@ li .dropdown:hover .dropdown-content {
   color: white;
 }
 
+.navbar-default[_ngcontent-c1] .navbar-nav[_ngcontent-c1] > li[_ngcontent-c1] > a[_ngcontent-c1] {
+  color: #ffffff;
+  font-size: 16px;
+  background-color: #3b0063;
+}

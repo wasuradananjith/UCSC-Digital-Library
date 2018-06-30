@@ -64,10 +64,18 @@
 
             <div class="row pull-right" style="margin-top: 20%">
               <div class="col-md-6" style="margin-top: 2%" *ngIf="books[i].no_of_available_copies>=0">
-              <button class="icon-button" (click)="openEditModal(EditCopies,books[i])" style="font-size:24px; color: forestgreen" data-toggle="tooltip" title="Edit number of copies"><i class="fa fa-edit"></i></button>
+              <button class="icon-button" (click)="openEditModal(EditCopies,books[i])" style="font-size:24px; color: forestgreen"
+                      popover="Edit number of copies"
+                      triggers="mouseenter:mouseleave"
+                      placement="top"
+                      container="body"><i class="fa fa-edit"></i></button>
             </div>
               <div class="col-md-6" *ngIf="books[i].no_of_available_copies>=0">
-                <button class="icon-button" (click)="openDeleteModal(deleteBookModal,books[i])" style="font-size:24px; color: red"  data-toggle="tooltip" title="Delete Book"><i class="fa fa-trash-o"></i></button>
+                <button class="icon-button" (click)="openDeleteModal(deleteBookModal,books[i])" style="font-size:24px; color: red"
+                        popover="Delete Book"
+                        triggers="mouseenter:mouseleave"
+                        placement="top"
+                        container="body"><i class="fa fa-trash-o"></i></button>
               </div>
             </div>
 

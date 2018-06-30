@@ -25,7 +25,7 @@
                 <div class="form-group inner-addon left-addon">
                   <i class="glyphicon glyphicon-lock"></i>
                   <input class="form-control" formControlName="login_password" type="password"  placeholder="Password">
-                  <a href="#" class="pull-xs-right">
+                  <a [routerLink]="['/login']" (click)="onClickForgotPassword(LoginMsgModal)" class="pull-xs-right">
                     <small>Forgot?</small>
                   </a>
                   <div class="clearfix"></div>

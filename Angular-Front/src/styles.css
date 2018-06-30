@@ -18,11 +18,6 @@
   width: 160px;
 }
 
-body{
-  /*background: linear-gradient(#000000,#000000,#000000);*/
-  background-image: url("assets/img/loginbackground.gif");
-  background-attachment: fixed;
-}
 
 .my-background{
   background-color: rgba(76, 73, 87, 0.98);
@@ -78,5 +73,3 @@ h1,h2,h3,.modal-header h2{
 .pagination>li>a, .pagination>li>span{
   color: #9c27b0;
 }
-
-
