@@ -42,10 +42,10 @@ export class AdminDashboardComponent implements OnInit {
     // get today date
     let todaySeconds = new Date().getTime();
 
+    // update daily overdue fine
     this.bookService.getAllBorrows().subscribe(res=>{
       for (let borrow of res.msg) {
         let returnDate = new Date(borrow.return_date);
-        console.log(returnDate);
         let timeDiff = todaySeconds - returnDate.getTime();
         let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))-1;
         if (diffDays>1){

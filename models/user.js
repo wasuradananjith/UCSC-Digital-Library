@@ -7,6 +7,7 @@ const userSchema = new schema({
     name:{type:String,required:true},
     password:{type:String,required:true},
     type:{type:String},
+    phone:{type:String},
     lastLogin:{type:String},
     isDeleted:{type:String},
     isLostPassword:{type:String}

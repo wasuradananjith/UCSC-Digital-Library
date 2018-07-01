@@ -20,6 +20,7 @@
     "nodemailer": "^4.6.5",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
-    "pdfkit": "^0.8.3"
+    "pdfkit": "^0.8.3",
+    "twilio": "^3.17.4"
   }
 }

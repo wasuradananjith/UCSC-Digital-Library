@@ -7,6 +7,7 @@ const Borrow = require('../models/borrow');
 const Return = require('../models/returnbook');
 const Reservation = require('../models/reservation');
 const nodemailer = require('nodemailer');
+const twilio = require('twilio');
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -15,6 +16,10 @@ const transporter = nodemailer.createTransport({
         pass: 'ucsc@123'
     }
 });
+
+const accountSid = 'AC2dd8510e1050de86a5e2401fbb4247fc'; // Your Account SID from www.twilio.com/console
+const authToken = '3097178934fd53ce73af0d332611db8b';   // Your Auth Token from www.twilio.com/console
+const client = new twilio(accountSid, authToken);
 
 router.get("",(req,res)=>{
     res.send("Hello Books");
@@ -119,6 +124,14 @@ router.post("/add",(req,res)=>{
                                     } else {
                                         console.log('Email sent: ' + info.response);
                                     }
+                                });
+
+                                let phoneNo = students[student].phone;
+                                // send SMS
+                                client.messages.create({
+                                    body: 'New Book Added! ISBN: '+req.body.isbn+', '+req.body.no_of_copies+' copies is/are available. Reserve your one!',
+                                    to: '+94'+phoneNo.substring(1, phoneNo.length),  // Text this number
+                                    from: '+19792436762' // From a valid Twilio number
                                 });
                             }
                         }

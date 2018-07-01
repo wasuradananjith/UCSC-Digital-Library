@@ -17,6 +17,7 @@ router.post("/register",(req,res)=>{
         name:req.body.name,
         password:req.body.password,
         type:req.body.type,
+        phone:"",
         lastLogin:req.body.lastLogin,
         isDeleted:req.body.isDeleted,
         isLostPassword:req.body.isLostPassword
@@ -33,6 +34,7 @@ router.post("/register",(req,res)=>{
                 }
                 // registered student in the university, so can have library access
                 if (student){
+                    newUser.phone = student.phone;
                     User.saveUser(newUser,(err,user)=> {
                         if(err){
                             res.json({state:false,msg:"Registration unsuccessful"});
