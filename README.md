@@ -1,7 +1,7 @@
 <h1>UCSC-Digital-Library</h1>
 <p>Web System to manage online reservations, borrowing, calculating library dues, generating reports etc. in a library system developed using MEAN (MongoDB, Express.js, Angular, Node.js) Stack</p>
 
-<img src="https://culturenl.co.uk/wp-content/uploads/2014/04/DSC_9842.jpg">
+<img src="https://github.com/wasuradananjith/UCSC-Digital-Library/blob/master/github-photos/Screenshot%20(2).png">
 
 <h2>Pre-requisites</h2>
 <ul> 
