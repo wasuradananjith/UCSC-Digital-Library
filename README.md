@@ -3,6 +3,14 @@
 
 <img src="https://github.com/wasuradananjith/UCSC-Digital-Library/blob/master/github-photos/Screenshot%20(2).png">
 
+<img src="https://github.com/wasuradananjith/UCSC-Digital-Library/blob/master/github-photos/Screenshot%20(9).png">
+
+<img src="https://github.com/wasuradananjith/UCSC-Digital-Library/blob/master/github-photos/Screenshot%20(4).png">
+
+<img src="https://github.com/wasuradananjith/UCSC-Digital-Library/blob/master/github-photos/Screenshot%20(5).png">
+
+<img src="https://github.com/wasuradananjith/UCSC-Digital-Library/blob/master/github-photos/Login%20Screen.JPG">
+
 <h2>Pre-requisites</h2>
 <ul> 
 	<li>Install Node.js</li>
