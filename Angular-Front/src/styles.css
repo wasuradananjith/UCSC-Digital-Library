@@ -74,3 +74,8 @@ h1,h2,h3,.modal-header h2{
   color: #9c27b0;
 }
 
+body{
+  /*background: linear-gradient(#000000,#000000,#000000);*/
+  background-image: url("assets/img/loginbackground.gif");
+  background-attachment: fixed;
+}
