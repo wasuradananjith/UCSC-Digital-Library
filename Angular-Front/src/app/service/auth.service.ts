@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
-
+  baseURL = "http://localhost:3000/";
   user:any;
   authtoken:any;
 
@@ -20,14 +20,14 @@ export class AuthService {
     //console.log(user);
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post("http://localhost:3000/user/register",user,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"user/register",user,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // log in a user
   loginUser(user){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post("http://localhost:3000/user/login",user,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"user/login",user,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // store data of user
@@ -45,7 +45,7 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Authorization',this.authtoken);
     headers.append('Content-Type','application/json');
-    return this.http.get("http://localhost:3000/user/admin-home",{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.get(this.baseURL+"user/admin-home",{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // load student home
@@ -54,14 +54,14 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Authorization',this.authtoken);
     headers.append('Content-Type','application/json');
-    return this.http.get("http://localhost:3000/user/student-home",{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.get(this.baseURL+"user/student-home",{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // search user details
   filterUserDetails(searchText){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post("http://localhost:3000/user/search",searchText,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"user/search",searchText,{headers:headers}).pipe(map(res=>res.json()));
   }
 
   // get the stored token from local storage
@@ -82,7 +82,7 @@ export class AuthService {
     let updatePasswordData = {password:newPassword,email:email};
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post("http://localhost:3000/user/update-password",updatePasswordData,{headers:headers}).pipe(map(res=>res.json()));
+    return this.http.post(this.baseURL+"user/update-password",updatePasswordData,{headers:headers}).pipe(map(res=>res.json()));
 
   }
 
