@@ -3,6 +3,7 @@ import {AuthService} from "../../service/auth.service";
 import {Router} from "@angular/router";
 import {BookService} from "../../service/book.service";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import {StudentService} from "../../service/student.service";
 
 @Component({
   selector: 'app-admin-suggestions',
@@ -10,6 +11,7 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap";
   styleUrls: ['./admin-suggestions.component.css']
 })
 export class AdminSuggestionsComponent implements OnInit {
+  student:any;
   start:number;
   end:number;
   currentPage = 1;
@@ -22,9 +24,11 @@ export class AdminSuggestionsComponent implements OnInit {
   message:String;
   alertType:String;
   searchText = {
-    enteredText:""
+    enteredText:"",
+    enteredTextStudent:""
   };
-  constructor(private authService:AuthService,private router:Router,private bookService:BookService,private modalService:BsModalService) { }
+  constructor(private authService:AuthService,private studentService:StudentService,
+              private router:Router,private bookService:BookService,private modalService:BsModalService) { }
 
   ngOnInit() {
     if (!this.authService.isLoggedIn()){
@@ -67,7 +71,7 @@ export class AdminSuggestionsComponent implements OnInit {
     });
   }
 
-  // when the dissmiss button is pressed
+  // when the dismiss button is pressed
   onDismiss(template:TemplateRef<any>,book) {
     this.bookService.dismissSuggestion(book).subscribe(res => {
       if (res.state) {
@@ -83,6 +87,21 @@ export class AdminSuggestionsComponent implements OnInit {
         window.location.reload();
       });
       //this.router.navigate(['student-home']);
+    });
+  }
+
+  // load modal to view student details
+  viewStudentDetails(template:TemplateRef<any>,student_email){
+    this.searchText.enteredTextStudent = student_email;
+    this.studentService.filterStudentDetails(this.searchText).subscribe(response=>{
+      if(response.msg==""){
+        this.message="No search results found";
+      }
+      else{
+        this.message="";
+      }
+      this.student = response.msg[0];
+      this.modalRef = this.modalService.show(template);
     });
   }
 }

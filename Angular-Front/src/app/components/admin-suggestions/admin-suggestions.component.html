@@ -68,7 +68,7 @@
               <li><strong>Author</strong> - {{books[i].author}}</li>
               <li><strong>Category</strong> - {{books[i].subject}}</li>
               <li><strong>Date Added</strong> - {{books[i].date_added}}h</li>
-              <li><strong>Email</strong> - {{books[i].student_email}}</li>
+              <li><strong>Email</strong> - <a (click)="viewStudentDetails(StudentDetailsModal,books[i].student_email)">{{books[i].student_email}}</a></li>
               </p>
             </div>
 
@@ -109,3 +109,84 @@
   </div>
 </ng-template>
 
+<!--Model to view student details -->
+<ng-template #StudentDetailsModal>
+  <div class="my-modal">
+    <div class="modal-header">
+      <h3 class="modal-title pull-left" style="margin-left: 37%">Student Details</h3>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <flash-messages></flash-messages>
+      <form novalidate>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Name</label>
+            <div class="col-md-8">
+              <input class="form-control" name="name" type="text"  placeholder="Name" [(ngModel)]="student.name" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Reg No</label>
+            <div class="col-md-8">
+              <input class="form-control" name="reg_no" type="text"  placeholder="Reg No" [(ngModel)]="student.reg_no" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Index No</label>
+            <div class="col-md-8">
+              <input class="form-control" name="index_no" type="text"  placeholder="Index No" [(ngModel)]="student.index_no" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Email</label>
+            <div class="col-md-8">
+              <input class="form-control" name="email" type="email"  placeholder="Email" [(ngModel)]="student.email" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Phone</label>
+            <div class="col-md-8">
+              <input class="form-control" name="phone" type="text"  placeholder="Contact No" [(ngModel)]="student.phone" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Address</label>
+            <div class="col-md-8">
+              <textarea class="form-control" name="address" type="text"  placeholder="Address" [(ngModel)]="student.address" disabled>
+              </textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">NIC</label>
+            <div class="col-md-8">
+              <input class="form-control" name="nic" type="text"  placeholder="NIC" [(ngModel)]="student.nic" disabled>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ng-template>

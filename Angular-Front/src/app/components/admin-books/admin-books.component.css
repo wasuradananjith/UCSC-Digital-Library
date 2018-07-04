@@ -594,3 +594,6 @@ th,thead,td {
 .my-modal a{
   text-align: left;
 }
+textarea{
+  color: #1f003e;
+}

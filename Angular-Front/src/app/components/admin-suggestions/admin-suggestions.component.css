@@ -519,7 +519,7 @@ h4{
 }
 
 .modal-body{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
 }
 .my-modal h2{
@@ -527,3 +527,6 @@ h4{
   margin-left: 43%;
 }
 
+textarea{
+  color: #1f003e;
+}

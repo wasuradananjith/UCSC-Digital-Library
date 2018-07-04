@@ -10,7 +10,6 @@ router.get("",(req,res)=>{
 // route to filter/search student details
 router.post("/search",(req,res)=>{
     const searchText = req.body.enteredTextStudent;
-    console.log(req.body.enteredText);
     Student.getFilteredStudents(searchText,(error,students)=>{
         if (students){
             res.json({state:true,msg:students});
